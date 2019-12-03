@@ -1,0 +1,1 @@
+SQLCMD -S TUANANH -E -i CreateQLNH.sql
