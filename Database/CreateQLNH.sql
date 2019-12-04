@@ -27,10 +27,23 @@ CREATE TABLE [dbo].[tblnhanVien]
 	[luongCoBan] int NOT NULL,
 	[gioLam] int NOT NULL,
 	[chucVu] nvarchar(10) NOT NULL,
+	[machucVu] nvarchar(10) NOT NULL
+)
+CREATE TABLE [dbo].[tblphucVu]
+(	
+	[maphucVu] nvarchar(10) NOT NULL PRIMARY KEY,
+	[soBanDaPhucVu] int NOT NULL,
+	[thuongTheoBan]	int NOT NULL,
+)
+CREATE TABLE [dbo].[tblquanLy]
+(	
+	[maquanLy] nvarchar(10) NOT NULL PRIMARY KEY,
+	[kpi] int NOT NULL,
+	[luongDatkpi]	int NOT NULL
 )
 CREATE TABLE [dbo].[tblNguyenLieu]
 (	
-	[maLNguyenLieu] nvarchar(10) NOT NULL PRIMARY KEY,
+	[maNguyenLieu] nvarchar(10) NOT NULL PRIMARY KEY,
 	[tenNguyenLieu]	nvarchar(50) NOT NULL,	
 	[dongia] int NOT NULL,
 	[donVi] nvarchar(10) NOT NULL,
@@ -69,17 +82,6 @@ CREATE TABLE [dbo].[tblkhachHang]
 	[tenKhachHang] nvarchar(50) NOT NULL PRIMARY KEY,
 	[sdtKhachHang]	nvarchar(11) 
 )
-CREATE TABLE [dbo].[tblhoaDon]
-(	
-	[mahoaDon] nvarchar(10) NOT NULL,
-	[tenKhachHang] nvarchar(50) NOT NULL,
-	[soban] int NOT NULL,
-	[tongTien] int NOT NULL,	
-	[ngayThanhToan]	datetime2(7) NOT NULL,
-	[maThuNgan] nvarchar(10) NOT NULL,
-	FOREIGN KEY (tenKhachHang) REFERENCES tblkhachHang(tenKhachHang),
-	FOREIGN KEY (maThuNgan) REFERENCES tblnhanVien(manhanVien)
-)
 CREATE TABLE [dbo].[tblBan] --its a table of a.....table :)
 (	
 	[soban] int NOT NULL PRIMARY KEY,
@@ -90,6 +92,18 @@ CREATE TABLE [dbo].[tblBan] --its a table of a.....table :)
 	[soGheToiDa] int NOT NULL,
 	FOREIGN KEY (tenKhachHang) REFERENCES tblkhachHang(tenKhachHang)
 )
+CREATE TABLE [dbo].[tblhoaDon]
+(	
+	[mahoaDon] nvarchar(10) NOT NULL PRIMARY KEY,
+	[tenKhachHang] nvarchar(50) NOT NULL,
+	[soban] int NOT NULL,
+	[tongTien] int NOT NULL,	
+	[ngayThanhToan]	datetime2(7) NOT NULL,
+	[maThuNgan] nvarchar(10) NOT NULL,
+	FOREIGN KEY (tenKhachHang) REFERENCES tblkhachHang(tenKhachHang),
+	FOREIGN KEY (maThuNgan) REFERENCES tblnhanVien(manhanVien),
+	FOREIGN KEY (soban) REFERENCES tblBan(soban)
+)
 CREATE TABLE [dbo].[tblPhieubaocaoDoanhThu]
 (
 	[maPhieu] nvarchar(10) NOT NULL PRIMARY KEY,	
@@ -99,9 +113,9 @@ CREATE TABLE [dbo].[tblPhieubaocaoDoanhThu]
 CREATE TABLE [dbo].[tblChitietPhieubaocaoDT]
 (
 	[maPhieu] nvarchar(10) NOT NULL,	
-	[maMenu] nvarchar(10) NOT NULL,
+	[mahoaDon] nvarchar(10) NOT NULL,
 	FOREIGN KEY (maPhieu) REFERENCES tblPhieubaocaoDoanhThu(maPhieu),
-	FOREIGN KEY (maMenu) REFERENCES tblMenu(maMenu),	
+	FOREIGN KEY (mahoaDon) REFERENCES tblhoaDon(mahoaDon)
 )
 
 CREATE TABLE [dbo].[tblQuiDinh]

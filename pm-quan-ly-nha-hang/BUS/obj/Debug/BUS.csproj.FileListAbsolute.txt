@@ -1,0 +1,10 @@
+D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\BUS\bin\Debug\BUS.dll
+D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\BUS\bin\Debug\BUS.pdb
+D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\BUS\bin\Debug\DAL.dll
+D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\BUS\bin\Debug\DTO.dll
+D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\BUS\bin\Debug\DAL.pdb
+D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\BUS\bin\Debug\DTO.pdb
+D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\BUS\obj\Debug\BUS.csprojAssemblyReference.cache
+D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\BUS\obj\Debug\BUS.csproj.CopyComplete
+D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\BUS\obj\Debug\BUS.dll
+D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\BUS\obj\Debug\BUS.pdb
