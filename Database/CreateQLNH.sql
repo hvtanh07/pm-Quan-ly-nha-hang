@@ -14,7 +14,6 @@ BEGIN
 END
 GO
 
-/* Collation = SQL_Latin1_General_CP1_CI_AS */
 CREATE DATABASE [QLNH]
 GO
 USE [QLNH]
@@ -25,8 +24,6 @@ CREATE TABLE [dbo].[tblnhanVien]
 	[tenNhanVien] nvarchar(10) NOT NULL,
 	[birth]	datetime2(7) NOT NULL,
 	[luongCoBan] int NOT NULL,
-	[gioLam] int NOT NULL,
-	[chucVu] nvarchar(10) NOT NULL,
 	[machucVu] nvarchar(10) NOT NULL
 )
 CREATE TABLE [dbo].[tblphucVu]
@@ -40,6 +37,12 @@ CREATE TABLE [dbo].[tblquanLy]
 	[maquanLy] nvarchar(10) NOT NULL PRIMARY KEY,
 	[kpi] int NOT NULL,
 	[luongDatkpi]	int NOT NULL
+)
+CREATE TABLE [dbo].[tblthuNgan]
+(	
+	[mathuNgan] nvarchar(10) NOT NULL PRIMARY KEY,
+	[gioLam] int NOT NULL,
+	[thuongGioLam] int NOT NULL
 )
 CREATE TABLE [dbo].[tblNguyenLieu]
 (	
@@ -63,46 +66,31 @@ CREATE TABLE [dbo].[tblDSNguyenLieu]
 	FOREIGN KEY (maLNguyenLieu) REFERENCES tblNguyenLieu(maLNguyenLieu),
 	FOREIGN KEY (maMonAn) REFERENCES tblMonAn(maMonAn)
 )
-CREATE TABLE [dbo].[tblMenu]
-(	
-	[maMenu] nvarchar(10) NOT NULL PRIMARY KEY,
-	[tongTien] int NOT NULL
-)
-CREATE TABLE [dbo].[tblDSMonAn]
-(	
-	[maMonAn] nvarchar(10) NOT NULL,
-	[maMenu] nvarchar(10) NOT NULL,		
-	[soLuong] int NOT NULL,
-	[gia]		int NOT NULL,
-	FOREIGN KEY (maMonAn) REFERENCES tblMonAn(maMonAn),
-	FOREIGN KEY (maMenu) REFERENCES tblMenu(maMenu)
-)
-CREATE TABLE [dbo].[tblkhachHang]
-(		
-	[tenKhachHang] nvarchar(50) NOT NULL PRIMARY KEY,
-	[sdtKhachHang]	nvarchar(11) 
-)
 CREATE TABLE [dbo].[tblBan] --its a table of a.....table :)
 (	
 	[soban] int NOT NULL PRIMARY KEY,
 	[booked] BIT NOT NULL,
 	[ngayDat]	datetime2(7) NOT NULL,
-	[tenKhachHang] nvarchar(50) NOT NULL,
-	[maThuNgan] nvarchar(10) NOT NULL,
 	[soGheToiDa] int NOT NULL,
-	FOREIGN KEY (tenKhachHang) REFERENCES tblkhachHang(tenKhachHang)
 )
 CREATE TABLE [dbo].[tblhoaDon]
 (	
 	[mahoaDon] nvarchar(10) NOT NULL PRIMARY KEY,
-	[tenKhachHang] nvarchar(50) NOT NULL,
 	[soban] int NOT NULL,
 	[tongTien] int NOT NULL,	
 	[ngayThanhToan]	datetime2(7) NOT NULL,
-	[maThuNgan] nvarchar(10) NOT NULL,
-	FOREIGN KEY (tenKhachHang) REFERENCES tblkhachHang(tenKhachHang),
-	FOREIGN KEY (maThuNgan) REFERENCES tblnhanVien(manhanVien),
+	[mathuNgan] nvarchar(10) NOT NULL,
+	FOREIGN KEY (mathuNgan) REFERENCES tblthuNgan(mathuNgan),
 	FOREIGN KEY (soban) REFERENCES tblBan(soban)
+)
+CREATE TABLE [dbo].[tblDSMonAn]
+(	
+	[maMonAn] nvarchar(10) NOT NULL,
+	[mahoaDon] nvarchar(10) NOT NULL,		
+	[soLuong] int NOT NULL,
+	[gia tien] int NOT NULL,
+	FOREIGN KEY (maMonAn) REFERENCES tblMonAn(maMonAn),
+	FOREIGN KEY (mahoaDon) REFERENCES tblhoaDon(mahoaDon)	
 )
 CREATE TABLE [dbo].[tblPhieubaocaoDoanhThu]
 (
