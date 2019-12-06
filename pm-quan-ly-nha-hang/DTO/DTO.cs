@@ -67,9 +67,12 @@ namespace DTO
     {
         private string maMA;
         private string tenMA;
+        private int donGia;
 
         public string mama { get => maMA; set => maMA = value; }
         public string tenma { get => tenMA; set => tenMA = value; }
+        public int dongia { get => donGia; set => donGia = value; }
+
     }
 
     public class DSNguyenLieuDTO

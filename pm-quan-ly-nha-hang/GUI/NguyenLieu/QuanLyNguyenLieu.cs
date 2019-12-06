@@ -35,7 +35,7 @@ namespace GUI
             NguyenLieuDTO nl = new NguyenLieuDTO();
             nl.manl = textBox1.Text;
             nl.tennl = textBox2.Text;
-            nl.dongia = int.Parse(textBox3.Text);
+            nl.dongia = int.Parse(textBox4.Text);
             nl.donvi = textBox4.Text;
             nl.trongkho = int.Parse(textBox5.Text);
             nl.hsd = dateTimePicker1.Value;
@@ -44,10 +44,10 @@ namespace GUI
             //3. Thêm vào DB
             bool kq = nlBUS.Them(nl);
             if (kq == false)
-                System.Windows.MessageBox.Show("Thêm mặt hàng thất bại. Vui lòng kiểm tra lại dũ liệu");
+                System.Windows.MessageBox.Show("Thêm nguyên liẹu thất bại. Vui lòng kiểm tra lại dũ liệu");
             else
             {
-                System.Windows.MessageBox.Show("Thêm mặt hàng thành công");
+                System.Windows.MessageBox.Show("Thêm nguyên liẹu thành công");
                 clear();
             }
             loadData_Vao_GridView();
@@ -58,13 +58,13 @@ namespace GUI
             string sKeyword = txtKeyword.Text.Trim();
             if (sKeyword == null || sKeyword == string.Empty || sKeyword.Length == 0) // tìm tất cả
             {
-                List<NguyenLieuDTO> listKieuNau = nlBUS.select();
-                this.loadData_Vao_GridView(listKieuNau);
+                List<NguyenLieuDTO> listNguyenLieu = nlBUS.select();
+                this.loadData_Vao_GridView(listNguyenLieu);
             }
             else
             {
-                List<NguyenLieuDTO> listKieuNau = nlBUS.selectByKeyWord(sKeyword);
-                this.loadData_Vao_GridView(listKieuNau);
+                List<NguyenLieuDTO> listNguyenLieu = nlBUS.selectByKeyWord(sKeyword);
+                this.loadData_Vao_GridView(listNguyenLieu);
             }
         }
         //sua

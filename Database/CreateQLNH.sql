@@ -56,14 +56,16 @@ CREATE TABLE [dbo].[tblNguyenLieu]
 CREATE TABLE [dbo].[tblMonAn]
 (
 	[maMonAn] nvarchar(10) NOT NULL PRIMARY KEY,
+	[tenMonAn]	nvarchar(50) NOT NULL,	
 	[dongia] int NOT NULL,
 )	
+
 CREATE TABLE [dbo].[tblDSNguyenLieu]
 (	
-	[maLNguyenLieu] nvarchar(10) NOT NULL,
+	[maNguyenLieu] nvarchar(10) NOT NULL,
 	[maMonAn] nvarchar(10) NOT NULL,
 	[soLuong] int NOT NULL,
-	FOREIGN KEY (maLNguyenLieu) REFERENCES tblNguyenLieu(maLNguyenLieu),
+	FOREIGN KEY (maNguyenLieu) REFERENCES tblNguyenLieu(maNguyenLieu),
 	FOREIGN KEY (maMonAn) REFERENCES tblMonAn(maMonAn)
 )
 CREATE TABLE [dbo].[tblBan] --its a table of a.....table :)

@@ -220,7 +220,7 @@ namespace DAL
             return listNguyenLieu;
         }
 
-        public List<string> Laymadl()
+        public List<string> Laymanl()
         {
             List<string> dsmanl = new List<string>();
             string query = string.Empty;
@@ -258,6 +258,458 @@ namespace DAL
                 }
             }
             return dsmanl;
+        }
+    }
+    public class MonAnDAL
+    {
+        private string connectionString;
+
+        public MonAnDAL()
+        {
+            connectionString = ConfigurationManager.AppSettings["ConnectionString"];
+        }
+
+        public string ConnectionString { get => connectionString; set => connectionString = value; }
+
+        public bool Them(MonAnDTO MA)
+        {
+            string query = string.Empty;
+            query += " INSERT INTO [tblMonAn] ([maMonAn], [tenMonAn], [dongia])";
+            query += " VALUES (@maMonAn, @tenMonAn, @dongia)";
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@maMonAn", MA.mama);
+                    cmd.Parameters.AddWithValue("@tenMonAn", MA.tenma);
+                    cmd.Parameters.AddWithValue("@dongia", MA.dongia);
+
+                    try
+                    {
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        public bool Sua(MonAnDTO MA)
+        {
+            string query = string.Empty;
+            query += " UPDATE tblMonAn SET [tenMonAn] = @tenMonAn, [dongia] = @dongia WHERE [maMonAn] = @maMonAn";
+
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@maMonAn", MA.mama);
+                    cmd.Parameters.AddWithValue("@tenMonAn", MA.tenma);
+                    cmd.Parameters.AddWithValue("@dongia", MA.dongia);
+                    try
+                    {
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        public bool Xoa(MonAnDTO MA)
+        {
+            string query = string.Empty;
+            query += " DELETE FROM tblMonAn WHERE [maMonAn] = @maMonAn";
+
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@maMonAn", MA.mama);
+                    try
+                    {
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        public List<MonAnDTO> select()
+        {
+            string query = string.Empty;
+            query += " SELECT [maMonAn], [tenMonAn], [dongia]";
+            query += " FROM [tblMonAn]";
+
+            List<MonAnDTO> listMonAn = new List<MonAnDTO>();
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    try
+                    {
+                        con.Open();
+                        SqlDataReader reader = null;
+                        reader = cmd.ExecuteReader();
+                        if (reader.HasRows == true)
+                        {
+                            while (reader.Read())
+                            {
+                                MonAnDTO ma = new MonAnDTO();
+                                ma.mama = reader["maMonAn"].ToString();
+                                ma.tenma = reader["tenMonAn"].ToString();
+                                ma.dongia = int.Parse(reader["dongia"].ToString());
+                                listMonAn.Add(ma);
+                            }
+                        }
+
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return null;
+                    }
+                }
+            }
+            return listMonAn;
+        }
+
+        public List<MonAnDTO> selectByKeyWord(string sKeyword)
+        {
+            string query = string.Empty;
+            query += " SELECT [maMonAn], [tenMonAn], [dongia]";
+            query += " FROM [tblMonAn]";
+            query += " WHERE ([maMonAn] LIKE CONCAT('%',@sKeyword,'%'))";
+            query += " OR ([tenMonAn] LIKE CONCAT('%',@sKeyword,'%'))";
+            query += " OR ([dongia] LIKE CONCAT('%',@sKeyword,'%'))";
+
+            List<MonAnDTO> listMonAn = new List<MonAnDTO>();
+
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@sKeyword", sKeyword);
+                    try
+                    {
+                        con.Open();
+                        SqlDataReader reader = null;
+                        reader = cmd.ExecuteReader();
+                        if (reader.HasRows == true)
+                        {
+                            while (reader.Read())
+                            {
+                                MonAnDTO ma = new MonAnDTO();
+                                ma.mama = reader["maMonAn"].ToString();
+                                ma.tenma = reader["tenMonAn"].ToString();
+                                ma.dongia = int.Parse(reader["dongia"].ToString());
+                                listMonAn.Add(ma);
+                            }
+                        }
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return null;
+                    }
+                }
+            }
+            return listMonAn;
+        }
+
+        public List<string> Laymama()
+        {
+            List<string> dsmama = new List<string>();
+            string query = string.Empty;
+            query += " SELECT [maMonAn]";
+            query += " FROM [tblMonAn]";
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    try
+                    {
+                        con.Open();
+                        SqlDataReader reader = null;
+                        reader = cmd.ExecuteReader();
+                        if (reader.HasRows == true)
+                        {
+                            while (reader.Read())
+                            {
+                                string mama = reader["maMonAn"].ToString();
+                                dsmama.Add(mama);
+                            }
+                        }
+
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return null;
+                    }
+                }
+            }
+            return dsmama;
+        }
+    }
+    public class DSNguyenLieuDAL
+    {
+        private string connectionString;
+
+        public DSNguyenLieuDAL()
+        {
+            connectionString = ConfigurationManager.AppSettings["ConnectionString"];
+        }
+
+        public string ConnectionString { get => connectionString; set => connectionString = value; }
+
+        public bool Them(DSNguyenLieuDTO DSNL)
+        {
+            string query = string.Empty;
+            query += "INSERT INTO [dbo].[tblDSNguyenLieu] ([maNguyenLieu], [maMonAn], [soLuong])";
+            query += "VALUES (@maLNguyenLieu, @maMonAn, @soLuong)";
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@maNguyenLieu", DSNL.manl);
+                    cmd.Parameters.AddWithValue("@maMonAn", DSNL.mama);
+                    cmd.Parameters.AddWithValue("@soLuong", DSNL.soluong);
+                    try
+                    {
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+        public bool Xoa(DSNguyenLieuDTO DSNL)
+        {
+            string query = string.Empty;
+            query += "DELETE FROM tblDSNguyenLieu WHERE [maMonAn]=@maMonAn";
+
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@maMonAn", DSNL.mama);
+                    try
+                    {
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+        public List<DSNguyenLieuDTO> select()
+        {
+            string query = string.Empty;
+            query += " SELECT [maNguyenLieu], [maMonAn], [soLuong]";
+            query += " FROM [tblDSNguyenLieu]";
+
+            List<DSNguyenLieuDTO> listnl = new List<DSNguyenLieuDTO>();
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    try
+                    {
+                        con.Open();
+                        SqlDataReader reader = null;
+                        reader = cmd.ExecuteReader();
+                        if (reader.HasRows == true)
+                        {
+                            while (reader.Read())
+                            {
+                                DSNguyenLieuDTO nl = new DSNguyenLieuDTO();
+                                nl.mama = reader["maMonAn"].ToString();
+                                nl.manl = reader["maNguyenLieu"].ToString();
+                                nl.soluong = int.Parse(reader["soLuong"].ToString());
+                                listnl.Add(nl);
+                            }
+                        }
+
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return null;
+                    }
+                }
+            }
+            return listnl;
+        }
+        
+        public bool TimNLtrongMA(string manl, string mama)
+        {
+            string query = string.Empty;
+            query += " SELECT [maNguyenLieu]";
+            query += " FROM [tblDSNguyenLieu]";
+            query += " WHERE [maNguyenLieu]=@maNguyenLieu";
+            query += " AND [maMonAn]=@maMonAn";
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@maNguyenLieu", manl);
+                    cmd.Parameters.AddWithValue("@maMonAn", mama);
+                    try
+                    {
+                        con.Open();
+                        SqlDataReader reader = null;
+                        reader = cmd.ExecuteReader();
+                        if (reader.HasRows == true)
+                        {
+                            while (reader.Read())
+                            {
+                                DSNguyenLieuDTO DSNL = new DSNguyenLieuDTO();
+                                DSNL.manl = reader["maNguyenLieu"].ToString();
+                                if (DSNL != null)
+                                {
+                                    return true;
+                                }
+                            }
+                        }
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+        public bool Check(int thang, int year)
+        {
+            string test = null;
+            string query = string.Empty;
+            query += " SELECT maPhieu";
+            query += " FROM tblPhieubaocaoCongNo no";
+            query += " WHERE MONTH(no.ngayLapPhieu)= @month AND YEAR (no.ngayLapPhieu) = @year";
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@month", thang);
+                    cmd.Parameters.AddWithValue("@year", year);
+                    try
+                    {
+                        con.Open();
+                        SqlDataReader reader = null;
+                        reader = cmd.ExecuteReader();
+                        if (reader.HasRows == true)
+                        {
+                            while (reader.Read())
+                            {
+                                test = reader["maPhieu"].ToString();
+                            }
+                        }
+
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                    }
+                }
+            }
+            if (test != null)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

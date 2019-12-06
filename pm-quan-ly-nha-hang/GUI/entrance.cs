@@ -1,9 +1,10 @@
 ﻿using System;
+using GUI.MonAn;
 using System.Windows.Forms;
 
 namespace GUI
 {
-    internal static class Program
+    internal static class entrance
     {
         /// <summary>
         /// The main entry point for the application.
@@ -13,7 +14,7 @@ namespace GUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new QuanLyNguyenLieu());
+            Application.Run(new QuanLyMonAn());
         }
     }
 }
