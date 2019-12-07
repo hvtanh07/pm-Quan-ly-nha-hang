@@ -45,6 +45,10 @@ namespace BUS
         {
             return nlDAL.Laymanl();
         }
+        public int Laygiatien(string ma)
+        {
+            return nlDAL.Laygiatien(ma);
+        }
     }
     public class MonAnBUS
     {
@@ -116,6 +120,48 @@ namespace BUS
         public bool TimNLtrongMA(string manl, string mama)
         {
             return dsnlDAL.TimNLtrongMA(manl,mama);
+        }
+    }
+    public class NhanVienBUS
+    {
+        private NhanVienDAL nvDAL;
+
+        public NhanVienBUS()
+        {
+            nvDAL = new NhanVienDAL();
+        }
+
+        public bool Them(NhanVienDTO nv)
+        {
+            bool re = nvDAL.Them(nv);
+            return re;
+        }
+
+        public bool Sua(NhanVienDTO nv)
+        {
+            bool re = nvDAL.Sua(nv);
+            return re;
+        }
+
+        public bool Xoa(NhanVienDTO nv)
+        {
+            bool re = nvDAL.Xoa(nv);
+            return re;
+        }
+
+        public List<NhanVienDTO> select()
+        {
+            return nvDAL.select();
+        }
+
+        public List<NhanVienDTO> selectByKeyWord(string sKeyword)
+        {
+            return nvDAL.selectByKeyWord(sKeyword);
+        }
+
+        public List<string> Laymanv()
+        {
+            return nvDAL.Laymanv();
         }
     }
 }

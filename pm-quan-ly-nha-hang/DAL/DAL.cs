@@ -87,6 +87,47 @@ namespace DAL
             }
             return true;
         }
+        public int Laygiatien(string ma)
+        {
+            string query = string.Empty;
+            query += " SELECT [dongia]";
+            query += " FROM [tblNguyenLieu]";
+            query += " WHERE [maNguyenLieu]=@maNguyenLieu";
+
+            int gia = 0;
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@maNguyenLieu", ma);
+                    try
+                    {
+                        con.Open();
+                        SqlDataReader reader = null;
+                        reader = cmd.ExecuteReader();
+                        if (reader.HasRows == true)
+                        {                           
+                            while (reader.Read())
+                            {                                
+                                gia = int.Parse(reader["dongia"].ToString());                               
+                            }
+                        }
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return 0;
+                    }
+                }
+            }
+            return gia;
+        }
 
         public bool Xoa(NguyenLieuDTO NL)
         {
@@ -514,7 +555,7 @@ namespace DAL
         {
             string query = string.Empty;
             query += "INSERT INTO [dbo].[tblDSNguyenLieu] ([maNguyenLieu], [maMonAn], [soLuong])";
-            query += "VALUES (@maLNguyenLieu, @maMonAn, @soLuong)";
+            query += "VALUES (@maNguyenLieu, @maMonAn, @soLuong)";
             using (SqlConnection con = new SqlConnection(ConnectionString))
             {
 
@@ -710,6 +751,254 @@ namespace DAL
                 return true;
             }
             return false;
+        }
+    }
+    public class NhanVienDAL
+    {
+        private string connectionString;
+
+        public NhanVienDAL()
+        {
+            connectionString = ConfigurationManager.AppSettings["ConnectionString"];
+        }
+
+        public string ConnectionString { get => connectionString; set => connectionString = value; }
+
+        public bool Them(NhanVienDTO NV)
+        {
+            string query = string.Empty;
+            query += " INSERT INTO tblnhanVien ([manhanVien], [tenNhanVien], [birth], [luongCoBan], [machucVu] )";
+            query += " VALUES (@manhanVien, @tenNhanVien, @birth, @luongCoBan, @machucVu)";
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@manhanVien", NV.manv);
+                    cmd.Parameters.AddWithValue("@tenNhanVien", NV.tennv);
+                    cmd.Parameters.AddWithValue("@birth", NV.birth);
+                    cmd.Parameters.AddWithValue("@luongCoBan", NV.luongcoban);
+                    cmd.Parameters.AddWithValue("@machucVu", NV.chucvu);
+                    try
+                    {
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        public bool Sua(NhanVienDTO NV)
+        {
+            string query = string.Empty;
+            query += " UPDATE tblnhanVien SET [tenNhanVien] = @tenNhanVien, [birth] = @birth, [luongCoBan] = @luongCoBan, [machucVu] = @machucVu WHERE [manhanVien] = @manhanVien";
+
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@manhanVien", NV.manv);
+                    cmd.Parameters.AddWithValue("@tenNhanVien", NV.tennv);
+                    cmd.Parameters.AddWithValue("@birth", NV.birth);
+                    cmd.Parameters.AddWithValue("@luongCoBan", NV.luongcoban);
+                    cmd.Parameters.AddWithValue("@machucVu", NV.chucvu);
+                    try
+                    {
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        public bool Xoa(NhanVienDTO NV)
+        {
+            string query = string.Empty;
+            query += " DELETE FROM tblnhanVien WHERE [manhanVien] = @manhanVien";
+
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@manhanVien", NV.manv);
+                    try
+                    {
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        public List<NhanVienDTO> select()
+        {
+            string query = string.Empty;
+            query += " SELECT [manhanVien], [tenNhanVien] ,[birth], [luongCoBan], [machucVu]";
+            query += " FROM [tblnhanVien]";
+
+            List<NhanVienDTO> listNhanVien = new List<NhanVienDTO>();
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    try
+                    {
+                        con.Open();
+                        SqlDataReader reader = null;
+                        reader = cmd.ExecuteReader();
+                        if (reader.HasRows == true)
+                        {
+                            while (reader.Read())
+                            {
+                                NhanVienDTO nv = new NhanVienDTO();
+                                nv.manv = reader["manhanVien"].ToString();
+                                nv.tennv = reader["tenNhanVien"].ToString();
+                                nv.birth = Convert.ToDateTime(reader["birth"].ToString());
+                                nv.luongcoban = int.Parse(reader["luongCoBan"].ToString());
+                                nv.chucvu = reader["machucVu"].ToString();
+                                listNhanVien.Add(nv);
+                            }
+                        }
+
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return null;
+                    }
+                }
+            }
+            return listNhanVien;
+        }
+
+        public List<NhanVienDTO> selectByKeyWord(string sKeyword)
+        {
+            string query = string.Empty;
+            query += " SELECT [manhanVien], [tenNhanVien] ,[birth], [luongCoBan], [machucVu]";
+            query += " FROM [tblnhanVien]";
+            query += " WHERE ([manhanVien] LIKE CONCAT('%',@sKeyword,'%'))";
+            query += " OR ([tenNhanVien] LIKE CONCAT('%',@sKeyword,'%'))";
+            query += " OR ([birth] LIKE CONCAT('%',@sKeyword,'%'))";
+            query += " OR ([luongCoBan] LIKE CONCAT('%',@sKeyword,'%'))";
+            query += " OR ([machucVu] LIKE CONCAT('%',@sKeyword,'%'))";
+
+            List<NhanVienDTO> listNhanVien = new List<NhanVienDTO>();
+
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@sKeyword", sKeyword);
+                    try
+                    {
+                        con.Open();
+                        SqlDataReader reader = null;
+                        reader = cmd.ExecuteReader();
+                        if (reader.HasRows == true)
+                        {
+                            while (reader.Read())
+                            {
+                                NhanVienDTO nv = new NhanVienDTO();
+                                nv.manv = reader["manhanVien"].ToString();
+                                nv.tennv = reader["tenNhanVien"].ToString();
+                                nv.birth = Convert.ToDateTime(reader["birth"].ToString());
+                                nv.luongcoban = int.Parse(reader["luongCoBan"].ToString());
+                                nv.chucvu = reader["machucVu"].ToString();
+                                listNhanVien.Add(nv);
+                            }
+                        }
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return null;
+                    }
+                }
+            }
+            return listNhanVien;
+        }
+
+        public List<string> Laymanv()
+        {
+            List<string> dsmama = new List<string>();
+            string query = string.Empty;
+            query += " SELECT [maMonAn]";
+            query += " FROM [tblMonAn]";
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    try
+                    {
+                        con.Open();
+                        SqlDataReader reader = null;
+                        reader = cmd.ExecuteReader();
+                        if (reader.HasRows == true)
+                        {
+                            while (reader.Read())
+                            {
+                                string mama = reader["maMonAn"].ToString();
+                                dsmama.Add(mama);
+                            }
+                        }
+
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return null;
+                    }
+                }
+            }
+            return dsmama;
         }
     }
 }

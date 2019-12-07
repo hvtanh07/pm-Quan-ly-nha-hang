@@ -97,7 +97,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(776, 258);
+            this.dataGridView1.Size = new System.Drawing.Size(653, 258);
             this.dataGridView1.TabIndex = 6;
             // 
             // contextMenuStrip1
@@ -106,19 +106,19 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.xóaMónĂnToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(211, 56);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(185, 28);
             // 
             // xóaMónĂnToolStripMenuItem
             // 
             this.xóaMónĂnToolStripMenuItem.Name = "xóaMónĂnToolStripMenuItem";
-            this.xóaMónĂnToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.xóaMónĂnToolStripMenuItem.Size = new System.Drawing.Size(184, 24);
             this.xóaMónĂnToolStripMenuItem.Text = "Xóa nguyên liệu";
             this.xóaMónĂnToolStripMenuItem.Click += new System.EventHandler(this.xóaMónĂnToolStripMenuItem_Click);
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(450, 33);
+            this.comboBox1.Location = new System.Drawing.Point(374, 28);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 24);
             this.comboBox1.TabIndex = 7;
@@ -126,7 +126,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(361, 36);
+            this.label4.Location = new System.Drawing.Point(285, 31);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(83, 17);
             this.label4.TabIndex = 8;
@@ -134,7 +134,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(405, 120);
+            this.button1.Location = new System.Drawing.Point(329, 115);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(138, 23);
             this.button1.TabIndex = 9;
@@ -145,7 +145,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(361, 80);
+            this.label5.Location = new System.Drawing.Point(285, 75);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(64, 17);
             this.label5.TabIndex = 10;
@@ -153,14 +153,14 @@
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(450, 77);
+            this.textBox4.Location = new System.Drawing.Point(374, 72);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(121, 22);
             this.textBox4.TabIndex = 11;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(659, 74);
+            this.button2.Location = new System.Drawing.Point(560, 54);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 38);
             this.button2.TabIndex = 12;
@@ -181,7 +181,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(677, 450);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.textBox4);

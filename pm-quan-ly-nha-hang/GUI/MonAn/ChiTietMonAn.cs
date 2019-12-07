@@ -18,6 +18,7 @@ namespace GUI.MonAn
         private MonAnBUS maBUS;
         private NguyenLieuBUS nlBUS;
         private DSNguyenLieuBUS dsnlBUS;
+        private int GiaTien;
 
         private MonAnDTO maDTO;
         public ChiTietMonAn()
@@ -29,15 +30,25 @@ namespace GUI.MonAn
             maBUS = new MonAnBUS();
             nlBUS = new NguyenLieuBUS();
             dsnlBUS = new DSNguyenLieuBUS();
-            this.maDTO = ma;            
+            this.maDTO = ma;
+            GiaTien = ma.dongia;
             InitializeComponent();
             this.loadDataVaoComboBox();
             loadData_Vao_GridView();
         }
+        private void Tinhtien()
+        {
+            GiaTien = 0;//dataGridView1
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                GiaTien = int.Parse(dataGridView1[1, i].Value.ToString())* nlBUS.Laygiatien(dataGridView1[0, i].Value.ToString());
+            }
+            textBox3.Text = GiaTien.ToString();//sau này công thêm phần trăm
+        }
         //them nguyen lieu
         private void button1_Click(object sender, EventArgs e)
         {
-            if (!testtext())
+            if (!testtext1())
             {
                 return;
             }
@@ -61,11 +72,15 @@ namespace GUI.MonAn
                 System.Windows.MessageBox.Show("Thêm nguyên liệu thành công");
             }
             loadData_Vao_GridView();
-            //capnhattien();
+            Tinhtien();
         }
         //ket thuc sua
         private void button2_Click(object sender, EventArgs e)
         {
+            if (!testtext2())
+            {
+                return;
+            }
             //1. Map data from GUI
             MonAnDTO ma = new MonAnDTO();
             ma.mama = label6.Text;
@@ -100,6 +115,7 @@ namespace GUI.MonAn
                     {
                         MessageBox.Show("Xóa nguyên liệu thành công");
                         loadData_Vao_GridView();
+                        Tinhtien();
                     }
                 }
             }
@@ -120,11 +136,27 @@ namespace GUI.MonAn
                 textBox3.Text = maDTO.dongia.ToString();
             }
         }
-        private bool testtext()
+        private bool testtext1()
         {
             if (string.IsNullOrWhiteSpace(textBox4.Text))
             {
                 System.Windows.MessageBox.Show("Bạn chưa nhập số lượng nguyên liệu.", "Lỗi");
+                textBox4.Focus();
+                return false;
+            }
+            return true;
+        }
+        private bool testtext2()
+        {
+            if (string.IsNullOrWhiteSpace(textBox2.Text))
+            {
+                System.Windows.MessageBox.Show("Bạn chưa nhập tên món ăn.", "Lỗi");
+                textBox4.Focus();
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(textBox3.Text))
+            {
+                System.Windows.MessageBox.Show("Bạn chưa nhập đơn giá.", "Lỗi");
                 textBox4.Focus();
                 return false;
             }

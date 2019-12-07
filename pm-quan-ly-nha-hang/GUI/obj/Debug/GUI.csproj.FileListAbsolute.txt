@@ -17,3 +17,6 @@ D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.p
 D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.SuaNguyenLieu.resources
 D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.MonAn.QuanLyMonAn.resources
 D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.MonAn.ChiTietMonAn.resources
+D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.NhanVien.QuanLyNhanVien.resources
+D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.MainForm.resources
+D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.NhanVien.SuaNhanVien.resources

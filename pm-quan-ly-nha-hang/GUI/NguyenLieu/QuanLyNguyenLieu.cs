@@ -112,7 +112,7 @@ namespace GUI
 
             if (listNguyenLieu == null)
             {
-                MessageBox.Show("Có lỗi khi lấy Món ăn từ cơ sở dữ liệu");
+                MessageBox.Show("Có lỗi khi lấy món ăn từ cơ sở dữ liệu");
                 return;
             }
 
@@ -166,7 +166,7 @@ namespace GUI
         {
             if (listNguyenLieu == null)
             {
-                MessageBox.Show("Có lỗi khi lấy Món ăn từ DB");
+                MessageBox.Show("Có lỗi khi lấy món ăn từ DB");
                 return;
             }
 

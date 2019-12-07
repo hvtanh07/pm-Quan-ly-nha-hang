@@ -62,7 +62,6 @@ namespace DTO
         public int trongkho { get => trongKho; set => trongKho = value; }
         public DateTime hsd { get => HSD; set => HSD = value; }
     }
-
     public class MonAnDTO
     {
         private string maMA;
@@ -74,7 +73,6 @@ namespace DTO
         public int dongia { get => donGia; set => donGia = value; }
 
     }
-
     public class DSNguyenLieuDTO
     {
         private string maNL;
@@ -85,7 +83,6 @@ namespace DTO
         public string mama { get => maMA; set => maMA = value; }
         public int soluong { get => soLuong; set => soLuong = value; }
     }
-
     public class DSMonAnDTO
     {
         private string maMA;
@@ -97,7 +94,6 @@ namespace DTO
         public int soluong { get => soLuong; set => soLuong = value; }
         public int giatien { get => giaTien; set => giaTien = value; }
     }
-
     public class hoaDonDTO
     {
         private string maHD;
@@ -112,7 +108,6 @@ namespace DTO
         public DateTime ngayTT { get => ngayThanhToan; set => ngayThanhToan = value; }
         public string maTN { get => maThuNgan; set => maThuNgan = value; }
     }
-
     public class PhieubaocaoDoanhThuDTO
     {
         private string maPhieuBCDT;
@@ -123,7 +118,6 @@ namespace DTO
         public int tongdt { get => tongDT; set => tongDT = value; }
         public DateTime ngayLP { get => ngayLapPhieu; set => ngayLapPhieu = value; }
     }
-
     public class CTPhieubaocaoDoanhThuDTO
     {
         private string maPhieuBCDT;
