@@ -71,9 +71,12 @@ CREATE TABLE [dbo].[tblDSNguyenLieu]
 CREATE TABLE [dbo].[tblBan] --its a table of a.....table :)
 (	
 	[soban] int NOT NULL PRIMARY KEY,
-	[booked] BIT NOT NULL,
+)
+CREATE TABLE [dbo].[tbldsBandadat] 
+(	
+	[soban] int NOT NULL,
 	[ngayDat]	datetime2(7) NOT NULL,
-	[soGheToiDa] int NOT NULL,
+	FOREIGN KEY (soban) REFERENCES tblBan(soban)
 )
 CREATE TABLE [dbo].[tblhoaDon]
 (	

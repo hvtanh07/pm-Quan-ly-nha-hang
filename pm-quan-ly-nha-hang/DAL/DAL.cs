@@ -1197,7 +1197,7 @@ namespace DAL
             }
             return listdoanhthu;
         }
-        public bool Check(int thang, int year)
+        public bool CheckExist(int thang, int year)
         {
             string test = null;
             string query = string.Empty;
@@ -1251,7 +1251,7 @@ namespace DAL
             connectionString = ConfigurationManager.AppSettings["ConnectionString"];
         }
         public string ConnectionString { get => connectionString; set => connectionString = value; }
-        public bool Them(CTPhieubaocaoDoanhThuDTO CTDT)
+        public bool Them(ChitietphieubcdtDTO CTDT)
         {
             string query = string.Empty;
             query += "INSERT INTO [dbo].[tblChitietPhieubaocaoDT] ([maPhieu], [mahoaDon])";
@@ -1282,7 +1282,7 @@ namespace DAL
             }
             return true;
         }
-        public bool Xoatheohoadon(string mand)
+        public bool Xoatheohoadon(string mahd)
         {
             string query = string.Empty;
             query += "DELETE FROM tblChitietPhieubaocaoDT WHERE [mahoaDon]=@mahoaDon ";
@@ -1295,7 +1295,7 @@ namespace DAL
                     cmd.Connection = con;
                     cmd.CommandType = System.Data.CommandType.Text;
                     cmd.CommandText = query;
-                    cmd.Parameters.AddWithValue("@mahoaDon", mand);
+                    cmd.Parameters.AddWithValue("@mahoaDon", mahd);
                     try
                     {
                         con.Open();
@@ -1342,13 +1342,13 @@ namespace DAL
             }
             return true;
         }
-        public List<CTPhieubaocaoDoanhThuDTO> select(string madt)
+        public List<ChitietphieubcdtDTO> select(string madt)
         {
             string query = string.Empty;
             query += " SELECT [mahoaDon]";
             query += " FROM [tblChitietPhieubaocaoDT]";
             query += " WHERE [maPhieu]=@maPhieu";
-            List<CTPhieubaocaoDoanhThuDTO> listCTbcdt = new List<CTPhieubaocaoDoanhThuDTO>();
+            List<ChitietphieubcdtDTO> listCTbcdt = new List<ChitietphieubcdtDTO>();
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -1368,7 +1368,7 @@ namespace DAL
                         {
                             while (reader.Read())
                             {
-                                CTPhieubaocaoDoanhThuDTO CTDT = new CTPhieubaocaoDoanhThuDTO();
+                                ChitietphieubcdtDTO CTDT = new ChitietphieubcdtDTO();
                                 CTDT.mahd = reader["mahoaDon"].ToString();
                                 listCTbcdt.Add(CTDT);
                             }
@@ -1386,7 +1386,7 @@ namespace DAL
             }
             return listCTbcdt;
         }
-        public List<CTPhieubaocaoDoanhThuDTO> selectByKeyWord(string sKeyword, string madt)
+        public List<ChitietphieubcdtDTO> selectByKeyWord(string sKeyword, string madt)
         {
             string query = string.Empty;
             query += " SELECT [mahoaDon]";
@@ -1394,7 +1394,7 @@ namespace DAL
             query += " WHERE [maPhieu]=@maPhieu";
             query += " AND (([mahoaDon] LIKE CONCAT('%',@sKeyword,'%'))";
 
-            List<CTPhieubaocaoDoanhThuDTO> listCTbcdt = new List<CTPhieubaocaoDoanhThuDTO>();
+            List<ChitietphieubcdtDTO> listCTbcdt = new List<ChitietphieubcdtDTO>();
 
             using (SqlConnection con = new SqlConnection(ConnectionString))
             {
@@ -1415,7 +1415,7 @@ namespace DAL
                         {
                             while (reader.Read())
                             {
-                                CTPhieubaocaoDoanhThuDTO CTDT = new CTPhieubaocaoDoanhThuDTO();
+                                ChitietphieubcdtDTO CTDT = new ChitietphieubcdtDTO();
                                 CTDT.mahd = reader["mahoaDon"].ToString();
                                 listCTbcdt.Add(CTDT);
                             }
@@ -1636,6 +1636,313 @@ namespace DAL
                 }
             }
             return listhoaDon;
+        }
+    }
+    public class dsBandadatDAL
+    {
+        private string connectionString;
+
+        public dsBandadatDAL()
+        {
+            connectionString = ConfigurationManager.AppSettings["ConnectionString"];
+        }
+
+        public string ConnectionString { get => connectionString; set => connectionString = value; }
+
+        public bool Them(dsBandadatDTO HD)
+        {
+            string query = string.Empty;
+            query += " INSERT INTO tbldsBandadat ([soban],[ngayDat])";
+            query += " VALUES (@soban, @booked, @ngayDat)";
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@soban", HD.soban);
+                    cmd.Parameters.AddWithValue("@ngayDat", HD.bookeddate);
+                    
+                    try
+                    {
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+        public bool Sua(dsBandadatDTO HD)
+        {
+            string query = string.Empty;
+            query += " UPDATE tbldsBandadat SET [ngayDat] = @ngayDat WHERE [soban] = @soban";
+
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@soban", HD.soban);
+                    cmd.Parameters.AddWithValue("@ngayDat", HD.bookeddate);
+                    try
+                    {
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+        public bool Xoa(dsBandadatDTO HD)
+        {
+            string query = string.Empty;
+            query += " DELETE FROM tbldsBandadat WHERE [soban] = @soban";
+
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@soban", HD.soban);
+                    try
+                    {
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+        public List<dsBandadatDTO> select(string soban)
+        {
+            string query = string.Empty;
+            query += " SELECT [ngayDat]";
+            query += " FROM [tbldsBandadat]";
+            query += " WHERE [soban]=@soban";
+
+            List<dsBandadatDTO> listBan = new List<dsBandadatDTO>();
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@soban", soban);
+                    try
+                    {
+                        con.Open();
+                        SqlDataReader reader = null;
+                        reader = cmd.ExecuteReader();
+                        if (reader.HasRows == true)
+                        {
+                            while (reader.Read())
+                            {
+                                dsBandadatDTO hd = new dsBandadatDTO();                                                          
+                                hd.bookeddate = Convert.ToDateTime(reader["ngayDat"].ToString());
+                                listBan.Add(hd);
+                            }
+                        }
+
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return null;
+                    }
+                }
+            }
+            return listBan;
+        }
+        public bool checkBookStatus(DateTime checkdate)
+        {
+            string test = null;
+            string query = string.Empty;
+            query += " SELECT soban";
+            query += " FROM tbldsBandadat dt";
+            query += " WHERE MONTH(dt.ngayDat)= @month AND YEAR(dt.ngayDat) = @year AND DAY(dt.ngayDat) = @day";
+            List<dsBandadatDTO> listBan = new List<dsBandadatDTO>();
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@month", checkdate.Month);
+                    cmd.Parameters.AddWithValue("@year", checkdate.Year);
+                    cmd.Parameters.AddWithValue("@day", checkdate.Day);
+                    try
+                    {
+                        con.Open();
+                        SqlDataReader reader = null;
+                        reader = cmd.ExecuteReader();
+                        if (reader.HasRows == true)
+                        {
+                            while (reader.Read())
+                            {
+                                test = reader["soban"].ToString();
+                            }
+                        }
+
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                    }
+                }
+            }
+            if (test != null)
+            {
+                return true;
+            }
+            return false;
+        }
+    }
+    public class BanDAL
+    {
+        private string connectionString;
+
+        public BanDAL()
+        {
+            connectionString = ConfigurationManager.AppSettings["ConnectionString"];
+        }
+
+        public string ConnectionString { get => connectionString; set => connectionString = value; }
+
+        public bool Them(BanDTO HD)
+        {
+            string query = string.Empty;
+            query += " INSERT INTO tblBan ([soban])";
+            query += " VALUES (@soban)";
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@soban", HD.soban);
+
+                    try
+                    {
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+        public bool Xoa(BanDTO HD)
+        {
+            string query = string.Empty;
+            query += " DELETE FROM tblBan WHERE [soban] = @soban";
+
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@soban", HD.soban);
+                    try
+                    {
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+        public List<BanDTO> select()
+        {
+            string query = string.Empty;
+            query += " SELECT [soban]";
+            query += " FROM [tblBan]";
+            query += " WHERE [soban]=@soban";
+
+            List<BanDTO> listBan = new List<BanDTO>();
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    try
+                    {
+                        con.Open();
+                        SqlDataReader reader = null;
+                        reader = cmd.ExecuteReader();
+                        if (reader.HasRows == true)
+                        {
+                            while (reader.Read())
+                            {
+                                BanDTO hd = new BanDTO();
+                                hd.soban = int.Parse(reader["ngayDat"].ToString());
+                                listBan.Add(hd);
+                            }
+                        }
+
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return null;
+                    }
+                }
+            }
+            return listBan;
         }
     }
 }

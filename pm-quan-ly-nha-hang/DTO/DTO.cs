@@ -94,6 +94,18 @@ namespace DTO
         public int soluong { get => soLuong; set => soLuong = value; }
         public int giatien { get => giaTien; set => giaTien = value; }
     }
+    public class BanDTO
+    {
+        private int soBan;
+        public int soban { get => soBan; set => soBan = value; }
+    }
+    public class dsBandadatDTO
+    {
+        private int soBan;
+        private DateTime bookedDate;
+        public int soban { get => soBan; set => soBan = value; }
+        public DateTime bookeddate { get => bookedDate; set => bookedDate = value; }
+    }
     public class hoaDonDTO
     {
         private string maHD;
@@ -118,7 +130,7 @@ namespace DTO
         public int tongdt { get => tongDT; set => tongDT = value; }
         public DateTime ngayLP { get => ngayLapPhieu; set => ngayLapPhieu = value; }
     }
-    public class CTPhieubaocaoDoanhThuDTO
+    public class ChitietphieubcdtDTO
     {
         private string maPhieuBCDT;
         private string maHD;

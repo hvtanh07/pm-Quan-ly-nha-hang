@@ -1,6 +1,8 @@
 ﻿using DAL;
 using DTO;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace BUS
 {
@@ -164,5 +166,183 @@ namespace BUS
             return nvDAL.Laymanv();
         }
     }
-    
+    public class PhieubaocaoDoanhThuBUS
+    {
+        private PhieubaocaoDoanhThuDAL bcdtDAL;
+
+        public PhieubaocaoDoanhThuBUS()
+        {
+            bcdtDAL = new PhieubaocaoDoanhThuDAL();
+        }
+
+        public bool Them(PhieubaocaoDoanhThuDTO ma)
+        {
+            bool re = bcdtDAL.Them(ma);
+            return re;
+        }
+
+        public bool Sua(PhieubaocaoDoanhThuDTO ma)
+        {
+            bool re = bcdtDAL.Sua(ma);
+            return re;
+        }
+
+        public bool Xoa(PhieubaocaoDoanhThuDTO ma)
+        {
+            bool re = bcdtDAL.Xoa(ma);
+            return re;
+        }
+
+        public List<PhieubaocaoDoanhThuDTO> select()
+        {
+            return bcdtDAL.select();
+        }
+
+        public List<PhieubaocaoDoanhThuDTO> selectByKeyWord(string sKeyword)
+        {
+            return bcdtDAL.selectByKeyWord(sKeyword);
+        }
+        public bool CheckExist(int thang, int year)
+        {
+            return bcdtDAL.CheckExist(thang, year);
+        }
+
+
+    }
+    public class ChitietphieubcdtBUS
+    {
+        private ChitietphieubcdtDAL ctbcdtDAL;
+
+        public ChitietphieubcdtBUS()
+        {
+            ctbcdtDAL = new ChitietphieubcdtDAL();
+        }
+
+        public bool Them(ChitietphieubcdtDTO ma)
+        {
+            bool re = ctbcdtDAL.Them(ma);
+            return re;
+        }
+
+        public bool Xoatheohoadon(string mahd)
+        {
+            bool re = ctbcdtDAL.Xoatheohoadon(mahd);
+            return re;
+        }
+        public bool XoatheophieuBCDT(string mabcdt)
+        {
+            bool re = ctbcdtDAL.XoatheophieuBCDT(mabcdt);
+            return re;
+        }
+
+        public List<ChitietphieubcdtDTO> select(string madt)
+        {
+            return ctbcdtDAL.select(madt);
+        }
+
+        public List<ChitietphieubcdtDTO> selectByKeyWord(string sKeyword, string madt)
+        {
+            return ctbcdtDAL.selectByKeyWord (sKeyword, madt);
+        }
+    }
+    public class hoaDonBUS
+    {
+        private hoaDonDAL hdDAL;
+
+        public hoaDonBUS()
+        {
+            hdDAL = new hoaDonDAL();
+        }
+
+        public bool Them(hoaDonDTO ma)
+        {
+            bool re = hdDAL.Them(ma);
+            return re;
+        }
+
+        public bool Sua(hoaDonDTO ma)
+        {
+            bool re = hdDAL.Sua(ma);
+            return re;
+        }
+
+        public bool Xoa(hoaDonDTO ma)
+        {
+            bool re = hdDAL.Xoa(ma);
+            return re;
+        }
+
+        public List<hoaDonDTO> select()
+        {
+            return hdDAL.select();
+        }
+
+        public List<hoaDonDTO> selectByKeyWord(string sKeyword)
+        {
+            return hdDAL.selectByKeyWord(sKeyword);
+        }
+    }
+    public class BanBUS
+    {
+        private BanDAL banDAL;
+
+        public BanBUS()
+        {
+            banDAL = new BanDAL();
+        }
+
+        public bool Them(BanDTO ban)
+        {
+            bool re = banDAL.Them(ban);
+            return re;
+        }
+
+        public bool Xoa(BanDTO ban)
+        {
+            bool re = banDAL.Xoa(ban);
+            return re;
+        }
+
+        public List<BanDTO> select()
+        {
+            return banDAL.select();
+        }
+    }
+    public class dsBandadatBUS
+    {
+        private dsBandadatDAL ctbcdtDAL;
+
+        public dsBandadatBUS()
+        {
+            ctbcdtDAL = new dsBandadatDAL();
+        }
+
+        public bool Them(dsBandadatDTO ma)
+        {
+            bool re = ctbcdtDAL.Them(ma);
+            return re;
+        }
+        public bool Sua(dsBandadatDTO ma)
+        {
+            bool re = ctbcdtDAL.Sua(ma);
+            return re;
+        }
+
+        public bool Xoa(dsBandadatDTO ma)
+        {
+            bool re = ctbcdtDAL.Xoa(ma);
+            return re;
+        }
+       
+
+        public List<dsBandadatDTO> select(string soban)
+        {
+            return ctbcdtDAL.select(soban);
+        }
+
+        public bool checkBookStatus(DateTime checkdate)
+        {
+            return ctbcdtDAL.checkBookStatus(checkdate);
+        }
+    }
 }

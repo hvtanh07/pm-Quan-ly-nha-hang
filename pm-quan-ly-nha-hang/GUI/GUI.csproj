@@ -95,6 +95,18 @@
     <Compile Include="NguyenLieu\SuaNguyenLieu.Designer.cs">
       <DependentUpon>SuaNguyenLieu.cs</DependentUpon>
     </Compile>
+    <Compile Include="ThanhToan\DatBan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThanhToan\DatBan.Designer.cs">
+      <DependentUpon>DatBan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ThanhToan\LapHoaDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThanhToan\LapHoaDon.Designer.cs">
+      <DependentUpon>LapHoaDon.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
