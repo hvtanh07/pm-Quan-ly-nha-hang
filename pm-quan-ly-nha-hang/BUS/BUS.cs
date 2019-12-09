@@ -307,6 +307,10 @@ namespace BUS
         {
             return banDAL.select();
         }
+        public List<string> LaysoBan()
+        {
+            return banDAL.LaysoBan();
+        }
     }
     public class dsBandadatBUS
     {

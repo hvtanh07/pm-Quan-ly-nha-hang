@@ -1,6 +1,7 @@
 ﻿using System;
 using GUI.NhanVien;
 using GUI.MonAn;
+using GUI.ThanhToan;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -36,6 +37,13 @@ namespace GUI
         private void mónĂnToolStripMenuItem_Click(object sender, EventArgs e)
         {
             QuanLyMonAn frm = new QuanLyMonAn();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void datBanToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DatBan frm = new DatBan();
             frm.MdiParent = this;
             frm.Show();
         }

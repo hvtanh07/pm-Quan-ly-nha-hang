@@ -34,6 +34,8 @@
             this.nguyenLieuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nguyênLiệuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mónĂnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.giaoDichToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.datBanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,7 +44,8 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.monAnToolStripMenuItem,
-            this.nguyenLieuToolStripMenuItem});
+            this.nguyenLieuToolStripMenuItem,
+            this.giaoDichToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1105, 28);
@@ -87,6 +90,21 @@
             this.mónĂnToolStripMenuItem.Text = "Món ăn";
             this.mónĂnToolStripMenuItem.Click += new System.EventHandler(this.mónĂnToolStripMenuItem_Click);
             // 
+            // giaoDichToolStripMenuItem
+            // 
+            this.giaoDichToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.datBanToolStripMenuItem});
+            this.giaoDichToolStripMenuItem.Name = "giaoDichToolStripMenuItem";
+            this.giaoDichToolStripMenuItem.Size = new System.Drawing.Size(86, 24);
+            this.giaoDichToolStripMenuItem.Text = "Giao dich";
+            // 
+            // datBanToolStripMenuItem
+            // 
+            this.datBanToolStripMenuItem.Name = "datBanToolStripMenuItem";
+            this.datBanToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.datBanToolStripMenuItem.Text = "Dat ban";
+            this.datBanToolStripMenuItem.Click += new System.EventHandler(this.datBanToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -112,5 +130,7 @@
         private System.Windows.Forms.ToolStripMenuItem nhânVienToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nguyênLiệuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mónĂnToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem giaoDichToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem datBanToolStripMenuItem;
     }
 }

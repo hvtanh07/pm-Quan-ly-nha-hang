@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>8</zoom_level>
+  <zoom_level>7</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>72</x>
-      <y>264</y>
-      <w>168</w>
-      <h>120</h>
+      <x>245</x>
+      <y>336</y>
+      <w>147</w>
+      <h>105</h>
     </coordinates>
     <panel_attributes>Nhan vien
 --
@@ -24,10 +24,10 @@ id chức vụ
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>344</x>
-      <y>208</y>
-      <w>136</w>
-      <h>96</h>
+      <x>483</x>
+      <y>287</y>
+      <w>119</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>Quan ly
 --
@@ -40,10 +40,10 @@ Luong dat KPI
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>584</x>
-      <y>216</y>
-      <w>168</w>
-      <h>88</h>
+      <x>672</x>
+      <y>315</y>
+      <w>147</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>Mon an
 --
@@ -56,10 +56,10 @@ gia tien
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>368</x>
-      <y>616</y>
-      <w>168</w>
-      <h>96</h>
+      <x>483</x>
+      <y>665</y>
+      <w>147</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>Bàn
 --
@@ -72,10 +72,10 @@ booked day
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>656</x>
-      <y>296</y>
-      <w>24</w>
-      <h>64</h>
+      <x>735</x>
+      <y>385</y>
+      <w>21</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=*
@@ -86,10 +86,10 @@ m2=*
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>840</x>
-      <y>328</y>
-      <w>136</w>
-      <h>96</h>
+      <x>896</x>
+      <y>413</y>
+      <w>119</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>Nguyen lieu
 --
@@ -104,10 +104,10 @@ HSD
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>904</x>
-      <y>296</y>
-      <w>24</w>
-      <h>48</h>
+      <x>952</x>
+      <y>385</y>
+      <w>21</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=*
@@ -118,10 +118,10 @@ m2=*
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>832</x>
-      <y>208</y>
-      <w>168</w>
-      <h>96</h>
+      <x>889</x>
+      <y>308</y>
+      <w>147</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>Dang sach nguyen lieu
 --
@@ -135,10 +135,10 @@ so luong
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>744</x>
-      <y>240</y>
-      <w>104</w>
-      <h>40</h>
+      <x>812</x>
+      <y>336</y>
+      <w>91</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1..1
@@ -149,10 +149,10 @@ m2=1..1
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>584</x>
-      <y>344</y>
-      <w>168</w>
-      <h>80</h>
+      <x>672</x>
+      <y>427</y>
+      <w>147</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>danh sach mon an
 --
@@ -166,10 +166,10 @@ so luong
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>656</x>
-      <y>416</y>
-      <w>32</w>
-      <h>104</h>
+      <x>735</x>
+      <y>490</y>
+      <w>28</w>
+      <h>91</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
@@ -180,10 +180,10 @@ m2=*
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>592</x>
-      <y>504</y>
-      <w>144</w>
-      <h>112</h>
+      <x>679</x>
+      <y>567</y>
+      <w>126</w>
+      <h>98</h>
     </coordinates>
     <panel_attributes>Hóa đơn
 --
@@ -198,10 +198,10 @@ _id thu ngan_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>968</x>
-      <y>504</y>
-      <w>144</w>
-      <h>72</h>
+      <x>1008</x>
+      <y>567</y>
+      <w>126</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>Báo cáo doanh thu
 --
@@ -213,10 +213,10 @@ Tong doanh thu</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>368</x>
-      <y>344</y>
-      <w>168</w>
-      <h>80</h>
+      <x>504</x>
+      <y>406</y>
+      <w>147</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>Phuc vu
 --
@@ -230,10 +230,10 @@ Thuong theo ban
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>792</x>
-      <y>504</y>
-      <w>144</w>
-      <h>80</h>
+      <x>854</x>
+      <y>567</y>
+      <w>126</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>Chi tiết báo 
 cáo doanh thu
@@ -245,10 +245,10 @@ _id báo cao daonh thu_</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>8</x>
-      <y>456</y>
-      <w>224</w>
-      <h>112</h>
+      <x>168</x>
+      <y>525</y>
+      <w>196</w>
+      <h>98</h>
     </coordinates>
     <panel_attributes>Qui định
 --
@@ -262,10 +262,10 @@ Phần trăm tiền lời theo từng món</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>728</x>
-      <y>536</y>
-      <w>80</w>
-      <h>40</h>
+      <x>798</x>
+      <y>595</y>
+      <w>70</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
@@ -276,10 +276,10 @@ m2=*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>928</x>
-      <y>536</y>
-      <w>56</w>
-      <h>40</h>
+      <x>973</x>
+      <y>595</y>
+      <w>49</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
@@ -290,10 +290,10 @@ m2=*
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1000</x>
-      <y>208</y>
-      <w>88</w>
-      <h>64</h>
+      <x>1036</x>
+      <y>308</y>
+      <w>77</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>so luong để nấu ko đc nhiều hơn trong kho
 style=wordwrap</panel_attributes>
@@ -302,10 +302,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>976</x>
-      <y>408</y>
-      <w>88</w>
-      <h>56</h>
+      <x>1015</x>
+      <y>483</y>
+      <w>77</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>đc cập nhật về tình trạng của nhiên liệu
 style=wordwrap</panel_attributes>
@@ -314,10 +314,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>584</x>
-      <y>152</y>
-      <w>88</w>
-      <h>64</h>
+      <x>672</x>
+      <y>259</y>
+      <w>77</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>Lượng nguyên liệu dem nấu phải thấp hơn luongj tồn kho
 style=wordwrap</panel_attributes>
@@ -326,10 +326,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>752</x>
-      <y>344</y>
-      <w>88</w>
-      <h>88</h>
+      <x>819</x>
+      <y>427</y>
+      <w>77</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>sau mỗi lần nấu ds mới thì cập nhật lại lượng tồn kho của nguyên liệu
 style=wordwrap</panel_attributes>
@@ -338,10 +338,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>976</x>
-      <y>328</y>
-      <w>128</w>
-      <h>80</h>
+      <x>1015</x>
+      <y>413</y>
+      <w>112</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>HSD được nhập vào phải lớn hơn ngày hiện tại 5 ngày và phải thông báo săp hết hạn trước 5 ngày
 style=wordwrap</panel_attributes>
@@ -350,10 +350,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>288</x>
-      <y>376</y>
-      <w>80</w>
-      <h>56</h>
+      <x>434</x>
+      <y>434</y>
+      <w>70</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>Nhân viên phuc vu được phép chọn ca lam
 chon bàn phục vụ
@@ -364,10 +364,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>232</x>
-      <y>440</y>
-      <w>128</w>
-      <h>24</h>
+      <x>364</x>
+      <y>511</y>
+      <w>112</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>100 bàn = 500k bonus
 style=wordwrap</panel_attributes>
@@ -376,10 +376,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>480</x>
-      <y>208</y>
-      <w>80</w>
-      <h>56</h>
+      <x>602</x>
+      <y>287</y>
+      <w>70</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>Quan ly toan quyen quyet dinh
 
@@ -389,10 +389,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>168</x>
-      <y>136</y>
-      <w>136</w>
-      <h>96</h>
+      <x>329</x>
+      <y>224</y>
+      <w>119</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>THU NGAN
 --
@@ -404,10 +404,10 @@ Gio lam
   <element>
     <id>Text</id>
     <coordinates>
-      <x>72</x>
-      <y>568</y>
-      <w>176</w>
-      <h>136</h>
+      <x>224</x>
+      <y>623</y>
+      <w>154</w>
+      <h>119</h>
     </coordinates>
     <panel_attributes>đặt bàn - chọn món
 lập báo cáo tháng
@@ -424,10 +424,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>600</x>
-      <y>616</y>
-      <w>88</w>
-      <h>72</h>
+      <x>686</x>
+      <y>665</y>
+      <w>77</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>những khách hàng đặt trên 1000k đc giảm giá
 style=wordwrap</panel_attributes>
@@ -436,10 +436,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>232</x>
-      <y>240</y>
-      <w>128</w>
-      <h>72</h>
+      <x>385</x>
+      <y>315</y>
+      <w>112</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=-
 </panel_attributes>
@@ -448,10 +448,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>232</x>
-      <y>328</y>
-      <w>152</w>
-      <h>64</h>
+      <x>385</x>
+      <y>392</y>
+      <w>133</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>lt=-
 </panel_attributes>
@@ -460,10 +460,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>176</x>
-      <y>224</y>
-      <w>72</w>
-      <h>56</h>
+      <x>336</x>
+      <y>301</y>
+      <w>63</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>lt=-
 </panel_attributes>
@@ -472,10 +472,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>528</x>
-      <y>520</y>
-      <w>80</w>
-      <h>40</h>
+      <x>623</x>
+      <y>581</y>
+      <w>70</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
@@ -486,10 +486,10 @@ m2=*
   <element>
     <id>Text</id>
     <coordinates>
-      <x>680</x>
-      <y>136</y>
-      <w>88</w>
-      <h>80</h>
+      <x>756</x>
+      <y>245</y>
+      <w>77</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>Giá món ăn = Tổng tiền nguyên liệu * (1 + Phần trăm tiền lời)
 style=wordwrap</panel_attributes>
@@ -498,10 +498,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>384</x>
-      <y>8</y>
-      <w>136</w>
-      <h>96</h>
+      <x>518</x>
+      <y>112</y>
+      <w>119</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>Tài khoản
 --
@@ -514,10 +514,10 @@ loại tai khoan
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>368</x>
-      <y>464</y>
-      <w>168</w>
-      <h>96</h>
+      <x>483</x>
+      <y>567</y>
+      <w>147</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>Bàn
 --
@@ -529,15 +529,15 @@ loại tai khoan
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>440</x>
-      <y>552</y>
-      <w>32</w>
-      <h>80</h>
+      <x>546</x>
+      <y>616</y>
+      <w>28</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
 m2=*
 </panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
   </element>
 </diagram>

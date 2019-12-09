@@ -1742,7 +1742,7 @@ namespace DAL
         public List<dsBandadatDTO> select(string soban)
         {
             string query = string.Empty;
-            query += " SELECT [ngayDat]";
+            query += " SELECT [soban], [ngayDat]";
             query += " FROM [tbldsBandadat]";
             query += " WHERE [soban]=@soban";
 
@@ -1765,7 +1765,8 @@ namespace DAL
                         {
                             while (reader.Read())
                             {
-                                dsBandadatDTO hd = new dsBandadatDTO();                                                          
+                                dsBandadatDTO hd = new dsBandadatDTO();
+                                hd.soban = int.Parse(reader["ngayDat"].ToString());
                                 hd.bookeddate = Convert.ToDateTime(reader["ngayDat"].ToString());
                                 listBan.Add(hd);
                             }
@@ -1943,6 +1944,45 @@ namespace DAL
                 }
             }
             return listBan;
+        }
+        public List<string> LaysoBan()
+        {
+            List<string> dsban = new List<string>();
+            string query = string.Empty;
+            query += " SELECT [soban]";
+            query += " FROM [tblBan]";
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    try
+                    {
+                        con.Open();
+                        SqlDataReader reader = null;
+                        reader = cmd.ExecuteReader();
+                        if (reader.HasRows == true)
+                        {
+                            while (reader.Read())
+                            {
+                                string manl = reader["soban"].ToString();
+                                dsban.Add(manl);
+                            }
+                        }
+
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return null;
+                    }
+                }
+            }
+            return dsban;
         }
     }
 }
