@@ -137,6 +137,12 @@
     <EmbeddedResource Include="NguyenLieu\SuaNguyenLieu.resx">
       <DependentUpon>SuaNguyenLieu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ThanhToan\DatBan.resx">
+      <DependentUpon>DatBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThanhToan\LapHoaDon.resx">
+      <DependentUpon>LapHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

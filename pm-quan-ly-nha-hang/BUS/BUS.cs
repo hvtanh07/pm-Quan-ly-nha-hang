@@ -340,7 +340,7 @@ namespace BUS
             return ctbcdtDAL.select(soban);
         }
 
-        public bool checkBookStatus(DateTime checkdate)
+        public bool checkBookStatus(System.DateTime checkdate)
         {
             return ctbcdtDAL.checkBookStatus(checkdate);
         }
