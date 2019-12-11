@@ -10,7 +10,7 @@ BEGIN
     FROM MASTER..SysProcesses
     WHERE DBId = DB_ID(N'QLNH') AND SPId <> @@SPId
     EXEC(@SQL)
-    DROP DATABASE [QLDL]
+    DROP DATABASE [QLNH]
 END
 GO
 
@@ -85,18 +85,20 @@ CREATE TABLE [dbo].[tblhoaDon]
 	[tongTien] int NOT NULL,	
 	[ngayThanhToan]	datetime2(7) NOT NULL,
 	[mathuNgan] nvarchar(10) NOT NULL,
-	FOREIGN KEY (mathuNgan) REFERENCES tblthuNgan(mathuNgan),
+	--FOREIGN KEY (mathuNgan) REFERENCES tblthuNgan(mathuNgan),
 	FOREIGN KEY (soban) REFERENCES tblBan(soban)
 )
+--INSERT INTO [tblhoaDon] ([mahoaDon], [soban], [tongTien], [ngayThanhToan], [mathuNgan]) VALUES ('hd1', 1, 12, '12/12/1999', 'nv1')
 CREATE TABLE [dbo].[tblDSMonAn]
 (	
 	[maMonAn] nvarchar(10) NOT NULL,
 	[mahoaDon] nvarchar(10) NOT NULL,		
 	[soLuong] int NOT NULL,
-	[gia tien] int NOT NULL,
 	FOREIGN KEY (maMonAn) REFERENCES tblMonAn(maMonAn),
 	FOREIGN KEY (mahoaDon) REFERENCES tblhoaDon(mahoaDon)	
 )
+--INSERT INTO [tblDSMonAn] ([maMonAn], [mahoaDon], [soLuong]) VALUES ('ma1', 'hd1', 12)
+--DELETE FROM [tblDSMonAn]  WHERE [maMonAn]='ma1' AND [mahoaDon]='hd1'
 CREATE TABLE [dbo].[tblPhieubaocaoDoanhThu]
 (
 	[maPhieu] nvarchar(10) NOT NULL PRIMARY KEY,	
@@ -136,6 +138,9 @@ CREATE TABLE [dbo].[tblQuiDinh]
 
 --dữ liệu có trước--
 SET DATEFORMAT dmy;  
-
+INSERT INTO tblBan ([soban]) VALUES (1)
+INSERT INTO tblBan ([soban]) VALUES (2)
+INSERT INTO tblBan ([soban]) VALUES (3)
+INSERT INTO tblBan ([soban]) VALUES (4)
 ----TESTING----
 

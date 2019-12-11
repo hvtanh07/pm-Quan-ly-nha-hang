@@ -93,6 +93,10 @@ namespace BUS
         {
             return nlDAL.Laymama();
         }
+        public int Laygia(string mama)
+        {
+            return nlDAL.Laygia(mama);
+        }
     }
     public class DSNguyenLieuBUS
     {
@@ -115,13 +119,43 @@ namespace BUS
             return re;
         }
 
-        public List<DSNguyenLieuDTO> select()
+        public List<DSNguyenLieuDTO> select(string mama)
         {
-            return dsnlDAL.select();
+            return dsnlDAL.select(mama);
         }
         public bool TimNLtrongMA(string manl, string mama)
         {
             return dsnlDAL.TimNLtrongMA(manl,mama);
+        }
+    }
+    public class DSMonAnBUS
+    {
+        private DSMonAnDAL dsnlDAL;
+
+        public DSMonAnBUS()
+        {
+            dsnlDAL = new DSMonAnDAL();
+        }
+
+        public bool Them(DSMonAnDTO ma)
+        {
+            bool re = dsnlDAL.Them(ma);
+            return re;
+        }
+
+        public bool Xoa(DSMonAnDTO ma)
+        {
+            bool re = dsnlDAL.Xoa(ma);
+            return re;
+        }
+
+        public List<DSMonAnDTO> select(string mahd)
+        {
+            return dsnlDAL.select(mahd);
+        }
+        public bool TimMAtrongHD(string mahd, string mama)
+        {
+            return dsnlDAL.TimMAtrongHD(mahd, mama);
         }
     }
     public class NhanVienBUS
@@ -344,9 +378,9 @@ namespace BUS
             return ctbcdtDAL.select(soban);
         }
 
-        public bool checkBookStatus(System.DateTime checkdate)
+        public bool checkBookStatus(int soban, System.DateTime checkdate)
         {
-            return ctbcdtDAL.checkBookStatus(checkdate);
+            return ctbcdtDAL.checkBookStatus(soban, checkdate);
         }
     }
 }

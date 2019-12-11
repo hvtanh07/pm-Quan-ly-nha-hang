@@ -33,7 +33,7 @@ namespace GUI.MonAn
             this.maDTO = ma;
             GiaTien = ma.dongia;
             InitializeComponent();
-            this.loadDataVaoComboBox();
+            loadDataVaoComboBox();
             loadData_Vao_GridView();
         }
         private void Tinhtien()
@@ -41,7 +41,7 @@ namespace GUI.MonAn
             GiaTien = 0;//dataGridView1
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
-                GiaTien = int.Parse(dataGridView1[1, i].Value.ToString())* nlBUS.Laygiatien(dataGridView1[0, i].Value.ToString());
+                GiaTien += int.Parse(dataGridView1[1, i].Value.ToString())* nlBUS.Laygiatien(dataGridView1[0, i].Value.ToString());
             }
             textBox3.Text = GiaTien.ToString();//sau này công thêm phần trăm
         }
@@ -126,7 +126,6 @@ namespace GUI.MonAn
             manl = nlBUS.Laymanl();
             comboBox1.DataSource = manl;
         }
-
         private void ChiTietMonAn_Load(object sender, EventArgs e)
         {
             if (this.maDTO != null)
@@ -164,11 +163,11 @@ namespace GUI.MonAn
         }
         private void loadData_Vao_GridView()
         {
-            List<DSNguyenLieuDTO> listNguyenLieu = dsnlBUS.select();
+            List<DSNguyenLieuDTO> listNguyenLieu = dsnlBUS.select(maDTO.mama);
 
             if (listNguyenLieu == null)
             {
-                MessageBox.Show("Có lỗi khi lấy Món ăn từ cơ sở dữ liệu");
+                MessageBox.Show("Có lỗi khi lấy nguyên liệu từ cơ sở dữ liệu");
                 return;
             }
 

@@ -35,7 +35,7 @@ namespace GUI
             NguyenLieuDTO nl = new NguyenLieuDTO();
             nl.manl = textBox1.Text;
             nl.tennl = textBox2.Text;
-            nl.dongia = int.Parse(textBox4.Text);
+            nl.dongia = int.Parse(textBox3.Text);
             nl.donvi = textBox4.Text;
             nl.trongkho = int.Parse(textBox5.Text);
             nl.hsd = dateTimePicker1.Value;

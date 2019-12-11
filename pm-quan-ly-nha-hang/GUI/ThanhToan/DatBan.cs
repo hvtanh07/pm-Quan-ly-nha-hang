@@ -1,6 +1,7 @@
 ﻿using System;
 using BUS;
 using DTO;
+using GUI.ThanhToan;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,17 +25,27 @@ namespace GUI.ThanhToan
         private void button1_Click(object sender, EventArgs e)
         {
             dsBandadatDTO ban = new dsBandadatDTO();
+            BanDTO banDTO = new BanDTO();
             ban.soban = int.Parse(comboBox1.Text);
             ban.bookeddate = dateTimePicker1.Value;
+            banDTO.soban = int.Parse(comboBox1.Text);
             //2. Kiểm tra data hợp lệ or not
 
             //3. Thêm vào DB
+            if (dsbanBUS.checkBookStatus(ban.soban, ban.bookeddate))
+            {
+                System.Windows.MessageBox.Show("Đặt bàn thất bại. Bàn đã bị đặt");
+                return;
+            }
             bool kq = dsbanBUS.Them(ban);
+
             if (kq == false)
-                System.Windows.MessageBox.Show("Thêm nhân viên thất bại. Vui lòng kiểm tra lại dũ liệu");
+                System.Windows.MessageBox.Show("Đặt bàn thất bại. Vui lòng kiểm tra lại dũ liệu");
             else
             {
-                System.Windows.MessageBox.Show("Thêm nhân viên thành công");
+                System.Windows.MessageBox.Show("Đặt bàn thành công");
+                LapHoaDon frm = new LapHoaDon(banDTO);
+                frm.ShowDialog();
             }
             loadData_Vao_GridView(comboBox1.Text);
         }
@@ -47,7 +58,8 @@ namespace GUI.ThanhToan
         private void DatBan_Load(object sender, EventArgs e)
         {
             banBUS = new BanBUS();
-            dsbanBUS = new dsBandadatBUS();
+            dsbanBUS = new dsBandadatBUS();            
+            Loaddatavaocombo();
             loadData_Vao_GridView(comboBox1.Text);
         }
         private void loadData_Vao_GridView(String soban)
@@ -56,7 +68,7 @@ namespace GUI.ThanhToan
 
             if (listban == null)
             {
-                MessageBox.Show("Có lỗi khi lấy nhân viên từ cơ sở dữ liệu");
+                MessageBox.Show("Có lỗi khi lấy dữ liệu từ cơ sở dữ liệu");
                 return;
             }
 
@@ -99,10 +111,10 @@ namespace GUI.ThanhToan
                 {
                     bool kq = dsbanBUS.Xoa(ban);
                     if (kq == false)
-                        MessageBox.Show("Xóa nhân viên thất bại. Vui lòng kiểm tra lại dũ liệu");
+                        MessageBox.Show("Xóa thông tin thất bại. Vui lòng kiểm tra lại dũ liệu");
                     else
                     {
-                        MessageBox.Show("Xóa nhân viên thành công");
+                        MessageBox.Show("Xóa thông tin thành công");
                         this.loadData_Vao_GridView(comboBox1.Text);
                     }
                 }

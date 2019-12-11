@@ -88,11 +88,9 @@ namespace DTO
         private string maMA;
         private string maHD;
         private int soLuong;
-        private int giaTien;
         public string mama { get => maMA; set => maMA = value; }
         public string mahd { get => maHD; set => maHD = value; }
         public int soluong { get => soLuong; set => soLuong = value; }
-        public int giatien { get => giaTien; set => giaTien = value; }
     }
     public class BanDTO
     {

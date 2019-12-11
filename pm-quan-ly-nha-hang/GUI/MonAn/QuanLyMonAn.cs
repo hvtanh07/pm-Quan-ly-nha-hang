@@ -81,9 +81,7 @@ namespace GUI.MonAn
             }
             if (string.IsNullOrWhiteSpace(textBox4.Text))
             {
-                System.Windows.MessageBox.Show("Bạn chưa nhập tên món ăn.", "Lỗi");
-                textBox2.Focus();
-                return false;
+                textBox4.Text = "0";
             }
             return true;//all true then gud to go
         }

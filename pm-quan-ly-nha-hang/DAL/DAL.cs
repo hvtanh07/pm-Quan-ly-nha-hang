@@ -539,6 +539,47 @@ namespace DAL
             }
             return dsmama;
         }
+        public int Laygia(string mama)
+        {
+            int result = 0;
+            List<string> dsmama = new List<string>();
+            string query = string.Empty;
+            query += " SELECT [giaTien]";
+            query += " FROM [tblMonAn]";
+            query += " WHERE [maMonAn] = @maMonAn";
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@maMonAn", mama);
+                    try
+                    {
+                        con.Open();
+                        SqlDataReader reader = null;
+                        reader = cmd.ExecuteReader();
+                        if (reader.HasRows == true)
+                        {
+                            while (reader.Read())
+                            {
+                                result = int.Parse(reader["giaTien"].ToString());
+                            }
+                        }
+
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return result;
+                    }
+                }
+            }
+            return result;
+        }
     }
     public class DSNguyenLieuDAL
     {
@@ -586,7 +627,7 @@ namespace DAL
         public bool Xoa(DSNguyenLieuDTO DSNL)
         {
             string query = string.Empty;
-            query += "DELETE FROM tblDSNguyenLieu WHERE [maMonAn]=@maMonAn";
+            query += "DELETE FROM tblDSNguyenLieu WHERE [maMonAn]=@maMonAn AND [maNguyenLieu]=@maNguyenLieu";
 
             using (SqlConnection con = new SqlConnection(ConnectionString))
             {
@@ -597,6 +638,7 @@ namespace DAL
                     cmd.CommandType = System.Data.CommandType.Text;
                     cmd.CommandText = query;
                     cmd.Parameters.AddWithValue("@maMonAn", DSNL.mama);
+                    cmd.Parameters.AddWithValue("@maNguyenLieu", DSNL.manl);
                     try
                     {
                         con.Open();
@@ -613,11 +655,12 @@ namespace DAL
             }
             return true;
         }
-        public List<DSNguyenLieuDTO> select()
+        public List<DSNguyenLieuDTO> select(string mama)
         {
             string query = string.Empty;
             query += " SELECT [maNguyenLieu], [maMonAn], [soLuong]";
             query += " FROM [tblDSNguyenLieu]";
+            query += " WHERE [maMonAn] = @maMonAn";
 
             List<DSNguyenLieuDTO> listnl = new List<DSNguyenLieuDTO>();
 
@@ -629,6 +672,7 @@ namespace DAL
                     cmd.Connection = con;
                     cmd.CommandType = System.Data.CommandType.Text;
                     cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@maMonAn", mama);
                     try
                     {
                         con.Open();
@@ -706,13 +750,90 @@ namespace DAL
             }
             return false;
         }
-        public bool Check(int thang, int year)
+        
+    }
+    public class DSMonAnDAL
+    {
+        private string connectionString;
+
+        public DSMonAnDAL()
         {
-            string test = null;
+            connectionString = ConfigurationManager.AppSettings["ConnectionString"];
+        }
+
+        public string ConnectionString { get => connectionString; set => connectionString = value; }
+
+        public bool Them(DSMonAnDTO DSNL)
+        {
             string query = string.Empty;
-            query += " SELECT maPhieu";
-            query += " FROM tblPhieubaocaoCongNo no";
-            query += " WHERE MONTH(no.ngayLapPhieu)= @month AND YEAR (no.ngayLapPhieu) = @year";
+            query += "INSERT INTO [dbo].[tblDSMonAn] ([maMonAn], [mahoaDon], [soLuong] )";
+            query += "VALUES (@maMonAn, @mahoaDon, @soLuong)";
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@maMonAn", DSNL.mama);
+                    cmd.Parameters.AddWithValue("@mahoaDon", DSNL.mahd);
+                    cmd.Parameters.AddWithValue("@soLuong", DSNL.soluong);
+                    try
+                    {
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+        public bool Xoa(DSMonAnDTO DSNL)
+        {
+            string query = string.Empty;
+            query += "DELETE FROM tblDSMonAn WHERE [maMonAn]=@maMonAn AND [mahoaDon]=@mahoaDon";
+
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@maMonAn", DSNL.mama);
+                    cmd.Parameters.AddWithValue("@mahoaDon", DSNL.mahd);
+                    try
+                    {
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+        public List<DSMonAnDTO> select(string mahd)
+        {
+            string query = string.Empty;
+            query += " SELECT [maMonAn], [mahoaDon], [soLuong]";
+            query += " FROM [tblDSMonAn]";
+            query += " WHERE [mahoaDon] = @mahoaDon";
+
+            List<DSMonAnDTO> listnl = new List<DSMonAnDTO>();
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -722,8 +843,7 @@ namespace DAL
                     cmd.Connection = con;
                     cmd.CommandType = System.Data.CommandType.Text;
                     cmd.CommandText = query;
-                    cmd.Parameters.AddWithValue("@month", thang);
-                    cmd.Parameters.AddWithValue("@year", year);
+                    cmd.Parameters.AddWithValue("@mahoaDon", mahd);
                     try
                     {
                         con.Open();
@@ -733,7 +853,11 @@ namespace DAL
                         {
                             while (reader.Read())
                             {
-                                test = reader["maPhieu"].ToString();
+                                DSMonAnDTO nl = new DSMonAnDTO();
+                                nl.mama = reader["maMonAn"].ToString();
+                                nl.mahd = reader["mahoaDon"].ToString();
+                                nl.soluong = int.Parse(reader["soLuong"].ToString());
+                                listnl.Add(nl);
                             }
                         }
 
@@ -743,12 +867,57 @@ namespace DAL
                     catch (Exception ex)
                     {
                         con.Close();
+                        return null;
                     }
                 }
             }
-            if (test != null)
+            return listnl;
+        }
+
+        public bool TimMAtrongHD(string mahd, string mama)
+        {
+            string query = string.Empty;
+            query += " SELECT [maMonAn]";
+            query += " FROM [tblDSMonAn]";
+            query += " WHERE [mahoaDon]=@mahoaDon";
+            query += " AND [maMonAn]=@maMonAn";
+
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                return true;
+
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@mahoaDon", mahd);
+                    cmd.Parameters.AddWithValue("@maMonAn", mama);
+                    try
+                    {
+                        con.Open();
+                        SqlDataReader reader = null;
+                        reader = cmd.ExecuteReader();
+                        if (reader.HasRows == true)
+                        {
+                            while (reader.Read())
+                            {
+                                DSMonAnDTO DSNL = new DSMonAnDTO();
+                                DSNL.mama = reader["maMonAn"].ToString();
+                                if (DSNL != null)
+                                {
+                                    return true;
+                                }
+                            }
+                        }
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return true;
+                    }
+                }
             }
             return false;
         }
@@ -1653,7 +1822,7 @@ namespace DAL
         {
             string query = string.Empty;
             query += " INSERT INTO tbldsBandadat ([soban],[ngayDat])";
-            query += " VALUES (@soban, @booked, @ngayDat)";
+            query += " VALUES (@soban, @ngayDat)";
             using (SqlConnection con = new SqlConnection(ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand())
@@ -1713,7 +1882,7 @@ namespace DAL
         public bool Xoa(dsBandadatDTO HD)
         {
             string query = string.Empty;
-            query += " DELETE FROM tbldsBandadat WHERE [soban] = @soban";
+            query += " DELETE FROM tbldsBandadat WHERE [soban] = @soban AND DAY(tbldsBandadat.ngayDat) = @day AND MONTH(tbldsBandadat.ngayDat)= @month AND YEAR(tbldsBandadat.ngayDat) = @year";
 
             using (SqlConnection con = new SqlConnection(ConnectionString))
             {
@@ -1723,6 +1892,9 @@ namespace DAL
                     cmd.CommandType = System.Data.CommandType.Text;
                     cmd.CommandText = query;
                     cmd.Parameters.AddWithValue("@soban", HD.soban);
+                    cmd.Parameters.AddWithValue("@month", HD.bookeddate.Month);
+                    cmd.Parameters.AddWithValue("@year", HD.bookeddate.Year);
+                    cmd.Parameters.AddWithValue("@day", HD.bookeddate.Day);
                     try
                     {
                         con.Open();
@@ -1766,7 +1938,7 @@ namespace DAL
                             while (reader.Read())
                             {
                                 dsBandadatDTO hd = new dsBandadatDTO();
-                                hd.soban = int.Parse(reader["ngayDat"].ToString());
+                                hd.soban = int.Parse(reader["soban"].ToString());
                                 hd.bookeddate = Convert.ToDateTime(reader["ngayDat"].ToString());
                                 listBan.Add(hd);
                             }
@@ -1784,13 +1956,13 @@ namespace DAL
             }
             return listBan;
         }
-        public bool checkBookStatus(DateTime checkdate)
+        public bool checkBookStatus(int soban, DateTime checkdate)
         {
             string test = null;
             string query = string.Empty;
             query += " SELECT soban";
             query += " FROM tbldsBandadat dt";
-            query += " WHERE MONTH(dt.ngayDat)= @month AND YEAR(dt.ngayDat) = @year AND DAY(dt.ngayDat) = @day";
+            query += " WHERE soban = @soban AND DAY(dt.ngayDat) = @day AND MONTH(dt.ngayDat)= @month AND YEAR(dt.ngayDat) = @year";
             List<dsBandadatDTO> listBan = new List<dsBandadatDTO>();
 
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -1800,6 +1972,7 @@ namespace DAL
                     cmd.Connection = con;
                     cmd.CommandType = System.Data.CommandType.Text;
                     cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@soban", soban);
                     cmd.Parameters.AddWithValue("@month", checkdate.Month);
                     cmd.Parameters.AddWithValue("@year", checkdate.Year);
                     cmd.Parameters.AddWithValue("@day", checkdate.Day);
