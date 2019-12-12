@@ -51,6 +51,18 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaoCaoDoanhThu\BaoCaoDoanhThu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaoCaoDoanhThu\BaoCaoDoanhThu.Designer.cs">
+      <DependentUpon>BaoCaoDoanhThu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaoCaoDoanhThu\ChitietBaoCaoDoanhThu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaoCaoDoanhThu\ChitietBaoCaoDoanhThu.Designer.cs">
+      <DependentUpon>ChitietBaoCaoDoanhThu.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +125,12 @@
     <Compile Include="ThanhToan\LapHoaDon.Designer.cs">
       <DependentUpon>LapHoaDon.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BaoCaoDoanhThu\BaoCaoDoanhThu.resx">
+      <DependentUpon>BaoCaoDoanhThu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCaoDoanhThu\ChitietBaoCaoDoanhThu.resx">
+      <DependentUpon>ChitietBaoCaoDoanhThu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -179,8 +197,6 @@
       <Name>DTO</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BaoCaoDoanhThu\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
