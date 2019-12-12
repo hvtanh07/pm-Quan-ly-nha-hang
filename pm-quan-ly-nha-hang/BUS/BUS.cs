@@ -118,7 +118,11 @@ namespace BUS
             bool re = dsnlDAL.Xoa(ma);
             return re;
         }
-
+        public bool XoatheoMA(string mama)
+        {
+            bool re = dsnlDAL.XoatheoMA(mama);
+            return re;
+        }
         public List<DSNguyenLieuDTO> select(string mama)
         {
             return dsnlDAL.select(mama);
@@ -148,7 +152,11 @@ namespace BUS
             bool re = dsnlDAL.Xoa(ma);
             return re;
         }
-
+        public bool XoatheoHD(string mahd)
+        {
+            bool re = dsnlDAL.XoatheoHD(mahd);
+            return re;
+        }
         public List<DSMonAnDTO> select(string mahd)
         {
             return dsnlDAL.select(mahd);
@@ -297,6 +305,11 @@ namespace BUS
         public bool Sua(hoaDonDTO ma)
         {
             bool re = hdDAL.Sua(ma);
+            return re;
+        }
+        public bool SuaTien(hoaDonDTO ma)
+        {
+            bool re = hdDAL.SuaTien(ma);
             return re;
         }
 

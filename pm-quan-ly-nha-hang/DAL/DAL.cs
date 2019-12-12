@@ -159,6 +159,7 @@ namespace DAL
             return true;
         }
 
+
         public List<NguyenLieuDTO> select()
         {
             string query = string.Empty;
@@ -544,7 +545,7 @@ namespace DAL
             int result = 0;
             List<string> dsmama = new List<string>();
             string query = string.Empty;
-            query += " SELECT [giaTien]";
+            query += " SELECT [dongia]";
             query += " FROM [tblMonAn]";
             query += " WHERE [maMonAn] = @maMonAn";
             using (SqlConnection con = new SqlConnection(ConnectionString))
@@ -564,7 +565,7 @@ namespace DAL
                         {
                             while (reader.Read())
                             {
-                                result = int.Parse(reader["giaTien"].ToString());
+                                result = int.Parse(reader["dongia"].ToString());
                             }
                         }
 
@@ -639,6 +640,36 @@ namespace DAL
                     cmd.CommandText = query;
                     cmd.Parameters.AddWithValue("@maMonAn", DSNL.mama);
                     cmd.Parameters.AddWithValue("@maNguyenLieu", DSNL.manl);
+                    try
+                    {
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+        public bool XoatheoMA(string mama)
+        {
+            string query = string.Empty;
+            query += "DELETE FROM tblDSNguyenLieu WHERE [maMonAn]=@maMonAn ";
+
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@maMonAn", mama);
                     try
                     {
                         con.Open();
@@ -810,6 +841,36 @@ namespace DAL
                     cmd.CommandText = query;
                     cmd.Parameters.AddWithValue("@maMonAn", DSNL.mama);
                     cmd.Parameters.AddWithValue("@mahoaDon", DSNL.mahd);
+                    try
+                    {
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+        public bool XoatheoHD(string mahd)
+        {
+            string query = string.Empty;
+            query += "DELETE FROM tblDSMonAn WHERE [mahoaDon]=@mahoaDon";
+
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@mahoaDon", mahd);
                     try
                     {
                         con.Open();
@@ -1680,6 +1741,36 @@ namespace DAL
             }
             return true;
         }
+        public bool SuaTien(hoaDonDTO HD)
+        {
+            string query = string.Empty;
+            query += " UPDATE tblhoaDon SET [tongTien] = @tongTien WHERE [mahoaDon] = @mahoaDon";
+
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@mahoaDon", HD.mahd);
+                    cmd.Parameters.AddWithValue("@tongTien", HD.tongtien);
+                    try
+                    {
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
         public bool Xoa(hoaDonDTO HD)
         {
             string query = string.Empty;
@@ -1713,7 +1804,7 @@ namespace DAL
         {
             string query = string.Empty;
             query += " SELECT [mahoaDon], [soban], [tongTien], [ngayThanhToan], [mathuNgan]";
-            query += " FROM [tblMonAn]";
+            query += " FROM [tblhoaDon]";
 
             List<hoaDonDTO> listhoaDon = new List<hoaDonDTO>();
 
@@ -1737,7 +1828,7 @@ namespace DAL
                                 hd.mahd = reader["mahoaDon"].ToString();
                                 hd.soban = int.Parse(reader["soban"].ToString());
                                 hd.tongtien = int.Parse(reader["tongTien"].ToString());
-                                hd.ngayThanhToan = Convert.ToDateTime(reader["HSD"].ToString());
+                                hd.ngayThanhToan = Convert.ToDateTime(reader["ngayThanhToan"].ToString());
                                 hd.maTN = reader["mathuNgan"].ToString();
                                 listhoaDon.Add(hd);
                             }

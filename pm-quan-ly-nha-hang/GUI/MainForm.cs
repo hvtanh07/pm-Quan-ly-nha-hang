@@ -47,5 +47,12 @@ namespace GUI
             frm.MdiParent = this;
             frm.Show();
         }
+
+        private void lậpHóaĐơnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LapHoaDon frm = new LapHoaDon();
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }

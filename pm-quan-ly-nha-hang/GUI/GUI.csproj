@@ -95,6 +95,12 @@
     <Compile Include="NguyenLieu\SuaNguyenLieu.Designer.cs">
       <DependentUpon>SuaNguyenLieu.cs</DependentUpon>
     </Compile>
+    <Compile Include="ThanhToan\ChiTietHoaDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThanhToan\ChiTietHoaDon.Designer.cs">
+      <DependentUpon>ChiTietHoaDon.cs</DependentUpon>
+    </Compile>
     <Compile Include="ThanhToan\DatBan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +143,9 @@
     <EmbeddedResource Include="NguyenLieu\SuaNguyenLieu.resx">
       <DependentUpon>SuaNguyenLieu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ThanhToan\ChiTietHoaDon.resx">
+      <DependentUpon>ChiTietHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ThanhToan\DatBan.resx">
       <DependentUpon>DatBan.cs</DependentUpon>
     </EmbeddedResource>
@@ -169,6 +178,9 @@
       <Project>{ef09d7da-5c1f-4c34-a8d7-10e2b3447cf0}</Project>
       <Name>DTO</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BaoCaoDoanhThu\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -22,3 +22,4 @@ D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.M
 D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.NhanVien.SuaNhanVien.resources
 D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.ThanhToan.DatBan.resources
 D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.ThanhToan.LapHoaDon.resources
+D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.ThanhToan.ChiTietHoaDon.resources

@@ -15,6 +15,7 @@ namespace GUI.MonAn
     public partial class QuanLyMonAn : Form
     {
         private MonAnBUS maBUS;
+        private DSNguyenLieuBUS dsnlBUS;
         public QuanLyMonAn()
         {
             InitializeComponent();
@@ -61,6 +62,7 @@ namespace GUI.MonAn
 
         private void MonAn_Load(object sender, EventArgs e)
         {
+            dsnlBUS = new DSNguyenLieuBUS();
             maBUS = new MonAnBUS();
             this.loadData_Vao_GridView();
             clear();
@@ -175,8 +177,9 @@ namespace GUI.MonAn
                 MonAnDTO ma = (MonAnDTO)dsmonan.Rows[currentRowIndex].DataBoundItem;
                 if (ma != null)
                 {
-                    bool kq = maBUS.Xoa(ma);
-                    if (kq == false)
+                    bool kq1 = dsnlBUS.XoatheoMA(ma.mama);
+                    bool kq2 = maBUS.Xoa(ma);
+                    if (!kq1 && !kq2)
                         MessageBox.Show("Xóa món ăn thất bại. Vui lòng kiểm tra lại dũ liệu");
                     else
                     {

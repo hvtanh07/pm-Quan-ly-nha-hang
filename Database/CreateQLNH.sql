@@ -59,7 +59,6 @@ CREATE TABLE [dbo].[tblMonAn]
 	[tenMonAn]	nvarchar(50) NOT NULL,	
 	[dongia] int NOT NULL,
 )	
-
 CREATE TABLE [dbo].[tblDSNguyenLieu]
 (	
 	[maNguyenLieu] nvarchar(10) NOT NULL,
@@ -88,7 +87,6 @@ CREATE TABLE [dbo].[tblhoaDon]
 	--FOREIGN KEY (mathuNgan) REFERENCES tblthuNgan(mathuNgan),
 	FOREIGN KEY (soban) REFERENCES tblBan(soban)
 )
---INSERT INTO [tblhoaDon] ([mahoaDon], [soban], [tongTien], [ngayThanhToan], [mathuNgan]) VALUES ('hd1', 1, 12, '12/12/1999', 'nv1')
 CREATE TABLE [dbo].[tblDSMonAn]
 (	
 	[maMonAn] nvarchar(10) NOT NULL,
@@ -97,8 +95,7 @@ CREATE TABLE [dbo].[tblDSMonAn]
 	FOREIGN KEY (maMonAn) REFERENCES tblMonAn(maMonAn),
 	FOREIGN KEY (mahoaDon) REFERENCES tblhoaDon(mahoaDon)	
 )
---INSERT INTO [tblDSMonAn] ([maMonAn], [mahoaDon], [soLuong]) VALUES ('ma1', 'hd1', 12)
---DELETE FROM [tblDSMonAn]  WHERE [maMonAn]='ma1' AND [mahoaDon]='hd1'
+
 CREATE TABLE [dbo].[tblPhieubaocaoDoanhThu]
 (
 	[maPhieu] nvarchar(10) NOT NULL PRIMARY KEY,	

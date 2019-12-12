@@ -14,88 +14,43 @@ namespace GUI.ThanhToan
 {
     public partial class LapHoaDon : Form
     {
-        private MonAnBUS maBUS;
+        private hoaDonBUS hdBUS;
         private DSMonAnBUS dsmaBUS;
         private NhanVienBUS nvBUS;
         private BanDTO banDTO;
 
         // private DSMonAnBUS dsnlBUS;
         public LapHoaDon()
-        {           
+        {
+            dsmaBUS = new DSMonAnBUS();
+            hdBUS = new hoaDonBUS();
+            nvBUS = new NhanVienBUS();
             InitializeComponent();
+            loadDataVaoComboBox();
+            loadData_Vao_GridView();
         }
         public LapHoaDon(BanDTO ban)
         {
-            maBUS = new MonAnBUS();
             dsmaBUS = new DSMonAnBUS();
+            hdBUS = new hoaDonBUS();
             nvBUS = new NhanVienBUS();
-            banDTO = ban;           
+            banDTO = ban;
             InitializeComponent();
             loadDataVaoComboBox();
-            //loadData_Vao_GridView();
-        }
-        //them mon an
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (!testtext1())
-            {
-                return;
-            }
-            DSMonAnDTO dsnl = new DSMonAnDTO();
-            dsnl.mahd = textBox1.Text;
-            dsnl.mama = comboBox3.Text;
-            dsnl.soluong = int.Parse(textBox2.Text);          
-
-            //2. Kiểm tra data hợp lệ or not
-            if (dsmaBUS.TimMAtrongHD(dsnl.mahd, dsnl.mama))
-            {
-                System.Windows.MessageBox.Show("Thêm món ăn thất bại. món ăn đã tồn tại.");
-                return;
-            }
-            //3. Thêm vào DB
-            bool kq = dsmaBUS.Them(dsnl);
-            if (kq == false)
-                System.Windows.MessageBox.Show("Thêm món ăn thất bại. Vui lòng kiểm tra lại dũ liệu");
-            else
-            {
-                System.Windows.MessageBox.Show("Thêm món ăn thành công");
-            }
             loadData_Vao_GridView();
-            //Tinhtien();
         }
-
-        private bool testtext1()
+        private bool testtext()
         {
             if (string.IsNullOrWhiteSpace(textBox1.Text))
             {
                 System.Windows.MessageBox.Show("Bạn chưa nhập mã hóa đơn.", "Lỗi");
                 textBox1.Focus();
-                return false;
-            }          
-            if (string.IsNullOrWhiteSpace(textBox2.Text))
-            {
-                System.Windows.MessageBox.Show("Bạn chưa nhập số lượng món ăn.", "Lỗi");
-                textBox2.Focus();
                 return false;
             }
-            return true;
-        }
-        private bool testtext2()
-        {
-            if (string.IsNullOrWhiteSpace(textBox1.Text))
-            {
-                System.Windows.MessageBox.Show("Bạn chưa nhập mã hóa đơn.", "Lỗi");
-                textBox1.Focus();
-                return false;
-            }            
             return true;
         }
         private void loadDataVaoComboBox()
         {
-            List<string> mama = new List<string>();
-            mama = maBUS.Laymama();
-            comboBox3.DataSource = mama;
-
             List<string> mathungan = new List<string>();
             mathungan = nvBUS.Laymanv();
             comboBox2.DataSource = mathungan;
@@ -104,18 +59,47 @@ namespace GUI.ThanhToan
         //xac nhan 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (!testtext())
+            {
+                return;
+            }
+            hoaDonDTO ma = new hoaDonDTO();
+            ma.mahd = textBox1.Text;
+            ma.maTN = comboBox2.Text;
+            ma.ngayThanhToan = dateTimePicker1.Value;
+            ma.soban = int.Parse(textBox3.Text);
+            ma.tongtien = 0;
 
+            //2. Kiểm tra data hợp lệ or not
+
+            //3. Thêm vào DB
+            bool kq = hdBUS.Them(ma);
+            if (kq == false)
+                System.Windows.MessageBox.Show("Thêm hóa đơn thất bại. Vui lòng kiểm tra lại dũ liệu");
+            else
+            {
+                System.Windows.MessageBox.Show("Thêm hóa đơn thành công");
+                clear();
+                ChiTietHoaDon frm = new ChiTietHoaDon(ma);
+                frm.ShowDialog();
+                loadData_Vao_GridView();             
+            }
+            loadData_Vao_GridView();
+        }
+        private void clear (){
+            textBox1.Text = "";
         }
         private void LapHoaDon_Load(object sender, EventArgs e)
         {
             if (this.banDTO != null)
             {
-                label9.Text = banDTO.soban.ToString();               
+                textBox3.Text = banDTO.soban.ToString();
+                textBox3.ReadOnly = true;
             }
         }
         private void loadData_Vao_GridView()
         {
-            List<DSMonAnDTO> listMonAn = dsmaBUS.select(textBox1.Text);
+            List<hoaDonDTO> listMonAn = hdBUS.select();
 
             if (listMonAn == null)
             {
@@ -131,16 +115,34 @@ namespace GUI.ThanhToan
             dataGridView1.DataSource = listMonAn;
 
             DataGridViewTextBoxColumn clMA = new DataGridViewTextBoxColumn();
-            clMA.Name = "maMA";
-            clMA.HeaderText = "Mã món ăn";
-            clMA.DataPropertyName = "maMA";
+            clMA.Name = "maHD";
+            clMA.HeaderText = "Mã hóa đơn";
+            clMA.DataPropertyName = "maHD";
             dataGridView1.Columns.Add(clMA);
 
-            DataGridViewTextBoxColumn clSoLuong = new DataGridViewTextBoxColumn();
-            clSoLuong.Name = "soLuong";
-            clSoLuong.HeaderText = "Số lượng";
-            clSoLuong.DataPropertyName = "soLuong";
-            dataGridView1.Columns.Add(clSoLuong);
+            DataGridViewTextBoxColumn clSoBan = new DataGridViewTextBoxColumn();
+            clSoBan.Name = "soBan";
+            clSoBan.HeaderText = "Số bàn";
+            clSoBan.DataPropertyName = "soBan";
+            dataGridView1.Columns.Add(clSoBan);
+
+            DataGridViewTextBoxColumn cltongTien = new DataGridViewTextBoxColumn();
+            cltongTien.Name = "tongTien";
+            cltongTien.HeaderText = "Tổng tiền";
+            cltongTien.DataPropertyName = "tongTien";
+            dataGridView1.Columns.Add(cltongTien);
+
+            DataGridViewTextBoxColumn clpaydate = new DataGridViewTextBoxColumn();
+            clpaydate.Name = "ngayTT";
+            clpaydate.HeaderText = "Ngày thanh toán";
+            clpaydate.DataPropertyName = "ngayTT";
+            dataGridView1.Columns.Add(clpaydate);
+
+            DataGridViewTextBoxColumn clMaTN = new DataGridViewTextBoxColumn();
+            clMaTN.Name = "maTN";
+            clMaTN.HeaderText = "Mã thu ngân";
+            clMaTN.DataPropertyName = "maTN";
+            dataGridView1.Columns.Add(clMaTN);
 
             CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataGridView1.DataSource];
             myCurrencyManager.Refresh();
@@ -152,18 +154,41 @@ namespace GUI.ThanhToan
             //'Verify that indexing OK
             if (-1 < currentRowIndex && currentRowIndex < dataGridView1.RowCount)
             {
-                DSMonAnDTO dsnl = (DSMonAnDTO)dataGridView1.Rows[currentRowIndex].DataBoundItem;
+                hoaDonDTO dsnl = (hoaDonDTO)dataGridView1.Rows[currentRowIndex].DataBoundItem;
                 if (dsnl != null)
                 {
-                    bool kq = dsmaBUS.Xoa(dsnl);
-                    if (kq == false)
-                        MessageBox.Show("Xóa món ăn thất bại. Vui lòng kiểm tra lại dũ liệu");
+                    bool kq2 = dsmaBUS.XoatheoHD(dsnl.mahd);
+                    bool kq1 = hdBUS.Xoa(dsnl);
+                    if (!kq1 && !kq2)
+                        MessageBox.Show("Xóa hóa đơn thất bại. Vui lòng kiểm tra lại dũ liệu");
                     else
                     {
-                        MessageBox.Show("Xóa món ăn thành công");
+                        MessageBox.Show("Xóa hóa đơn thành công");
                         loadData_Vao_GridView();
                         //Tinhtien();
                     }
+                }
+            }
+        }
+        //search
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void xemChiTiếtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int currentRowIndex = dataGridView1.CurrentCellAddress.Y;// 'current row selected
+
+            //'Verify that indexing OK
+            if (-1 < currentRowIndex && currentRowIndex < dataGridView1.RowCount)
+            {
+                hoaDonDTO ma = (hoaDonDTO)dataGridView1.Rows[currentRowIndex].DataBoundItem;
+                if (ma != null)
+                {
+                    ChiTietHoaDon frm = new ChiTietHoaDon(ma);
+                    frm.ShowDialog();
+                    loadData_Vao_GridView();
                 }
             }
         }

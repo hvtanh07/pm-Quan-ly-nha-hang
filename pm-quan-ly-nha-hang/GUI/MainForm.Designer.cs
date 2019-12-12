@@ -36,6 +36,7 @@
             this.mónĂnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.giaoDichToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.datBanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lậpHóaĐơnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -93,7 +94,8 @@
             // giaoDichToolStripMenuItem
             // 
             this.giaoDichToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.datBanToolStripMenuItem});
+            this.datBanToolStripMenuItem,
+            this.lậpHóaĐơnToolStripMenuItem});
             this.giaoDichToolStripMenuItem.Name = "giaoDichToolStripMenuItem";
             this.giaoDichToolStripMenuItem.Size = new System.Drawing.Size(86, 24);
             this.giaoDichToolStripMenuItem.Text = "Giao dich";
@@ -104,6 +106,13 @@
             this.datBanToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.datBanToolStripMenuItem.Text = "Dat ban";
             this.datBanToolStripMenuItem.Click += new System.EventHandler(this.datBanToolStripMenuItem_Click);
+            // 
+            // lậpHóaĐơnToolStripMenuItem
+            // 
+            this.lậpHóaĐơnToolStripMenuItem.Name = "lậpHóaĐơnToolStripMenuItem";
+            this.lậpHóaĐơnToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.lậpHóaĐơnToolStripMenuItem.Text = "Lập hóa đơn";
+            this.lậpHóaĐơnToolStripMenuItem.Click += new System.EventHandler(this.lậpHóaĐơnToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -132,5 +141,6 @@
         private System.Windows.Forms.ToolStripMenuItem mónĂnToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem giaoDichToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem datBanToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lậpHóaĐơnToolStripMenuItem;
     }
 }
