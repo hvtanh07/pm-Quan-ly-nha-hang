@@ -1897,7 +1897,7 @@ namespace DAL
         {
             string query = string.Empty;
             query += " SELECT [mahoaDon], [soban], [tongTien], [ngayThanhToan], [mathuNgan]";
-            query += " FROM [tblMonAn]";
+            query += " FROM [tblhoaDon]";
             query += " WHERE ([mahoaDon] LIKE CONCAT('%',@sKeyword,'%'))";
             query += " OR ([soban] LIKE CONCAT('%',@sKeyword,'%'))";
             query += " OR ([tongTien] LIKE CONCAT('%',@sKeyword,'%'))";
@@ -1927,7 +1927,7 @@ namespace DAL
                                 hd.mahd = reader["mahoaDon"].ToString();
                                 hd.soban = int.Parse(reader["soban"].ToString());
                                 hd.tongtien = int.Parse(reader["tongTien"].ToString());
-                                hd.ngayThanhToan = Convert.ToDateTime(reader["HSD"].ToString());
+                                hd.ngayThanhToan = Convert.ToDateTime(reader["ngayThanhToan"].ToString());
                                 hd.maTN = reader["mathuNgan"].ToString();
                                 listhoaDon.Add(hd);
                             }

@@ -39,12 +39,12 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.xóaMónĂnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.xemChiTiếtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtKeyword = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.xemChiTiếtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -128,14 +128,21 @@
             this.xóaMónĂnToolStripMenuItem,
             this.xemChiTiếtToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(211, 80);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(164, 52);
             // 
             // xóaMónĂnToolStripMenuItem
             // 
             this.xóaMónĂnToolStripMenuItem.Name = "xóaMónĂnToolStripMenuItem";
-            this.xóaMónĂnToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.xóaMónĂnToolStripMenuItem.Size = new System.Drawing.Size(163, 24);
             this.xóaMónĂnToolStripMenuItem.Text = "Xóa hóa đơn";
             this.xóaMónĂnToolStripMenuItem.Click += new System.EventHandler(this.xóaMónĂnToolStripMenuItem_Click);
+            // 
+            // xemChiTiếtToolStripMenuItem
+            // 
+            this.xemChiTiếtToolStripMenuItem.Name = "xemChiTiếtToolStripMenuItem";
+            this.xemChiTiếtToolStripMenuItem.Size = new System.Drawing.Size(163, 24);
+            this.xemChiTiếtToolStripMenuItem.Text = "Xem chi tiết";
+            this.xemChiTiếtToolStripMenuItem.Click += new System.EventHandler(this.xemChiTiếtToolStripMenuItem_Click);
             // 
             // button2
             // 
@@ -172,12 +179,12 @@
             this.textBox3.Size = new System.Drawing.Size(121, 22);
             this.textBox3.TabIndex = 15;
             // 
-            // textBox2
+            // txtKeyword
             // 
-            this.textBox2.Location = new System.Drawing.Point(234, 217);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(249, 22);
-            this.textBox2.TabIndex = 18;
+            this.txtKeyword.Location = new System.Drawing.Point(234, 217);
+            this.txtKeyword.Name = "txtKeyword";
+            this.txtKeyword.Size = new System.Drawing.Size(249, 22);
+            this.txtKeyword.TabIndex = 18;
             // 
             // button1
             // 
@@ -189,20 +196,13 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // xemChiTiếtToolStripMenuItem
-            // 
-            this.xemChiTiếtToolStripMenuItem.Name = "xemChiTiếtToolStripMenuItem";
-            this.xemChiTiếtToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
-            this.xemChiTiếtToolStripMenuItem.Text = "Xem chi tiết";
-            this.xemChiTiếtToolStripMenuItem.Click += new System.EventHandler(this.xemChiTiếtToolStripMenuItem_Click);
-            // 
             // LapHoaDon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 491);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtKeyword);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.dataGridView1);
             this.Name = "LapHoaDon";
@@ -231,7 +231,7 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem xóaMónĂnToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtKeyword;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.ToolStripMenuItem xemChiTiếtToolStripMenuItem;

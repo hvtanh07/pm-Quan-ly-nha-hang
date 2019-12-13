@@ -147,6 +147,55 @@ namespace GUI.ThanhToan
             CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataGridView1.DataSource];
             myCurrencyManager.Refresh();
         }
+        private void loadData_Vao_GridView(List<hoaDonDTO> listhd)
+        {
+            if (listhd == null)
+            {
+                MessageBox.Show("Có lỗi khi lấy nhân viên từ DB");
+                return;
+            }
+
+            dataGridView1.Columns.Clear();
+            dataGridView1.DataSource = null;
+
+            dataGridView1.AutoGenerateColumns = false;
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.DataSource = listhd;
+
+            DataGridViewTextBoxColumn clMA = new DataGridViewTextBoxColumn();
+            clMA.Name = "maHD";
+            clMA.HeaderText = "Mã hóa đơn";
+            clMA.DataPropertyName = "maHD";
+            dataGridView1.Columns.Add(clMA);
+
+            DataGridViewTextBoxColumn clSoBan = new DataGridViewTextBoxColumn();
+            clSoBan.Name = "soBan";
+            clSoBan.HeaderText = "Số bàn";
+            clSoBan.DataPropertyName = "soBan";
+            dataGridView1.Columns.Add(clSoBan);
+
+            DataGridViewTextBoxColumn cltongTien = new DataGridViewTextBoxColumn();
+            cltongTien.Name = "tongTien";
+            cltongTien.HeaderText = "Tổng tiền";
+            cltongTien.DataPropertyName = "tongTien";
+            dataGridView1.Columns.Add(cltongTien);
+
+            DataGridViewTextBoxColumn clpaydate = new DataGridViewTextBoxColumn();
+            clpaydate.Name = "ngayTT";
+            clpaydate.HeaderText = "Ngày thanh toán";
+            clpaydate.DataPropertyName = "ngayTT";
+            dataGridView1.Columns.Add(clpaydate);
+
+            DataGridViewTextBoxColumn clMaTN = new DataGridViewTextBoxColumn();
+            clMaTN.Name = "maTN";
+            clMaTN.HeaderText = "Mã thu ngân";
+            clMaTN.DataPropertyName = "maTN";
+            dataGridView1.Columns.Add(clMaTN);
+
+            CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataGridView1.DataSource];
+            myCurrencyManager.Refresh();
+
+        }
         //xoa mon an
         private void xóaMónĂnToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -173,7 +222,17 @@ namespace GUI.ThanhToan
         //search
         private void button1_Click(object sender, EventArgs e)
         {
-
+            string sKeyword = txtKeyword.Text.Trim();
+            if (sKeyword == null || sKeyword == string.Empty || sKeyword.Length == 0) // tìm tất cả
+            {
+                List<hoaDonDTO> listhd = hdBUS.select();
+                this.loadData_Vao_GridView(listhd);
+            }
+            else
+            {
+                List<hoaDonDTO> listhd = hdBUS.selectByKeyWord(sKeyword);
+                this.loadData_Vao_GridView(listhd);
+            }
         }
 
         private void xemChiTiếtToolStripMenuItem_Click(object sender, EventArgs e)
