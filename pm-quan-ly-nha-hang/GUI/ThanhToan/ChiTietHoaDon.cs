@@ -18,6 +18,8 @@ namespace GUI.ThanhToan
         private DSMonAnBUS dsmaBUS;
         private MonAnBUS maBUS;
         private hoaDonBUS hdBUS;
+        private QuyDinhBUS qdBUS;
+        private QuiDinhDTO quydinh;
         private int GiaTien;
 
         public ChiTietHoaDon()
@@ -29,6 +31,8 @@ namespace GUI.ThanhToan
             maBUS = new MonAnBUS();
             dsmaBUS = new DSMonAnBUS();
             hdBUS = new hoaDonBUS();
+            qdBUS = new QuyDinhBUS();
+            quydinh = qdBUS.Laydulieu();
             this.hoadon = hoadon;            
             InitializeComponent();
             loadDataVaoComboBox();
@@ -42,6 +46,11 @@ namespace GUI.ThanhToan
                 int a = int.Parse(dataGridView1[1, i].Value.ToString());
                 int b = maBUS.Laygia(dataGridView1[0, i].Value.ToString());
                 GiaTien += a * b; 
+            }
+            //tính tiền giam gia
+            if(GiaTien > quydinh.Maxtogetsell)
+            {
+                GiaTien -= quydinh.Sellprice;
             }
             textBox3.Text = GiaTien.ToString();//sau này công thêm phần trăm
         }
@@ -79,7 +88,7 @@ namespace GUI.ThanhToan
         {
             //1. Map data from GUI
             hoaDonDTO ma = new hoaDonDTO();
-            ma.mahd = label6.Text;
+            ma.mahd = textBox1.Text;
             ma.tongtien = int.Parse(textBox3.Text);            
             //2. Kiểm tra data hợp lệ or not
 

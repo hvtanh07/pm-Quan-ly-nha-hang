@@ -9,7 +9,7 @@ namespace DTO
         private DateTime Birth;
         private int luongCoBan;
         private string chucVu;
-       
+
         public string manv { get => manhanVien; set => manhanVien = value; }
         public string tennv { get => tennhanVien; set => tennhanVien = value; }
         public string chucvu { get => chucVu; set => chucVu = value; }
@@ -137,5 +137,21 @@ namespace DTO
         public string maphieuBCDT { get => maPhieuBCDT; set => maPhieuBCDT = value; }
         public string mahd { get => maHD; set => maHD = value; }
         public int tongtien { get => Tongtien; set => Tongtien = value; }
+    }
+    public class QuiDinhDTO
+    {
+        private int getkey;
+        private int maxtogetsell;
+        private int sellprice;
+        private int percentnadd;
+        private int luongtosum;
+        private int workday;
+
+        public int Getkey { get => getkey; set => getkey = value; }
+        public int Maxtogetsell { get => maxtogetsell; set => maxtogetsell = value; }
+        public int Sellprice { get => sellprice; set => sellprice = value; }
+        public int Percentnadd { get => percentnadd; set => percentnadd = value; }
+        public int Luongtosum { get => luongtosum; set => luongtosum = value; }
+        public int Workday { get => workday; set => workday = value; }
     }
 }

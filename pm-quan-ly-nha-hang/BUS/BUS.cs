@@ -51,6 +51,10 @@ namespace BUS
         {
             return nlDAL.Laygiatien(ma);
         }
+        public int Laytonkho(string manl)
+        {
+            return nlDAL.Laytonkho(manl);
+        }
     }
     public class MonAnBUS
     {
@@ -398,6 +402,23 @@ namespace BUS
         public bool checkBookStatus(int soban, System.DateTime checkdate)
         {
             return ctbcdtDAL.checkBookStatus(soban, checkdate);
+        }
+    }
+    public class QuyDinhBUS
+    {
+        private QuiDinhDAL qdDAL;
+        public QuyDinhBUS()
+        {
+            qdDAL = new QuiDinhDAL();
+        }
+        public bool Sua(QuiDinhDTO QD)
+        {
+            bool re = qdDAL.Sua(QD);
+            return re;
+        }
+        public QuiDinhDTO Laydulieu()
+        {
+            return qdDAL.Laydulieu();
         }
     }
 }

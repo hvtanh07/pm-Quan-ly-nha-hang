@@ -3,6 +3,7 @@ using GUI.NhanVien;
 using GUI.MonAn;
 using GUI.ThanhToan;
 using GUI.BaoCaoDoanhThu;
+using GUI.QuiDinh;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -59,6 +60,13 @@ namespace GUI
         private void báoCáoThángToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CTBaoCaoDoanhThu frm = new CTBaoCaoDoanhThu();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void quiĐỊnhToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            QuanLyQuiDinh frm = new QuanLyQuiDinh();
             frm.MdiParent = this;
             frm.Show();
         }

@@ -54,10 +54,10 @@ namespace GUI
             //3. Thêm vào DB
             bool kq = nlBUS.Sua(nl);
             if (kq == false)
-                MessageBox.Show("Sửa Kiểu nấu thất bại. Vui lòng kiểm tra lại dũ liệu");
+                MessageBox.Show("Sửa nguyên liệu thất bại. Vui lòng kiểm tra lại dũ liệu");
             else
             {
-                MessageBox.Show("Sửa Kiểu nấu thành công");
+                MessageBox.Show("Sửa nguyên liệu thành công");
                 this.Close();
             }
         }

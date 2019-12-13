@@ -18,7 +18,9 @@ namespace GUI.MonAn
         private MonAnBUS maBUS;
         private NguyenLieuBUS nlBUS;
         private DSNguyenLieuBUS dsnlBUS;
-        private int GiaTien;
+        private QuyDinhBUS qdBUS;
+        private QuiDinhDTO quydinh;
+        private float GiaTien;
 
         private MonAnDTO maDTO;
         public ChiTietMonAn()
@@ -30,6 +32,8 @@ namespace GUI.MonAn
             maBUS = new MonAnBUS();
             nlBUS = new NguyenLieuBUS();
             dsnlBUS = new DSNguyenLieuBUS();
+            qdBUS = new QuyDinhBUS();
+            quydinh = qdBUS.Laydulieu();
             this.maDTO = ma;
             GiaTien = ma.dongia;
             InitializeComponent();
@@ -43,6 +47,9 @@ namespace GUI.MonAn
             {
                 GiaTien += int.Parse(dataGridView1[1, i].Value.ToString())* nlBUS.Laygiatien(dataGridView1[0, i].Value.ToString());
             }
+            //tinh phan tram loi 
+            GiaTien += GiaTien*((float)quydinh.Percentnadd/100);
+
             textBox3.Text = GiaTien.ToString();//sau này công thêm phần trăm
         }
         //them nguyen lieu
@@ -63,10 +70,16 @@ namespace GUI.MonAn
                 System.Windows.MessageBox.Show("Thêm nguyên liệu thất bại. nguyên liệu đã tồn tại.");
                 return;
             }
+            //kiem tra luong ton kho
+            if(nlBUS.Laytonkho(dsnl.manl)< dsnl.soluong)
+            {
+                System.Windows.MessageBox.Show("Thêm nguyên liệu thất bại. nguyên liệu trong kho không đủ.");
+                return;
+            }
             //3. Thêm vào DB
             bool kq = dsnlBUS.Them(dsnl);
             if (kq == false)
-                System.Windows.MessageBox.Show("Thêm nguyên liệu thất bại. Vui lòng kiểm tra lại dũ liệu");
+                System.Windows.MessageBox.Show("Thêm nguyên liệu thất bại. Vui lòng kiểm tra lại dữ liệu");
             else
             {
                 System.Windows.MessageBox.Show("Thêm nguyên liệu thành công");

@@ -26,24 +26,11 @@ CREATE TABLE [dbo].[tblnhanVien]
 	[luongCoBan] int NOT NULL,
 	[machucVu] nvarchar(10) NOT NULL
 )
-
-CREATE TABLE [dbo].[tblphucVu]
+CREATE TABLE [dbo].[tbltaiKhoan]
 (	
-	[maphucVu] nvarchar(10) NOT NULL PRIMARY KEY,
-	[soBanDaPhucVu] int NOT NULL,
-	[thuongTheoBan]	int NOT NULL,
-)
-CREATE TABLE [dbo].[tblquanLy]
-(	
-	[maquanLy] nvarchar(10) NOT NULL PRIMARY KEY,
-	[kpi] int NOT NULL,
-	[luongDatkpi]	int NOT NULL
-)
-CREATE TABLE [dbo].[tblthuNgan]
-(	
-	[mathuNgan] nvarchar(10) NOT NULL PRIMARY KEY,
-	[gioLam] int NOT NULL,
-	[thuongGioLam] int NOT NULL
+	[username] nvarchar(20) NOT NULL PRIMARY KEY,
+	[password] nvarchar(20) NOT NULL,
+	[type]	nvarchar(10) NOT NULL,
 )
 CREATE TABLE [dbo].[tblNguyenLieu]
 (	
@@ -114,12 +101,12 @@ CREATE TABLE [dbo].[tblChitietPhieubaocaoDT]
 CREATE TABLE [dbo].[tblQuiDinh]
 (
 	[getkey] int NOT NULL primary key,
-	[maxloaidl]    int NOT NULL,	
-	[soluongmathang]	int NOT NULL,
-	[soluongdvt]	int NOT NULL,	
-	[maxdl]	int NOT NULL,--max so dl trong 1 quan
+	[maxtogetsell]    int NOT NULL,	
+	[sellprice]	int NOT NULL,
+	[percentnadd]	int NOT NULL,	
+	[luongtosum]	int NOT NULL,
+	[workday] int NOT NULL
 )	
-
 --drop table tblnhanVien
 --drop table tblNguyenLieu
 --drop table tblMonAn
@@ -175,5 +162,6 @@ INSERT INTO [tblhoaDon] ([mahoaDon], [soban], [tongTien], [ngayThanhToan], [math
 INSERT INTO [tblhoaDon] ([mahoaDon], [soban], [tongTien], [ngayThanhToan], [mathuNgan]) VALUES ('hd4',2,73,'13/12/2019','nv1')
 INSERT INTO [tblhoaDon] ([mahoaDon], [soban], [tongTien], [ngayThanhToan], [mathuNgan]) VALUES ('hd5',1,103,'13/12/2019','nv1')
 INSERT INTO [tblhoaDon] ([mahoaDon], [soban], [tongTien], [ngayThanhToan], [mathuNgan]) VALUES ('hd6',4,203,'12/12/2019','nv1')
+INSERT INTO [tblQuiDinh] ([getkey], [maxtogetsell], [sellprice], [percentnadd], [luongtosum], [workday]) VALUES (1,1000,100,15,5,5)
 ----TESTING----
 

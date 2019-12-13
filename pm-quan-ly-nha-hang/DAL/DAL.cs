@@ -301,6 +301,46 @@ namespace DAL
             }
             return dsmanl;
         }
+        public int Laytonkho(string manl)
+        {
+            int kho = 0;
+            string query = string.Empty;
+            query += " SELECT [trongKho]";
+            query += " FROM [tblNguyenLieu]";
+            query += " WHERE [tblNguyenLieu]";
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@maNguyenLieu", manl);
+                    try
+                    {
+                        con.Open();
+                        SqlDataReader reader = null;
+                        reader = cmd.ExecuteReader();
+                        if (reader.HasRows == true)
+                        {
+                            while (reader.Read())
+                            {
+                                kho = int.Parse(reader["trongKho"].ToString());
+                            }
+                        }
+
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return kho;
+                    }
+                }
+            }
+            return kho;
+        }
     }
     public class MonAnDAL
     {
@@ -580,7 +620,7 @@ namespace DAL
                 }
             }
             return result;
-        }
+        }       
     }
     public class DSNguyenLieuDAL
     {
@@ -2294,6 +2334,92 @@ namespace DAL
                 }
             }
             return dsban;
+        }
+    }
+    public class QuiDinhDAL
+    {
+        private string connectionString;
+
+        public QuiDinhDAL()
+        {
+            connectionString = ConfigurationManager.AppSettings["ConnectionString"];
+        }
+
+        public string ConnectionString { get => connectionString; set => connectionString = value; }
+
+        public bool Sua(QuiDinhDTO QD)//chỉnh sửa qui định
+        {
+            string query = string.Empty;
+            query += " UPDATE tblQuiDinh SET [maxtogetsell] = @maxtogetsell, [sellprice] = @sellprice, [percentnadd] = @percentnadd, [luongtosum] = @luongtosum, [workday] = @workday WHERE [getkey]= 1";
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@maxtogetsell", QD.Maxtogetsell);
+                    cmd.Parameters.AddWithValue("@sellprice", QD.Sellprice);
+                    cmd.Parameters.AddWithValue("@percentnadd", QD.Percentnadd);
+                    cmd.Parameters.AddWithValue("@luongtosum", QD.Luongtosum);
+                    cmd.Parameters.AddWithValue("@workday", QD.Workday);
+                    try
+                    {
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+        public QuiDinhDTO Laydulieu()//Lấy dữ liệu
+        {
+            QuiDinhDTO re = new QuiDinhDTO();
+            string query = string.Empty;
+            query += " SELECT [maxtogetsell], [sellprice], [percentnadd], [luongtosum], [workday]";
+            query += " FROM [tblQuiDinh]";
+            //query += " WHERE [getkey] LIKE 1";
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    try
+                    {
+                        con.Open();
+                        SqlDataReader reader = null;
+                        reader = cmd.ExecuteReader();
+                        if (reader.HasRows == true)
+                        {
+                            reader.Read();
+                            re.Maxtogetsell = int.Parse(reader["maxtogetsell"].ToString());
+                            re.Sellprice = int.Parse(reader["sellprice"].ToString());
+                            re.Percentnadd = int.Parse(reader["percentnadd"].ToString());
+                            re.Luongtosum = int.Parse(reader["luongtosum"].ToString());
+                            re.Workday = int.Parse(reader["workday"].ToString());
+                        }
+
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return null;
+                    }
+                }
+            }
+            return re;
         }
     }
 }
