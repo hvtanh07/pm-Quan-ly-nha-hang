@@ -26,6 +26,7 @@ CREATE TABLE [dbo].[tblnhanVien]
 	[luongCoBan] int NOT NULL,
 	[machucVu] nvarchar(10) NOT NULL
 )
+
 CREATE TABLE [dbo].[tblphucVu]
 (	
 	[maphucVu] nvarchar(10) NOT NULL PRIMARY KEY,
@@ -95,7 +96,6 @@ CREATE TABLE [dbo].[tblDSMonAn]
 	FOREIGN KEY (maMonAn) REFERENCES tblMonAn(maMonAn),
 	FOREIGN KEY (mahoaDon) REFERENCES tblhoaDon(mahoaDon)	
 )
-
 CREATE TABLE [dbo].[tblPhieubaocaoDoanhThu]
 (
 	[maPhieu] nvarchar(10) NOT NULL PRIMARY KEY,	
@@ -106,6 +106,7 @@ CREATE TABLE [dbo].[tblChitietPhieubaocaoDT]
 (
 	[maPhieu] nvarchar(10) NOT NULL,	
 	[mahoaDon] nvarchar(10) NOT NULL,
+	[tongTien] int NOT NULL,
 	FOREIGN KEY (maPhieu) REFERENCES tblPhieubaocaoDoanhThu(maPhieu),
 	FOREIGN KEY (mahoaDon) REFERENCES tblhoaDon(mahoaDon)
 )
@@ -139,5 +140,40 @@ INSERT INTO tblBan ([soban]) VALUES (1)
 INSERT INTO tblBan ([soban]) VALUES (2)
 INSERT INTO tblBan ([soban]) VALUES (3)
 INSERT INTO tblBan ([soban]) VALUES (4)
+INSERT INTO [tblnhanVien] ([manhanVien], [tenNhanVien], [birth], [luongCoBan], [machucVu]) VALUES ('nv1','Nam','05/12/1999',133,'cv1')
+INSERT INTO [tblnhanVien] ([manhanVien], [tenNhanVien], [birth], [luongCoBan], [machucVu]) VALUES ('nv2','Tuan','24/1/1999',133,'cv1')
+INSERT INTO [tblnhanVien] ([manhanVien], [tenNhanVien], [birth], [luongCoBan], [machucVu]) VALUES ('nv3','Hung','5/3/1999',133,'cv1')
+INSERT INTO [tblnhanVien] ([manhanVien], [tenNhanVien], [birth], [luongCoBan], [machucVu]) VALUES ('nv4','Quang','15/7/1999',133,'cv1')
+INSERT INTO [tblnhanVien] ([manhanVien], [tenNhanVien], [birth], [luongCoBan], [machucVu]) VALUES ('nv5','Dung','25/2/1999',133,'cv1')
+INSERT INTO [tblNguyenLieu] ([maNguyenLieu], [tenNguyenLieu], [dongia], [donVi], [trongKho], [HSD]) VALUES ('nl1','Thit',12,'ky',5,'12/12/2019')
+INSERT INTO [tblNguyenLieu] ([maNguyenLieu], [tenNguyenLieu], [dongia], [donVi], [trongKho], [HSD]) VALUES ('nl2','Ca',13,'ky',6,'12/12/2019')
+INSERT INTO [tblNguyenLieu] ([maNguyenLieu], [tenNguyenLieu], [dongia], [donVi], [trongKho], [HSD]) VALUES ('nl3','Trung',14,'qua',13,'12/12/2019')
+INSERT INTO [tblNguyenLieu] ([maNguyenLieu], [tenNguyenLieu], [dongia], [donVi], [trongKho], [HSD]) VALUES ('nl4','Sua',15,'lit',2,'12/12/2019')
+INSERT INTO [tblNguyenLieu] ([maNguyenLieu], [tenNguyenLieu], [dongia], [donVi], [trongKho], [HSD]) VALUES ('nl5','Rau',10,'bo',4,'12/12/2019')
+INSERT INTO [tblMonAn] ([maMonAn], [tenMonAn], [dongia]) VALUES ('ma1', 'Banh gato', 100)
+INSERT INTO [tblMonAn] ([maMonAn], [tenMonAn], [dongia]) VALUES ('ma2', 'Ca chien', 80)
+INSERT INTO [tblMonAn] ([maMonAn], [tenMonAn], [dongia]) VALUES ('ma3', 'Trung chien', 50)
+INSERT INTO [tblMonAn] ([maMonAn], [tenMonAn], [dongia]) VALUES ('ma4', 'Banh bong lan', 60)
+INSERT INTO [tblMonAn] ([maMonAn], [tenMonAn], [dongia]) VALUES ('ma5', 'Canh', 70)
+INSERT INTO [tblDSNguyenLieu] ([maNguyenLieu], [maMonAn], [soLuong]) VALUES ('nl3','ma1',3)
+INSERT INTO [tblDSNguyenLieu] ([maNguyenLieu], [maMonAn], [soLuong]) VALUES ('nl4','ma1',1)
+INSERT INTO [tblDSNguyenLieu] ([maNguyenLieu], [maMonAn], [soLuong]) VALUES ('nl2','ma2',1)
+INSERT INTO [tblDSNguyenLieu] ([maNguyenLieu], [maMonAn], [soLuong]) VALUES ('nl5','ma2',1)
+INSERT INTO [tblDSNguyenLieu] ([maNguyenLieu], [maMonAn], [soLuong]) VALUES ('nl3','ma3',3)
+INSERT INTO [tblDSNguyenLieu] ([maNguyenLieu], [maMonAn], [soLuong]) VALUES ('nl3','ma4',3)
+INSERT INTO [tblDSNguyenLieu] ([maNguyenLieu], [maMonAn], [soLuong]) VALUES ('nl4','ma4',1)
+INSERT INTO [tblDSNguyenLieu] ([maNguyenLieu], [maMonAn], [soLuong]) VALUES ('nl5','ma5',1)
+INSERT INTO [tbldsBandadat] ([soban], [ngayDat]) VALUES (1,'12/1/2019')
+INSERT INTO [tbldsBandadat] ([soban], [ngayDat]) VALUES (2,'12/1/2019')
+INSERT INTO [tbldsBandadat] ([soban], [ngayDat]) VALUES (3,'12/1/2019')
+INSERT INTO [tbldsBandadat] ([soban], [ngayDat]) VALUES (2,'13/1/2019')
+INSERT INTO [tbldsBandadat] ([soban], [ngayDat]) VALUES (1,'13/1/2019')
+INSERT INTO [tbldsBandadat] ([soban], [ngayDat]) VALUES (4,'12/1/2019')
+INSERT INTO [tblhoaDon] ([mahoaDon], [soban], [tongTien], [ngayThanhToan], [mathuNgan]) VALUES ('hd1',1,123,'12/12/2019','nv1')
+INSERT INTO [tblhoaDon] ([mahoaDon], [soban], [tongTien], [ngayThanhToan], [mathuNgan]) VALUES ('hd2',2,100,'12/12/2019','nv1')
+INSERT INTO [tblhoaDon] ([mahoaDon], [soban], [tongTien], [ngayThanhToan], [mathuNgan]) VALUES ('hd3',3,124,'12/12/2019','nv1')
+INSERT INTO [tblhoaDon] ([mahoaDon], [soban], [tongTien], [ngayThanhToan], [mathuNgan]) VALUES ('hd4',2,73,'13/12/2019','nv1')
+INSERT INTO [tblhoaDon] ([mahoaDon], [soban], [tongTien], [ngayThanhToan], [mathuNgan]) VALUES ('hd5',1,103,'13/12/2019','nv1')
+INSERT INTO [tblhoaDon] ([mahoaDon], [soban], [tongTien], [ngayThanhToan], [mathuNgan]) VALUES ('hd6',4,203,'12/12/2019','nv1')
 ----TESTING----
 

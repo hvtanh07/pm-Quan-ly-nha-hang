@@ -286,6 +286,10 @@ namespace BUS
         {
             return ctbcdtDAL.selectByKeyWord (sKeyword, madt);
         }
+        public List<ChitietphieubcdtDTO> laydoanhthu(int thang, int nam)
+        {
+            return ctbcdtDAL.laydoanhthu(thang, nam);
+        }
     }
     public class hoaDonBUS
     {

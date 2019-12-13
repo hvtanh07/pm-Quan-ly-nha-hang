@@ -37,6 +37,8 @@
             this.giaoDichToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.datBanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lậpHóaĐơnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lậpBáoCáoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.báoCáoThángToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,7 +48,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.monAnToolStripMenuItem,
             this.nguyenLieuToolStripMenuItem,
-            this.giaoDichToolStripMenuItem});
+            this.giaoDichToolStripMenuItem,
+            this.lậpBáoCáoToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1105, 28);
@@ -103,16 +106,31 @@
             // datBanToolStripMenuItem
             // 
             this.datBanToolStripMenuItem.Name = "datBanToolStripMenuItem";
-            this.datBanToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.datBanToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
             this.datBanToolStripMenuItem.Text = "Dat ban";
             this.datBanToolStripMenuItem.Click += new System.EventHandler(this.datBanToolStripMenuItem_Click);
             // 
             // lậpHóaĐơnToolStripMenuItem
             // 
             this.lậpHóaĐơnToolStripMenuItem.Name = "lậpHóaĐơnToolStripMenuItem";
-            this.lậpHóaĐơnToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.lậpHóaĐơnToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
             this.lậpHóaĐơnToolStripMenuItem.Text = "Lập hóa đơn";
             this.lậpHóaĐơnToolStripMenuItem.Click += new System.EventHandler(this.lậpHóaĐơnToolStripMenuItem_Click);
+            // 
+            // lậpBáoCáoToolStripMenuItem
+            // 
+            this.lậpBáoCáoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.báoCáoThángToolStripMenuItem});
+            this.lậpBáoCáoToolStripMenuItem.Name = "lậpBáoCáoToolStripMenuItem";
+            this.lậpBáoCáoToolStripMenuItem.Size = new System.Drawing.Size(105, 24);
+            this.lậpBáoCáoToolStripMenuItem.Text = "Lập báo cáo";
+            // 
+            // báoCáoThángToolStripMenuItem
+            // 
+            this.báoCáoThángToolStripMenuItem.Name = "báoCáoThángToolStripMenuItem";
+            this.báoCáoThángToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.báoCáoThángToolStripMenuItem.Text = "Báo cáo tháng";
+            this.báoCáoThángToolStripMenuItem.Click += new System.EventHandler(this.báoCáoThángToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -142,5 +160,7 @@
         private System.Windows.Forms.ToolStripMenuItem giaoDichToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem datBanToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lậpHóaĐơnToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lậpBáoCáoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem báoCáoThángToolStripMenuItem;
     }
 }

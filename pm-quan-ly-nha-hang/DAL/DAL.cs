@@ -1484,8 +1484,8 @@ namespace DAL
         public bool Them(ChitietphieubcdtDTO CTDT)
         {
             string query = string.Empty;
-            query += "INSERT INTO [dbo].[tblChitietPhieubaocaoDT] ([maPhieu], [mahoaDon])";
-            query += "VALUES (@maPhieu,@mahoaDon)";
+            query += "INSERT INTO [dbo].[tblChitietPhieubaocaoDT] ([maPhieu], [mahoaDon], [tongTien])";
+            query += "VALUES (@maPhieu,@mahoaDon,@tongTien)";
             using (SqlConnection con = new SqlConnection(ConnectionString))
             {
 
@@ -1496,6 +1496,7 @@ namespace DAL
                     cmd.CommandText = query;
                     cmd.Parameters.AddWithValue("@maPhieu", CTDT.maphieuBCDT);
                     cmd.Parameters.AddWithValue("@mahoaDon", CTDT.mahd);
+                    cmd.Parameters.AddWithValue("@tongTien", CTDT.tongtien);
                     try
                     {
                         con.Open();
@@ -1575,7 +1576,7 @@ namespace DAL
         public List<ChitietphieubcdtDTO> select(string madt)
         {
             string query = string.Empty;
-            query += " SELECT [mahoaDon]";
+            query += " SELECT [mahoaDon], [tongTien]";
             query += " FROM [tblChitietPhieubaocaoDT]";
             query += " WHERE [maPhieu]=@maPhieu";
             List<ChitietphieubcdtDTO> listCTbcdt = new List<ChitietphieubcdtDTO>();
@@ -1600,10 +1601,56 @@ namespace DAL
                             {
                                 ChitietphieubcdtDTO CTDT = new ChitietphieubcdtDTO();
                                 CTDT.mahd = reader["mahoaDon"].ToString();
+                                CTDT.tongtien = int.Parse(reader["tongTien"].ToString());
                                 listCTbcdt.Add(CTDT);
                             }
                         }
 
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return null;
+                    }
+                }
+            }
+            return listCTbcdt;
+        }
+        public List<ChitietphieubcdtDTO> laydoanhthu(int thang, int nam)
+        {
+            string query = string.Empty;
+            query += " SELECT  [mahoaDon], [tongTien] ";
+            query += " FROM [tblhoaDon] ";
+            query += " WHERE  MONTH([ngayThanhToan])=@month AND YEAR ([ngayThanhToan]) = @year ";
+            List<ChitietphieubcdtDTO> listCTbcdt = new List<ChitietphieubcdtDTO>();
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@month", thang);
+                    cmd.Parameters.AddWithValue("@year", nam);
+                    try
+                    {
+                        con.Open();
+                        SqlDataReader reader = null;
+                        reader = cmd.ExecuteReader();
+                        if (reader.HasRows == true)
+                        {
+                            while (reader.Read())
+                            {
+                                ChitietphieubcdtDTO CTDT = new ChitietphieubcdtDTO();
+                                CTDT.mahd = reader["mahoaDon"].ToString();
+                                CTDT.tongtien = int.Parse(reader["tongTien"].ToString());
+                                listCTbcdt.Add(CTDT);
+                            }
+                        }
                         con.Close();
                         con.Dispose();
                     }

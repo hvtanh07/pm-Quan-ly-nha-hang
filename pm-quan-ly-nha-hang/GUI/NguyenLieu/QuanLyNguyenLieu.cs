@@ -178,39 +178,39 @@ namespace GUI
             dsnguyenlieu.DataSource = listNguyenLieu;
 
             DataGridViewTextBoxColumn clMa = new DataGridViewTextBoxColumn();
-            clMa.Name = "Ma";
+            clMa.Name = "maNL";
             clMa.HeaderText = "Mã nguyên liệu";
-            clMa.DataPropertyName = "Ma";
+            clMa.DataPropertyName = "maNL";
             dsnguyenlieu.Columns.Add(clMa);
 
             DataGridViewTextBoxColumn clTen = new DataGridViewTextBoxColumn();
-            clTen.Name = "Ten";
+            clTen.Name = "tenNL";
             clTen.HeaderText = "Tên nguyên liệu";
-            clTen.DataPropertyName = "Ten";
+            clTen.DataPropertyName = "tenNL";
             dsnguyenlieu.Columns.Add(clTen);
 
             DataGridViewTextBoxColumn clDonGia = new DataGridViewTextBoxColumn();
-            clDonGia.Name = "Mota";
-            clDonGia.HeaderText = "Mô tả";
-            clDonGia.DataPropertyName = "Mota";
+            clDonGia.Name = "Dongia";
+            clDonGia.HeaderText = "Đơn giá";
+            clDonGia.DataPropertyName = "Dongia";
             dsnguyenlieu.Columns.Add(clDonGia);
 
             DataGridViewTextBoxColumn clDonVi = new DataGridViewTextBoxColumn();
-            clDonVi.Name = "Ma";
-            clDonVi.HeaderText = "Mã Kiểu Nấu";
-            clDonVi.DataPropertyName = "Ma";
+            clDonVi.Name = "Donvi";
+            clDonVi.HeaderText = "Đơn vị";
+            clDonVi.DataPropertyName = "Donvi";
             dsnguyenlieu.Columns.Add(clDonVi);
 
             DataGridViewTextBoxColumn clKho = new DataGridViewTextBoxColumn();
-            clKho.Name = "Ten";
-            clKho.HeaderText = "Tên";
-            clKho.DataPropertyName = "Ten";
+            clKho.Name = "trongKho";
+            clKho.HeaderText = "Còn lại trong kho";
+            clKho.DataPropertyName = "trongKho";
             dsnguyenlieu.Columns.Add(clKho);
 
             DataGridViewTextBoxColumn clHSD = new DataGridViewTextBoxColumn();
-            clHSD.Name = "Mota";
-            clHSD.HeaderText = "Mô tả";
-            clHSD.DataPropertyName = "Mota";
+            clHSD.Name = "hsd";
+            clHSD.HeaderText = "Hạn sử dụng";
+            clHSD.DataPropertyName = "hsd";
             dsnguyenlieu.Columns.Add(clHSD);
 
             CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dsnguyenlieu.DataSource];

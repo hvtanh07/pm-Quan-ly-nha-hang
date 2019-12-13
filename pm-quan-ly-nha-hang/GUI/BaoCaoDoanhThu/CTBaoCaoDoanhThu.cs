@@ -12,14 +12,16 @@ using System.Windows.Forms;
 
 namespace GUI.BaoCaoDoanhThu
 {
-    public partial class BaoCaoDoanhThu : Form
+    public partial class CTBaoCaoDoanhThu : Form
     {
         PhieubaocaoDoanhThuBUS bcdtBUS;
         ChitietphieubcdtBUS ctbcdtBUS;
-        public BaoCaoDoanhThu()
+        
+        public CTBaoCaoDoanhThu()
         {           
             InitializeComponent();
         }
+        
         private void BaoCaoDoanhThu_Load(object sender, EventArgs e)
         {
             bcdtBUS = new PhieubaocaoDoanhThuBUS();
@@ -51,10 +53,7 @@ namespace GUI.BaoCaoDoanhThu
             {
                 MessageBox.Show("Thêm hồ sơ thành công");
                 textBox1.Text = "";
-            }
-            if (dt != null)
-            {
-                ChitietBaoCaoDoanhThu frm = new ChitietBaoCaoDoanhThu(dt);
+                ChitietBaoCaoDoanhThu frm = new ChitietBaoCaoDoanhThu(dt,true);
                 frm.ShowDialog();
             }
             loadData_Vao_GridView();
@@ -108,7 +107,7 @@ namespace GUI.BaoCaoDoanhThu
                 PhieubaocaoDoanhThuDTO ma = (PhieubaocaoDoanhThuDTO)dataGridView1.Rows[currentRowIndex].DataBoundItem;
                 if (ma != null)
                 {
-                    ChitietBaoCaoDoanhThu frm = new ChitietBaoCaoDoanhThu(ma);
+                    ChitietBaoCaoDoanhThu frm = new ChitietBaoCaoDoanhThu(ma,false);
                     frm.ShowDialog();
                     loadData_Vao_GridView();
                 }

@@ -132,8 +132,10 @@ namespace DTO
     {
         private string maPhieuBCDT;
         private string maHD;
+        private int Tongtien;
 
         public string maphieuBCDT { get => maPhieuBCDT; set => maPhieuBCDT = value; }
         public string mahd { get => maHD; set => maHD = value; }
+        public int tongtien { get => Tongtien; set => Tongtien = value; }
     }
 }

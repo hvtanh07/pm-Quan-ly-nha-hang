@@ -105,11 +105,11 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(339, 81);
+            this.button1.Location = new System.Drawing.Point(304, 73);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 35);
+            this.button1.Size = new System.Drawing.Size(108, 38);
             this.button1.TabIndex = 7;
-            this.button1.Text = "button1";
+            this.button1.Text = "Xác nhận";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -128,6 +128,7 @@
             this.Controls.Add(this.label1);
             this.Name = "ChitietBaoCaoDoanhThu";
             this.Text = "ChitietBaoCaoDoanhThu";
+            this.Load += new System.EventHandler(this.ChitietBaoCaoDoanhThu_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

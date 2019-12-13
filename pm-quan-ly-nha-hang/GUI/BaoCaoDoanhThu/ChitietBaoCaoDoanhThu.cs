@@ -17,73 +17,139 @@ namespace GUI.BaoCaoDoanhThu
         private PhieubaocaoDoanhThuDTO bcdt;
         private PhieubaocaoDoanhThuBUS bcdtBUS;
         private ChitietphieubcdtBUS ctbcdtBUS;
+        private Boolean xemornot;
+        private int GiaTien;
         public ChitietBaoCaoDoanhThu()
         {
             InitializeComponent();
         }
-        public ChitietBaoCaoDoanhThu(PhieubaocaoDoanhThuDTO bcdt)
+        public ChitietBaoCaoDoanhThu(PhieubaocaoDoanhThuDTO bcdt, Boolean watch)
         {
             this.bcdt = bcdt;
             bcdtBUS = new PhieubaocaoDoanhThuBUS();
             ctbcdtBUS = new ChitietphieubcdtBUS();
+            xemornot = watch;
             InitializeComponent();
+            if (watch) { 
+                loadData_Vao_GridView();
+            }
+            else
+            {
+                loadData_Vao_GridViewXem();
+                button1.Enabled = false;
+            }
+            Tinhtien();
         }
+        private void Tinhtien()
+        {
+            GiaTien = 0;//dataGridView1
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                GiaTien += int.Parse(dataGridView1[1, i].Value.ToString());
+            }
 
-        private void ChitietBaoCaoDoanhThu_Load(object sender, EventArgs e)
+            label4.Text = GiaTien.ToString();
+        }
+        private void ChitietBaoCaoDoanhThu_Load_1(object sender, EventArgs e)
         {
             if (bcdt != null)
             {
                 label6.Text = bcdt.maphieuBCDT;
                 label5.Text = bcdt.ngayLapPhieu.Month.ToString();
-                label4.Text = bcdt.tongdt.ToString();
-            }                     
-        }
+            }
+        }       
         private void loadData_Vao_GridView()
         {
-            List<ChitietphieubcdtDTO> listctpx = ctbcdtBUS.laydoanhthu(bcdtDTO.ngaylap.Month, bcdtDTO.ngaylap.Year);
+            List<ChitietphieubcdtDTO> listpbcdt = ctbcdtBUS.laydoanhthu(bcdt.ngayLapPhieu.Month, bcdt.ngayLapPhieu.Year);
 
-            if (listctpx == null)
+            if (listpbcdt == null)
             {
-                MessageBox.Show("Có lỗi khi lấy hồ sơ từ DB");
+                MessageBox.Show("Có lỗi khi lấy phiếu từ cơ sở dữ liệu");
                 return;
             }
-            dsDL.ItemsSource = listctpx;
+
+            dataGridView1.Columns.Clear();
+            dataGridView1.DataSource = null;
+
+            dataGridView1.AutoGenerateColumns = false;
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.DataSource = listpbcdt;
+
+            DataGridViewTextBoxColumn clMahd = new DataGridViewTextBoxColumn();
+            clMahd.Name = "maHD";
+            clMahd.HeaderText = "Mã hóa đơn";
+            clMahd.DataPropertyName = "maHD";
+            dataGridView1.Columns.Add(clMahd);
+
+            DataGridViewTextBoxColumn cltien = new DataGridViewTextBoxColumn();
+            cltien.Name = "tongtien";
+            cltien.HeaderText = "Tổng tiền";
+            cltien.DataPropertyName = "tongtien";
+            dataGridView1.Columns.Add(cltien);
+
+            CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataGridView1.DataSource];
+            myCurrencyManager.Refresh();         
         }
         private void loadData_Vao_GridViewXem()
         {
-            List<ChitietphieubcdtDTO> listctpx = ctbcdtBUS.select(Matxt.Text);
+            List<ChitietphieubcdtDTO> listpbcdt = ctbcdtBUS.select(bcdt.maphieuBCDT);
 
-            if (listctpx == null)
+            if (listpbcdt == null)
             {
-                MessageBox.Show("Có lỗi khi lấy hồ sơ từ DB");
+                MessageBox.Show("Có lỗi khi lấy phiếu từ cơ sở dữ liệu");
                 return;
             }
-            dsDL.ItemsSource = listctpx;
+
+            dataGridView1.Columns.Clear();
+            dataGridView1.DataSource = null;
+
+            dataGridView1.AutoGenerateColumns = false;
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.DataSource = listpbcdt;
+
+            DataGridViewTextBoxColumn clMahd = new DataGridViewTextBoxColumn();
+            clMahd.Name = "maHD";
+            clMahd.HeaderText = "Mã hóa đơn";
+            clMahd.DataPropertyName = "maHD";
+            dataGridView1.Columns.Add(clMahd);
+
+            DataGridViewTextBoxColumn cltien = new DataGridViewTextBoxColumn();
+            cltien.Name = "tongtien";
+            cltien.HeaderText = "Tổng tiền";
+            cltien.DataPropertyName = "tongtien";
+            dataGridView1.Columns.Add(cltien);
+
+            CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataGridView1.DataSource];
+            myCurrencyManager.Refresh();
         }
         private void button1_Click(object sender, EventArgs e)
         {
             bool check = true;
-            foreach (ChitietphieubcdtDTO row in dataGridView1.DataSource)
+            ChitietphieubcdtDTO ctbc = new ChitietphieubcdtDTO();
+            foreach (DataGridViewRow row in dataGridView1.Rows)
             {
-                row.madt = bcdtDTO.madt;
-                check = ctbcdtBUS.Them(row);
+                ctbc.maphieuBCDT = label6.Text;
+                ctbc.mahd = row.Cells[0].Value.ToString();
+                ctbc.tongtien = int.Parse(row.Cells[1].Value.ToString());
+                check = ctbcdtBUS.Them(ctbc);
+                if (check == false)
+                {
+                    MessageBox.Show("Lưu thông tin phiếu thất bại. Vui lòng kiểm tra lại dũ liệu");
+                    return;
+                }
             }
-            if (check == false)
+            PhieubaocaoDoanhThuDTO bcdtnew = new PhieubaocaoDoanhThuDTO();
+            bcdtnew.maphieuBCDT = bcdt.maphieuBCDT;
+            bcdtnew.ngayLapPhieu = bcdt.ngayLapPhieu;
+            bcdtnew.tongdt = GiaTien;
+            bool kq = bcdtBUS.Sua(bcdtnew);
+            if (kq == false)
                 MessageBox.Show("Lưu thông tin phiếu thất bại. Vui lòng kiểm tra lại dũ liệu");
             else
             {
-                PhieubaocaodtDTO bcds = new PhieubaocaodtDTO();
-                bcds.madt = bcdtDTO.madt;
-                bcds.tongdt = tongtien;
-                bool kq = bcdtBUS.Sua(bcds);
-                if (kq == false)
-                    MessageBox.Show("Lưu thông tin phiếu thất bại. Vui lòng kiểm tra lại dũ liệu");
-                else
-                {
-                    MessageBox.Show("Lưu thông tin phiếu thành công");
-                    this.Close();
-                }
+                MessageBox.Show("Lưu thông tin phiếu thành công");
+                this.Close();
             }
-        }
+        }  
     }
 }

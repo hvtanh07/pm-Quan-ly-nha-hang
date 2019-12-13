@@ -1,6 +1,6 @@
 ﻿namespace GUI.BaoCaoDoanhThu
 {
-    partial class BaoCaoDoanhThu
+    partial class CTBaoCaoDoanhThu
     {
         /// <summary>
         /// Required designer variable.
