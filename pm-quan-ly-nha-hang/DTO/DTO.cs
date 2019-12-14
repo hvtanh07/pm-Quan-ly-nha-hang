@@ -16,35 +16,17 @@ namespace DTO
         public int luongcoban { get => luongCoBan; set => luongCoBan = value; }
         public DateTime birth { get => Birth; set => Birth = value; }
     }
-    public class PhucVuDTO
+    public class TaiKhoanDTO
     {
-        private string maphucVu;
-        private int soBanDaPhucVu;
-        private int thuongTheoBan;
+        private string username;
+        private string manhanVien;
+        private string password;
+        private string type;
 
-        public string maphucvu { get => maphucVu; set => maphucVu = value; }
-        public int sobanphucvu { get => soBanDaPhucVu; set => soBanDaPhucVu = value; }
-        public int thuongtheoban { get => thuongTheoBan; set => thuongTheoBan = value; }
-    }
-    public class QuanLyDTO
-    {
-        private string maquanLy;
-        private int kpi;
-        private int luongDatkpi;
-
-        public string maquanly { get => maquanLy; set => maquanLy = value; }
-        public int KPI { get => kpi; set => kpi = value; }
-        public int luongdatkpi { get => luongDatkpi; set => luongDatkpi = value; }
-    }
-    public class ThuNganDTO
-    {
-        private string mathuNgan;
-        private int gioLam;
-        private int thuongGioLam;
-
-        public string mathungan { get => mathuNgan; set => mathuNgan = value; }
-        public int giolam { get => gioLam; set => gioLam = value; }
-        public int thuonggiolam { get => thuongGioLam; set => thuongGioLam = value; }
+        public string Username { get => username; set => username = value; }
+        public string manv { get => manhanVien; set => manhanVien = value; }
+        public string Password { get => password; set => password = value; }
+        public string Type { get => type; set => type = value; }
     }
     public class NguyenLieuDTO
     {

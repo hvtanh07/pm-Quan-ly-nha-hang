@@ -212,6 +212,43 @@ namespace BUS
             return nvDAL.Laymanv();
         }
     }
+    public class TaiKhoanBUS
+    {
+        private TaiKhoanDAL nvDAL;
+
+        public TaiKhoanBUS()
+        {
+            nvDAL = new TaiKhoanDAL();
+        }
+
+        public bool Them(TaiKhoanDTO nv)
+        {
+            bool re = nvDAL.Them(nv);
+            return re;
+        }
+
+        public bool Sua(TaiKhoanDTO nv)
+        {
+            bool re = nvDAL.Sua(nv);
+            return re;
+        }
+
+        public bool Xoa(TaiKhoanDTO nv)
+        {
+            bool re = nvDAL.Xoa(nv);
+            return re;
+        }
+
+        public List<TaiKhoanDTO> select()
+        {
+            return nvDAL.select();
+        }
+
+        public List<TaiKhoanDTO> selectByKeyWord(string sKeyword)
+        {
+            return nvDAL.selectByKeyWord(sKeyword);
+        }        
+    }
     public class PhieubaocaoDoanhThuBUS
     {
         private PhieubaocaoDoanhThuDAL bcdtDAL;

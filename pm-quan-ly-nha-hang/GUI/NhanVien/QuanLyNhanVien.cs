@@ -15,12 +15,14 @@ namespace GUI.NhanVien
     public partial class QuanLyNhanVien : Form
     {
         private NhanVienBUS nvBUS;
+        private TaiKhoanBUS tkBUS;
         public QuanLyNhanVien()
         {
             InitializeComponent();
         }
         private void QuanLyNhanVien_Load(object sender, EventArgs e)
         {
+            tkBUS = new TaiKhoanBUS();
             nvBUS = new NhanVienBUS();
             loadData_Vao_GridView();
             clear();
@@ -36,7 +38,7 @@ namespace GUI.NhanVien
             nv.manv = textBox1.Text;
             nv.tennv = textBox2.Text;
             nv.luongcoban = int.Parse(textBox4.Text);
-            nv.chucvu = textBox5.Text;
+            nv.chucvu = comboBox1.Text;
             nv.birth = dateTimePicker1.Value;
             //2. Kiểm tra data hợp lệ or not
 
@@ -47,6 +49,8 @@ namespace GUI.NhanVien
             else
             {
                 System.Windows.MessageBox.Show("Thêm nhân viên thành công");
+                TaoTaiKhoan frm = new TaoTaiKhoan(nv);
+                frm.ShowDialog();
                 clear();
             }
             loadData_Vao_GridView();
@@ -74,10 +78,13 @@ namespace GUI.NhanVien
             if (-1 < currentRowIndex && currentRowIndex < dataGridView1.RowCount)
             {
                 NhanVienDTO kn = (NhanVienDTO)dataGridView1.Rows[currentRowIndex].DataBoundItem;
+                TaiKhoanDTO tk = new TaiKhoanDTO();
+                tk.manv = kn.manv;
                 if (kn != null)
                 {
-                    bool kq = nvBUS.Xoa(kn);
-                    if (kq == false)
+                    bool kq1 = tkBUS.Xoa(tk);
+                    bool kq2 = nvBUS.Xoa(kn);
+                    if (!kq1 && !kq2)
                         MessageBox.Show("Xóa nhân viên thất bại. Vui lòng kiểm tra lại dũ liệu");
                     else
                     {
@@ -218,25 +225,18 @@ namespace GUI.NhanVien
                 textBox2.Focus();
                 return false;
             }
-
             if (string.IsNullOrWhiteSpace(textBox4.Text))
             {
                 System.Windows.MessageBox.Show("Bạn chưa nhập lương cơ bản của nhân viên.", "Lỗi");
                 textBox4.Focus();
                 return false;
-            }//gia 
-            if (string.IsNullOrWhiteSpace(textBox5.Text))//quan
+            }//gia  
+            if (string.IsNullOrWhiteSpace(comboBox1.Text))
             {
-                System.Windows.MessageBox.Show("Bạn chưa nhập số chức vụ của nhân viên.", "Lỗi");
-                textBox5.Focus();
+                System.Windows.MessageBox.Show("Bạn chưa chọn chức vụ của nhân viên.", "Lỗi");
+                textBox4.Focus();
                 return false;
-            }//don vi tinh      
-            if (DateTime.Compare(dateTimePicker1.Value, DateTime.Today) > 0)
-            {
-                System.Windows.MessageBox.Show("Ngày sinh sai hoặc ngày sinh không đúng, vui lòng thử lại", "Lỗi");
-                return false;
-            }//check hạn sử dụng
-
+            }//gia                          
             return true;//all true then gud to go
         }
         private void clear()
@@ -244,7 +244,7 @@ namespace GUI.NhanVien
             textBox1.Text = "";
             textBox2.Text = "";
             textBox4.Text = "";
-            textBox5.Text = "";
+            comboBox1.Text = "";
             dateTimePicker1.Value = DateTime.Today;
         }
     }

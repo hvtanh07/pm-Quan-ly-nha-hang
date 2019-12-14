@@ -1037,8 +1037,8 @@ namespace DAL
         public bool Them(NhanVienDTO NV)
         {
             string query = string.Empty;
-            query += " INSERT INTO tblnhanVien ([manhanVien], [tenNhanVien], [birth], [luongCoBan], [machucVu] )";
-            query += " VALUES (@manhanVien, @tenNhanVien, @birth, @luongCoBan, @machucVu)";
+            query += " INSERT INTO tblnhanVien ([manhanVien], [tenNhanVien], [birth], [luongCoBan], [chucVu] )";
+            query += " VALUES (@manhanVien, @tenNhanVien, @birth, @luongCoBan, @chucVu)";
             using (SqlConnection con = new SqlConnection(ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand())
@@ -1050,7 +1050,7 @@ namespace DAL
                     cmd.Parameters.AddWithValue("@tenNhanVien", NV.tennv);
                     cmd.Parameters.AddWithValue("@birth", NV.birth);
                     cmd.Parameters.AddWithValue("@luongCoBan", NV.luongcoban);
-                    cmd.Parameters.AddWithValue("@machucVu", NV.chucvu);
+                    cmd.Parameters.AddWithValue("@chucVu", NV.chucvu);
                     try
                     {
                         con.Open();
@@ -1071,7 +1071,7 @@ namespace DAL
         public bool Sua(NhanVienDTO NV)
         {
             string query = string.Empty;
-            query += " UPDATE tblnhanVien SET [tenNhanVien] = @tenNhanVien, [birth] = @birth, [luongCoBan] = @luongCoBan, [machucVu] = @machucVu WHERE [manhanVien] = @manhanVien";
+            query += " UPDATE tblnhanVien SET [tenNhanVien] = @tenNhanVien, [birth] = @birth, [luongCoBan] = @luongCoBan, [chucVu] = @chucVu WHERE [manhanVien] = @manhanVien";
 
             using (SqlConnection con = new SqlConnection(ConnectionString))
             {
@@ -1084,7 +1084,7 @@ namespace DAL
                     cmd.Parameters.AddWithValue("@tenNhanVien", NV.tennv);
                     cmd.Parameters.AddWithValue("@birth", NV.birth);
                     cmd.Parameters.AddWithValue("@luongCoBan", NV.luongcoban);
-                    cmd.Parameters.AddWithValue("@machucVu", NV.chucvu);
+                    cmd.Parameters.AddWithValue("@chucVu", NV.chucvu);
                     try
                     {
                         con.Open();
@@ -1135,7 +1135,7 @@ namespace DAL
         public List<NhanVienDTO> select()
         {
             string query = string.Empty;
-            query += " SELECT [manhanVien], [tenNhanVien] ,[birth], [luongCoBan], [machucVu]";
+            query += " SELECT [manhanVien], [tenNhanVien] ,[birth], [luongCoBan], [chucVu]";
             query += " FROM [tblnhanVien]";
 
             List<NhanVienDTO> listNhanVien = new List<NhanVienDTO>();
@@ -1161,7 +1161,7 @@ namespace DAL
                                 nv.tennv = reader["tenNhanVien"].ToString();
                                 nv.birth = Convert.ToDateTime(reader["birth"].ToString());
                                 nv.luongcoban = int.Parse(reader["luongCoBan"].ToString());
-                                nv.chucvu = reader["machucVu"].ToString();
+                                nv.chucvu = reader["chucVu"].ToString();
                                 listNhanVien.Add(nv);
                             }
                         }
@@ -1188,7 +1188,7 @@ namespace DAL
             query += " OR ([tenNhanVien] LIKE CONCAT('%',@sKeyword,'%'))";
             query += " OR ([birth] LIKE CONCAT('%',@sKeyword,'%'))";
             query += " OR ([luongCoBan] LIKE CONCAT('%',@sKeyword,'%'))";
-            query += " OR ([machucVu] LIKE CONCAT('%',@sKeyword,'%'))";
+            query += " OR ([chucVu] LIKE CONCAT('%',@sKeyword,'%'))";
 
             List<NhanVienDTO> listNhanVien = new List<NhanVienDTO>();
 
@@ -1214,7 +1214,7 @@ namespace DAL
                                 nv.tennv = reader["tenNhanVien"].ToString();
                                 nv.birth = Convert.ToDateTime(reader["birth"].ToString());
                                 nv.luongcoban = int.Parse(reader["luongCoBan"].ToString());
-                                nv.chucvu = reader["machucVu"].ToString();
+                                nv.chucvu = reader["chucVu"].ToString();
                                 listNhanVien.Add(nv);
                             }
                         }
@@ -1235,8 +1235,8 @@ namespace DAL
         {
             List<string> dsmama = new List<string>();
             string query = string.Empty;
-            query += " SELECT [maMonAn]";
-            query += " FROM [tblMonAn]";
+            query += " SELECT [manhanVien]";
+            query += " FROM [tblnhanVien]";
             using (SqlConnection con = new SqlConnection(ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand())
@@ -1253,7 +1253,7 @@ namespace DAL
                         {
                             while (reader.Read())
                             {
-                                string mama = reader["maMonAn"].ToString();
+                                string mama = reader["manhanVien"].ToString();
                                 dsmama.Add(mama);
                             }
                         }
@@ -1271,6 +1271,208 @@ namespace DAL
             return dsmama;
         }
     }
+    public class TaiKhoanDAL
+    {
+        private string connectionString;
+
+        public TaiKhoanDAL()
+        {
+            connectionString = ConfigurationManager.AppSettings["ConnectionString"];
+        }
+
+        public string ConnectionString { get => connectionString; set => connectionString = value; }
+
+        public bool Them(TaiKhoanDTO TK)
+        {
+            string query = string.Empty;
+            query += " INSERT INTO [tbltaiKhoan] ([username], [manhanVien], [password], [type] )";
+            query += " VALUES (@username, @manhanVien, @password, @type)";
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@username", TK.Username);
+                    cmd.Parameters.AddWithValue("@manhanVien", TK.manv);
+                    cmd.Parameters.AddWithValue("@password", TK.Password);
+                    cmd.Parameters.AddWithValue("@type", TK.Type);
+                    try
+                    {
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        public bool Sua(TaiKhoanDTO TK)
+        {
+            string query = string.Empty;
+            query += " UPDATE tbltaiKhoan SET [password] = @password, [type] = @type, [username] = @username WHERE [manhanVien] = @manhanVien";
+
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@username", TK.Username);
+                    cmd.Parameters.AddWithValue("@manhanVien", TK.manv);
+                    cmd.Parameters.AddWithValue("@password", TK.Password);
+                    cmd.Parameters.AddWithValue("@type", TK.Type);
+                    try
+                    {
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        public bool Xoa(TaiKhoanDTO TK)
+        {
+            string query = string.Empty;
+            query += " DELETE FROM tbltaiKhoan WHERE [manhanVien] = @manhanVien";
+
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@manhanVien", TK.manv);
+                    try
+                    {
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        public List<TaiKhoanDTO> select()
+        {
+            string query = string.Empty;
+            query += " SELECT [username], [manhanVien], [type]";
+            query += " FROM [tbltaiKhoan]";
+
+            List<TaiKhoanDTO> listNhanVien = new List<TaiKhoanDTO>();
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    try
+                    {
+                        con.Open();
+                        SqlDataReader reader = null;
+                        reader = cmd.ExecuteReader();
+                        if (reader.HasRows == true)
+                        {
+                            while (reader.Read())
+                            {
+                                TaiKhoanDTO nv = new TaiKhoanDTO();
+                                nv.Username = reader["username"].ToString();
+                                nv.manv = reader["manhanVien"].ToString();
+                                nv.Type = reader["type"].ToString();
+                                listNhanVien.Add(nv);
+                            }
+                        }
+
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return null;
+                    }
+                }
+            }
+            return listNhanVien;
+        }
+
+        public List<TaiKhoanDTO> selectByKeyWord(string sKeyword)
+        {
+            string query = string.Empty;
+            query += " SELECT [username], [manhanVien], [type]";
+            query += " FROM [tbltaiKhoan]";
+            query += " WHERE ([username] LIKE CONCAT('%',@sKeyword,'%'))";
+            query += " OR ([manhanVien] LIKE CONCAT('%',@sKeyword,'%'))";
+            query += " OR ([type] LIKE CONCAT('%',@sKeyword,'%'))";
+
+            List<TaiKhoanDTO> listNhanVien = new List<TaiKhoanDTO>();
+
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@sKeyword", sKeyword);
+                    try
+                    {
+                        con.Open();
+                        SqlDataReader reader = null;
+                        reader = cmd.ExecuteReader();
+                        if (reader.HasRows == true)
+                        {
+                            while (reader.Read())
+                            {
+                                TaiKhoanDTO nv = new TaiKhoanDTO();
+                                nv.Username = reader["username"].ToString();
+                                nv.manv = reader["manhanVien"].ToString();
+                                nv.Type = reader["type"].ToString();
+                                listNhanVien.Add(nv);
+                            }
+                        }
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return null;
+                    }
+                }
+            }
+            return listNhanVien;
+        }
+      
+    }
+
     public class PhieubaocaoDoanhThuDAL
     {
         private string connectionString;

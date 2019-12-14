@@ -70,5 +70,12 @@ namespace GUI
             frm.MdiParent = this;
             frm.Show();
         }
+
+        private void quảnLýTàiKhoảnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            QuanLyTaiKhoan frm = new QuanLyTaiKhoan();
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }
