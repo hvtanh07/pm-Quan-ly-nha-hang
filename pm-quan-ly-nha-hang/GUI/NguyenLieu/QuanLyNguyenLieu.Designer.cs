@@ -43,11 +43,11 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.button1 = new System.Windows.Forms.Button();
             this.dsnguyenlieu = new System.Windows.Forms.DataGridView();
-            this.txtKeyword = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.xoaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.suaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.txtKeyword = new System.Windows.Forms.TextBox();
+            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dsnguyenlieu)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -126,6 +126,7 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(200, 22);
             this.textBox3.TabIndex = 8;
+            this.textBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox3_KeyPress);
             // 
             // textBox4
             // 
@@ -140,6 +141,7 @@
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(200, 22);
             this.textBox5.TabIndex = 10;
+            this.textBox5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox3_KeyPress);
             // 
             // dateTimePicker1
             // 
@@ -172,6 +174,29 @@
             this.dsnguyenlieu.Size = new System.Drawing.Size(860, 207);
             this.dsnguyenlieu.TabIndex = 15;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.xoaToolStripMenuItem,
+            this.suaToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(105, 52);
+            // 
+            // xoaToolStripMenuItem
+            // 
+            this.xoaToolStripMenuItem.Name = "xoaToolStripMenuItem";
+            this.xoaToolStripMenuItem.Size = new System.Drawing.Size(104, 24);
+            this.xoaToolStripMenuItem.Text = "Xoa";
+            this.xoaToolStripMenuItem.Click += new System.EventHandler(this.xoaToolStripMenuItem_Click);
+            // 
+            // suaToolStripMenuItem
+            // 
+            this.suaToolStripMenuItem.Name = "suaToolStripMenuItem";
+            this.suaToolStripMenuItem.Size = new System.Drawing.Size(104, 24);
+            this.suaToolStripMenuItem.Text = "Sua";
+            this.suaToolStripMenuItem.Click += new System.EventHandler(this.suaToolStripMenuItem_Click);
+            // 
             // txtKeyword
             // 
             this.txtKeyword.Location = new System.Drawing.Point(292, 274);
@@ -188,29 +213,6 @@
             this.button4.Text = "Tim kiem";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.xoaToolStripMenuItem,
-            this.suaToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(211, 80);
-            // 
-            // xoaToolStripMenuItem
-            // 
-            this.xoaToolStripMenuItem.Name = "xoaToolStripMenuItem";
-            this.xoaToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
-            this.xoaToolStripMenuItem.Text = "Xoa";
-            this.xoaToolStripMenuItem.Click += new System.EventHandler(this.xoaToolStripMenuItem_Click);
-            // 
-            // suaToolStripMenuItem
-            // 
-            this.suaToolStripMenuItem.Name = "suaToolStripMenuItem";
-            this.suaToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
-            this.suaToolStripMenuItem.Text = "Sua";
-            this.suaToolStripMenuItem.Click += new System.EventHandler(this.suaToolStripMenuItem_Click);
             // 
             // QuanLyNguyenLieu
             // 

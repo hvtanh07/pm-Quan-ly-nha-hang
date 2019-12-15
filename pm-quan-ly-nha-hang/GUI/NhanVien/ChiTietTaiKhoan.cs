@@ -37,7 +37,7 @@ namespace GUI.NhanVien
             TaiKhoanDTO nv = new TaiKhoanDTO();
             nv.manv = tkDTO.manv;
             nv.Password = textBox2.Text;
-            nv.Username = textBox1.Text;
+            nv.Username = textBox1.Text.ToUpper();
             nv.Type = comboBox1.Text;
             //2. Kiểm tra data hợp lệ or not
 

@@ -2687,7 +2687,6 @@ namespace DAL
             string query = string.Empty;
             query += " SELECT [maxtogetsell], [sellprice], [percentnadd], [dayofwork], [luongtru]";
             query += " FROM [tblQuiDinh]";
-            //query += " WHERE [getkey] LIKE 1";
             using (SqlConnection con = new SqlConnection(ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand())

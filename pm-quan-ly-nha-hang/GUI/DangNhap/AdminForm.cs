@@ -70,13 +70,6 @@ namespace GUI
             frm.Show();
         }
 
-        private void quiĐỊnhToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            QuanLyQuiDinh frm = new QuanLyQuiDinh();
-            frm.MdiParent = this;
-            frm.Show();
-        }
-
         private void quảnLýTàiKhoảnToolStripMenuItem_Click(object sender, EventArgs e)
         {
             QuanLyTaiKhoan frm = new QuanLyTaiKhoan();
@@ -87,6 +80,20 @@ namespace GUI
         private void AdminForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void quảnLýBànToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Ban frm = new Ban();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void cácQuyĐịnhToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            QuanLyQuiDinh frm = new QuanLyQuiDinh();
+            frm.MdiParent = this;
+            frm.Show();
         }
     }
 }

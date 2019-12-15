@@ -34,3 +34,4 @@ D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.D
 D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.DangNhap.DiemDanh.resources
 D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.DangNhap.PhucVuvVeSinh.resources
 D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.DangNhap.XemLuong.resources
+D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.QuiDinh.Ban.resources

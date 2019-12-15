@@ -22,7 +22,8 @@ namespace GUI.DangNhap
 
         private void button1_Click(object sender, EventArgs e)
         {
-            TaiKhoanDTO tkDTO = tkBUS.Laytk(textBox1.Text, textBox2.Text);
+            string user = textBox1.Text.ToUpper();
+            TaiKhoanDTO tkDTO = tkBUS.Laytk(user, textBox2.Text);
             if (tkDTO.manv != null)
             {
                 if (tkDTO.Type == "quanly")

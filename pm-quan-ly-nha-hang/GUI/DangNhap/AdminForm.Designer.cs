@@ -41,6 +41,8 @@
             this.lậpBáoCáoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.báoCáoThángToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quiĐỊnhToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.quảnLýBànToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cácQuyĐịnhToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -145,10 +147,26 @@
             // 
             // quiĐỊnhToolStripMenuItem
             // 
+            this.quiĐỊnhToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.quảnLýBànToolStripMenuItem,
+            this.cácQuyĐịnhToolStripMenuItem});
             this.quiĐỊnhToolStripMenuItem.Name = "quiĐỊnhToolStripMenuItem";
             this.quiĐỊnhToolStripMenuItem.Size = new System.Drawing.Size(81, 24);
             this.quiĐỊnhToolStripMenuItem.Text = "Qui ĐỊnh";
-            this.quiĐỊnhToolStripMenuItem.Click += new System.EventHandler(this.quiĐỊnhToolStripMenuItem_Click);
+            // 
+            // quảnLýBànToolStripMenuItem
+            // 
+            this.quảnLýBànToolStripMenuItem.Name = "quảnLýBànToolStripMenuItem";
+            this.quảnLýBànToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.quảnLýBànToolStripMenuItem.Text = "Quản lý bàn";
+            this.quảnLýBànToolStripMenuItem.Click += new System.EventHandler(this.quảnLýBànToolStripMenuItem_Click);
+            // 
+            // cácQuyĐịnhToolStripMenuItem
+            // 
+            this.cácQuyĐịnhToolStripMenuItem.Name = "cácQuyĐịnhToolStripMenuItem";
+            this.cácQuyĐịnhToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.cácQuyĐịnhToolStripMenuItem.Text = "Các quy định";
+            this.cácQuyĐịnhToolStripMenuItem.Click += new System.EventHandler(this.cácQuyĐịnhToolStripMenuItem_Click);
             // 
             // AdminForm
             // 
@@ -183,5 +201,7 @@
         private System.Windows.Forms.ToolStripMenuItem báoCáoThángToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem quiĐỊnhToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem quảnLýTàiKhoảnToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem quảnLýBànToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cácQuyĐịnhToolStripMenuItem;
     }
 }

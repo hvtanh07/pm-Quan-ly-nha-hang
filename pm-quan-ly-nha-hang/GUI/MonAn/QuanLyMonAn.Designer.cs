@@ -38,10 +38,10 @@
             this.dsmonan = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.xóaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.xemChiTiếtMónĂnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button2 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.xemChiTiếtMónĂnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dsmonan)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -113,7 +113,7 @@
             this.xóaToolStripMenuItem,
             this.xemChiTiếtMónĂnToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(212, 80);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(212, 52);
             // 
             // xóaToolStripMenuItem
             // 
@@ -121,6 +121,13 @@
             this.xóaToolStripMenuItem.Size = new System.Drawing.Size(211, 24);
             this.xóaToolStripMenuItem.Text = "Xóa";
             this.xóaToolStripMenuItem.Click += new System.EventHandler(this.xóaToolStripMenuItem_Click);
+            // 
+            // xemChiTiếtMónĂnToolStripMenuItem
+            // 
+            this.xemChiTiếtMónĂnToolStripMenuItem.Name = "xemChiTiếtMónĂnToolStripMenuItem";
+            this.xemChiTiếtMónĂnToolStripMenuItem.Size = new System.Drawing.Size(211, 24);
+            this.xemChiTiếtMónĂnToolStripMenuItem.Text = "Xem chi tiết món ăn";
+            this.xemChiTiếtMónĂnToolStripMenuItem.Click += new System.EventHandler(this.xemChiTiếtMónĂnToolStripMenuItem_Click);
             // 
             // button2
             // 
@@ -147,13 +154,7 @@
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(100, 22);
             this.textBox4.TabIndex = 9;
-            // 
-            // xemChiTiếtMónĂnToolStripMenuItem
-            // 
-            this.xemChiTiếtMónĂnToolStripMenuItem.Name = "xemChiTiếtMónĂnToolStripMenuItem";
-            this.xemChiTiếtMónĂnToolStripMenuItem.Size = new System.Drawing.Size(211, 24);
-            this.xemChiTiếtMónĂnToolStripMenuItem.Text = "Xem chi tiết món ăn";
-            this.xemChiTiếtMónĂnToolStripMenuItem.Click += new System.EventHandler(this.xemChiTiếtMónĂnToolStripMenuItem_Click);
+            this.textBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox4_KeyPress);
             // 
             // QuanLyMonAn
             // 

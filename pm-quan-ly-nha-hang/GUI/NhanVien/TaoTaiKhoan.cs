@@ -55,7 +55,7 @@ namespace GUI.NhanVien
             }
             TaiKhoanDTO nv = new TaiKhoanDTO();           
             nv.manv = nvDTO.manv;
-            nv.Username = textBox1.Text;
+            nv.Username = textBox1.Text.ToUpper();
             nv.Password = textBox2.Text;
             if (nvDTO.chucvu== "Quản lý")
             {

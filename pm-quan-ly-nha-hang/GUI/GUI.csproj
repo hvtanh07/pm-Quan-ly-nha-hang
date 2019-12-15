@@ -149,6 +149,12 @@
     <Compile Include="NguyenLieu\SuaNguyenLieu.Designer.cs">
       <DependentUpon>SuaNguyenLieu.cs</DependentUpon>
     </Compile>
+    <Compile Include="QuiDinh\Ban.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuiDinh\Ban.Designer.cs">
+      <DependentUpon>Ban.cs</DependentUpon>
+    </Compile>
     <Compile Include="QuiDinh\QuanLyQuiDinh.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -235,6 +241,9 @@
     </Compile>
     <EmbeddedResource Include="NguyenLieu\SuaNguyenLieu.resx">
       <DependentUpon>SuaNguyenLieu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuiDinh\Ban.resx">
+      <DependentUpon>Ban.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuiDinh\QuanLyQuiDinh.resx">
       <DependentUpon>QuanLyQuiDinh.cs</DependentUpon>

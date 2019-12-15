@@ -17,6 +17,7 @@ namespace GUI.ThanhToan
         private hoaDonBUS hdBUS;
         private DSMonAnBUS dsmaBUS;
         private NhanVienBUS nvBUS;
+        private BanBUS banBUS;
         private BanDTO banDTO;
 
         // private DSMonAnBUS dsnlBUS;
@@ -25,6 +26,7 @@ namespace GUI.ThanhToan
             dsmaBUS = new DSMonAnBUS();
             hdBUS = new hoaDonBUS();
             nvBUS = new NhanVienBUS();
+            banBUS = new BanBUS();
             InitializeComponent();
             loadDataVaoComboBox();
             loadData_Vao_GridView();
@@ -34,6 +36,7 @@ namespace GUI.ThanhToan
             dsmaBUS = new DSMonAnBUS();
             hdBUS = new hoaDonBUS();
             nvBUS = new NhanVienBUS();
+            banBUS = new BanBUS();
             banDTO = ban;
             InitializeComponent();
             loadDataVaoComboBox();
@@ -51,6 +54,11 @@ namespace GUI.ThanhToan
         }
         private void loadDataVaoComboBox()
         {
+            List<string> ban = new List<string>();
+            ban = banBUS.LaysoBan();
+            comboBox2.DataSource = ban;
+
+
             List<string> mathungan = new List<string>();
             mathungan = nvBUS.Laymanv();
             comboBox2.DataSource = mathungan;
@@ -67,7 +75,7 @@ namespace GUI.ThanhToan
             ma.mahd = textBox1.Text;
             ma.maTN = comboBox2.Text;
             ma.ngayThanhToan = dateTimePicker1.Value;
-            ma.soban = int.Parse(textBox3.Text);
+            ma.soban = int.Parse(comboBox1.Text);
             ma.tongtien = 0;
 
             //2. Kiểm tra data hợp lệ or not
@@ -93,8 +101,8 @@ namespace GUI.ThanhToan
         {
             if (this.banDTO != null)
             {
-                textBox3.Text = banDTO.soban.ToString();
-                textBox3.ReadOnly = true;
+                comboBox1.Text = banDTO.soban.ToString();
+                //comboBox1.ReadOnly = true;
             }
         }
         private void loadData_Vao_GridView()
