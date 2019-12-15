@@ -174,4 +174,3 @@ INSERT INTO [tblhoaDon] ([mahoaDon], [soban], [tongTien], [ngayThanhToan], [math
 INSERT INTO [tblhoaDon] ([mahoaDon], [soban], [tongTien], [ngayThanhToan], [mathuNgan]) VALUES ('hd6',4,203,'12/12/2019','nv2')
 INSERT INTO [tblQuiDinh] ([getkey], [maxtogetsell], [sellprice], [percentnadd], [dayofwork], [luongtru]) VALUES (1,1000,100,15,5,10)
 ----TESTING----
-

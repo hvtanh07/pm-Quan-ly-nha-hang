@@ -71,11 +71,7 @@ namespace GUI.MonAn
                 return;
             }
             //kiem tra luong ton kho
-            if(nlBUS.Laytonkho(dsnl.manl)< dsnl.soluong)
-            {
-                System.Windows.MessageBox.Show("Thêm nguyên liệu thất bại. nguyên liệu trong kho không đủ.");
-                return;
-            }
+            
             //3. Thêm vào DB
             bool kq = dsnlBUS.Them(dsnl);
             if (kq == false)
@@ -98,7 +94,7 @@ namespace GUI.MonAn
             MonAnDTO ma = new MonAnDTO();
             ma.mama = label6.Text;
             ma.tenma = textBox2.Text;
-            ma.dongia = int.Parse(textBox3.Text);
+            ma.dongia = (int)float.Parse(textBox3.Text);
             //2. Kiểm tra data hợp lệ or not
 
             //3. Thêm vào DB

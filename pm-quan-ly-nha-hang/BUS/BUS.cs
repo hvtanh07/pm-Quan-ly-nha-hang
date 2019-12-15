@@ -51,10 +51,7 @@ namespace BUS
         {
             return nlDAL.Laygiatien(ma);
         }
-        public int Laytonkho(string manl)
-        {
-            return nlDAL.Laytonkho(manl);
-        }
+
     }
     public class MonAnBUS
     {

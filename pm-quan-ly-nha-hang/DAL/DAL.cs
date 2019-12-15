@@ -301,46 +301,6 @@ namespace DAL
             }
             return dsmanl;
         }
-        public int Laytonkho(string manl)
-        {
-            int kho = 0;
-            string query = string.Empty;
-            query += " SELECT [trongKho]";
-            query += " FROM [tblNguyenLieu]";
-            query += " WHERE [tblNguyenLieu]";
-            using (SqlConnection con = new SqlConnection(ConnectionString))
-            {
-                using (SqlCommand cmd = new SqlCommand())
-                {
-                    cmd.Connection = con;
-                    cmd.CommandType = System.Data.CommandType.Text;
-                    cmd.CommandText = query;
-                    cmd.Parameters.AddWithValue("@maNguyenLieu", manl);
-                    try
-                    {
-                        con.Open();
-                        SqlDataReader reader = null;
-                        reader = cmd.ExecuteReader();
-                        if (reader.HasRows == true)
-                        {
-                            while (reader.Read())
-                            {
-                                kho = int.Parse(reader["trongKho"].ToString());
-                            }
-                        }
-
-                        con.Close();
-                        con.Dispose();
-                    }
-                    catch (Exception ex)
-                    {
-                        con.Close();
-                        return kho;
-                    }
-                }
-            }
-            return kho;
-        }
     }
     public class MonAnDAL
     {
