@@ -211,6 +211,10 @@ namespace BUS
         {
             return nvDAL.Laymanv();
         }
+        public NhanVienDTO Laynv(string manv)
+        {
+            return nvDAL.Laynv(manv);
+        }
     }
     public class TaiKhoanBUS
     {
@@ -237,6 +241,11 @@ namespace BUS
         {
             bool re = nvDAL.Xoa(nv);
             return re;
+        }
+
+        public TaiKhoanDTO Laytk(string username, string pass)
+        {
+            return nvDAL.Laytk(username, pass);
         }
 
         public List<TaiKhoanDTO> select()

@@ -9,12 +9,16 @@ namespace DTO
         private DateTime Birth;
         private int luongCoBan;
         private string chucVu;
+        private int attended;
+        private int absent;
 
         public string manv { get => manhanVien; set => manhanVien = value; }
         public string tennv { get => tennhanVien; set => tennhanVien = value; }
         public string chucvu { get => chucVu; set => chucVu = value; }
         public int luongcoban { get => luongCoBan; set => luongCoBan = value; }
         public DateTime birth { get => Birth; set => Birth = value; }
+        public int Attended { get => attended; set => attended = value; }
+        public int Absent { get => absent; set => absent = value; }
     }
     public class TaiKhoanDTO
     {
@@ -126,14 +130,14 @@ namespace DTO
         private int maxtogetsell;
         private int sellprice;
         private int percentnadd;
-        private int luongtosum;
-        private int workday;
+        private int dayofwork;
+        private int luongtru;
 
         public int Getkey { get => getkey; set => getkey = value; }
         public int Maxtogetsell { get => maxtogetsell; set => maxtogetsell = value; }
         public int Sellprice { get => sellprice; set => sellprice = value; }
         public int Percentnadd { get => percentnadd; set => percentnadd = value; }
-        public int Luongtosum { get => luongtosum; set => luongtosum = value; }
-        public int Workday { get => workday; set => workday = value; }
+        public int Dayofwork { get => dayofwork; set => dayofwork = value; }
+        public int Luongtru { get => luongtru; set => luongtru = value; }
     }
 }

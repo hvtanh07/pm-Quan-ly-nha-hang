@@ -159,6 +159,12 @@ namespace GUI.NhanVien
             clChucvu.DataPropertyName = "chucVu";
             dataGridView1.Columns.Add(clChucvu);
 
+            DataGridViewTextBoxColumn clabsent = new DataGridViewTextBoxColumn();
+            clabsent.Name = "Absent";
+            clabsent.HeaderText = "Số buổi vắng";
+            clabsent.DataPropertyName = "Absent";
+            dataGridView1.Columns.Add(clabsent);
+
             CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataGridView1.DataSource];
             myCurrencyManager.Refresh();
         }
@@ -206,6 +212,12 @@ namespace GUI.NhanVien
             clChucvu.HeaderText = "Chức vụ";
             clChucvu.DataPropertyName = "chucVu";
             dataGridView1.Columns.Add(clChucvu);
+
+            DataGridViewTextBoxColumn clabsent = new DataGridViewTextBoxColumn();
+            clabsent.Name = "Absent";
+            clabsent.HeaderText = "Số buổi vắng";
+            clabsent.DataPropertyName = "Absent";
+            dataGridView1.Columns.Add(clabsent);
 
             CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataGridView1.DataSource];
             myCurrencyManager.Refresh();

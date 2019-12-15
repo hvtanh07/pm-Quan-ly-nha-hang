@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>203</x>
-      <y>238</y>
+      <x>161</x>
+      <y>231</y>
       <w>147</w>
       <h>105</h>
     </coordinates>
@@ -17,15 +17,15 @@ birth
 Luong co ban
 chức vụ
 so buoi da di trong tuan
-so buoi nghi
+so buoi nghi cua thang
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>630</x>
-      <y>217</y>
+      <x>588</x>
+      <y>203</y>
       <w>147</w>
       <h>77</h>
     </coordinates>
@@ -40,8 +40,8 @@ gia tien
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>462</x>
-      <y>567</y>
+      <x>420</x>
+      <y>553</y>
       <w>147</w>
       <h>42</h>
     </coordinates>
@@ -55,8 +55,8 @@ gia tien
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>693</x>
-      <y>287</y>
+      <x>651</x>
+      <y>273</y>
       <w>21</w>
       <h>56</h>
     </coordinates>
@@ -69,8 +69,8 @@ m2=*
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>854</x>
-      <y>315</y>
+      <x>812</x>
+      <y>301</y>
       <w>119</w>
       <h>84</h>
     </coordinates>
@@ -87,8 +87,8 @@ HSD
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>910</x>
-      <y>287</y>
+      <x>868</x>
+      <y>273</y>
       <w>21</w>
       <h>42</h>
     </coordinates>
@@ -101,8 +101,8 @@ m2=*
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>847</x>
-      <y>210</y>
+      <x>805</x>
+      <y>196</y>
       <w>147</w>
       <h>84</h>
     </coordinates>
@@ -118,8 +118,8 @@ so luong
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>770</x>
-      <y>238</y>
+      <x>728</x>
+      <y>224</y>
       <w>91</w>
       <h>35</h>
     </coordinates>
@@ -132,8 +132,8 @@ m2=1..1
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>630</x>
-      <y>329</y>
+      <x>588</x>
+      <y>315</y>
       <w>147</w>
       <h>70</h>
     </coordinates>
@@ -149,8 +149,8 @@ so luong
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>693</x>
-      <y>392</y>
+      <x>651</x>
+      <y>378</y>
       <w>28</w>
       <h>91</h>
     </coordinates>
@@ -163,8 +163,8 @@ m2=*
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>637</x>
-      <y>469</y>
+      <x>595</x>
+      <y>455</y>
       <w>126</w>
       <h>98</h>
     </coordinates>
@@ -181,8 +181,8 @@ _id thu ngan_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>966</x>
-      <y>469</y>
+      <x>924</x>
+      <y>455</y>
       <w>126</w>
       <h>63</h>
     </coordinates>
@@ -196,8 +196,8 @@ Tong doanh thu</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>812</x>
-      <y>469</y>
+      <x>770</x>
+      <y>455</y>
       <w>126</w>
       <h>70</h>
     </coordinates>
@@ -211,8 +211,8 @@ _id báo cao daonh thu_</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>406</x>
-      <y>343</y>
+      <x>364</x>
+      <y>329</y>
       <w>196</w>
       <h>84</h>
     </coordinates>
@@ -222,15 +222,15 @@ Giá trị tổng hóa đơn để được giảm giá
 Số tiền được giảm giá
 Phần trăm tiền lời theo từng món
 so ngay can làm trong 1 tuần
-luong tru
+luon
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>756</x>
-      <y>497</y>
+      <x>714</x>
+      <y>483</y>
       <w>70</w>
       <h>35</h>
     </coordinates>
@@ -243,8 +243,8 @@ m2=*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>931</x>
-      <y>497</y>
+      <x>889</x>
+      <y>483</y>
       <w>49</w>
       <h>35</h>
     </coordinates>
@@ -257,8 +257,8 @@ m2=*
   <element>
     <id>Text</id>
     <coordinates>
-      <x>994</x>
-      <y>210</y>
+      <x>952</x>
+      <y>196</y>
       <w>77</w>
       <h>56</h>
     </coordinates>
@@ -269,8 +269,8 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>623</x>
-      <y>161</y>
+      <x>581</x>
+      <y>147</y>
       <w>77</w>
       <h>56</h>
     </coordinates>
@@ -281,8 +281,8 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>973</x>
-      <y>315</y>
+      <x>931</x>
+      <y>301</y>
       <w>112</w>
       <h>70</h>
     </coordinates>
@@ -293,8 +293,8 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>539</x>
-      <y>189</y>
+      <x>497</x>
+      <y>175</y>
       <w>49</w>
       <h>70</h>
     </coordinates>
@@ -306,8 +306,8 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>42</x>
-      <y>35</y>
+      <x>0</x>
+      <y>21</y>
       <w>154</w>
       <h>133</h>
     </coordinates>
@@ -326,8 +326,8 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>644</x>
-      <y>567</y>
+      <x>602</x>
+      <y>553</y>
       <w>112</w>
       <h>42</h>
     </coordinates>
@@ -338,8 +338,8 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>602</x>
-      <y>483</y>
+      <x>560</x>
+      <y>469</y>
       <w>49</w>
       <h>35</h>
     </coordinates>
@@ -352,8 +352,8 @@ m2=*
   <element>
     <id>Text</id>
     <coordinates>
-      <x>714</x>
-      <y>147</y>
+      <x>672</x>
+      <y>133</y>
       <w>77</w>
       <h>70</h>
     </coordinates>
@@ -364,8 +364,8 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>329</x>
-      <y>133</y>
+      <x>308</x>
+      <y>126</y>
       <w>119</w>
       <h>84</h>
     </coordinates>
@@ -381,8 +381,8 @@ loại tai khoan
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>462</x>
-      <y>469</y>
+      <x>420</x>
+      <y>455</y>
       <w>147</w>
       <h>56</h>
     </coordinates>
@@ -397,8 +397,8 @@ booked day
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>525</x>
-      <y>518</y>
+      <x>483</x>
+      <y>504</y>
       <w>28</w>
       <h>63</h>
     </coordinates>
@@ -411,8 +411,8 @@ m2=*
   <element>
     <id>UMLInterface</id>
     <coordinates>
-      <x>770</x>
-      <y>133</y>
+      <x>728</x>
+      <y>119</y>
       <w>14</w>
       <h>49</h>
     </coordinates>
@@ -422,41 +422,41 @@ m2=*
   <element>
     <id>UMLInterface</id>
     <coordinates>
-      <x>567</x>
-      <y>224</y>
-      <w>14</w>
-      <h>49</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLInterface</id>
-    <coordinates>
-      <x>749</x>
-      <y>567</y>
-      <w>14</w>
-      <h>49</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLInterface</id>
-    <coordinates>
-      <x>1078</x>
-      <y>322</y>
-      <w>14</w>
-      <h>49</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLInterface</id>
-    <coordinates>
-      <x>1050</x>
+      <x>525</x>
       <y>210</y>
+      <w>14</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLInterface</id>
+    <coordinates>
+      <x>707</x>
+      <y>553</y>
+      <w>14</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLInterface</id>
+    <coordinates>
+      <x>1036</x>
+      <y>308</y>
+      <w>14</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLInterface</id>
+    <coordinates>
+      <x>1008</x>
+      <y>196</y>
       <w>14</w>
       <h>49</h>
     </coordinates>
@@ -466,13 +466,24 @@ m2=*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>294</x>
-      <y>189</y>
-      <w>49</w>
+      <x>252</x>
+      <y>182</y>
+      <w>70</w>
       <h>63</h>
     </coordinates>
     <panel_attributes>lt=-
 </panel_attributes>
-    <additional_attributes>10.0;70.0;50.0;10.0</additional_attributes>
+    <additional_attributes>10.0;70.0;80.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLInterface</id>
+    <coordinates>
+      <x>609</x>
+      <y>133</y>
+      <w>14</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
   </element>
 </diagram>

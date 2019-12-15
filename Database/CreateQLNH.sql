@@ -24,7 +24,9 @@ CREATE TABLE [dbo].[tblnhanVien]
 	[tenNhanVien] nvarchar(10) NOT NULL,
 	[birth]	datetime2(7) NOT NULL,
 	[luongCoBan] int NOT NULL,
-	[chucVu] nvarchar(10) NOT NULL
+	[chucVu] nvarchar(10) NOT NULL,
+	[absent] int NOT NULL,
+	[attended] int NOT NULL
 )
 CREATE TABLE [dbo].[tbltaiKhoan]
 (	
@@ -106,8 +108,8 @@ CREATE TABLE [dbo].[tblQuiDinh]
 	[maxtogetsell]    int NOT NULL,	
 	[sellprice]	int NOT NULL,
 	[percentnadd]	int NOT NULL,	
-	[luongtosum]	int NOT NULL,
-	[workday] int NOT NULL
+	[dayofwork]	int NOT NULL,
+	[luongtru] int NOT NULL
 )	
 --drop table tblnhanVien
 --drop table tblNguyenLieu
@@ -129,21 +131,22 @@ INSERT INTO tblBan ([soban]) VALUES (1)
 INSERT INTO tblBan ([soban]) VALUES (2)
 INSERT INTO tblBan ([soban]) VALUES (3)
 INSERT INTO tblBan ([soban]) VALUES (4)
-INSERT INTO [tblnhanVien] ([manhanVien], [tenNhanVien], [birth], [luongCoBan], [chucVu]) VALUES ('nv1','Nam','05/12/1999',133,'Quản lý')
-INSERT INTO [tblnhanVien] ([manhanVien], [tenNhanVien], [birth], [luongCoBan], [chucVu]) VALUES ('nv2','Tuan','24/1/1999',133,'Thu ngân')
-INSERT INTO [tblnhanVien] ([manhanVien], [tenNhanVien], [birth], [luongCoBan], [chucVu]) VALUES ('nv3','Hung','5/3/1999',133,'Phục vụ')
-INSERT INTO [tblnhanVien] ([manhanVien], [tenNhanVien], [birth], [luongCoBan], [chucVu]) VALUES ('nv4','Quang','15/7/1999',133,'Phục vụ')
-INSERT INTO [tblnhanVien] ([manhanVien], [tenNhanVien], [birth], [luongCoBan], [chucVu]) VALUES ('nv5','Dung','25/2/1999',133,'Vệ sinh')
+INSERT INTO [tblnhanVien] ([manhanVien], [tenNhanVien], [birth], [luongCoBan], [chucVu], [absent], [attended]) VALUES ('nv1','Nam','05/12/1999',133,'Quản lý', 0, 2)
+INSERT INTO [tblnhanVien] ([manhanVien], [tenNhanVien], [birth], [luongCoBan], [chucVu], [absent], [attended]) VALUES ('nv2','Tuan','24/1/1999',133,'Thu ngân', 1, 2)
+INSERT INTO [tblnhanVien] ([manhanVien], [tenNhanVien], [birth], [luongCoBan], [chucVu], [absent], [attended]) VALUES ('nv3','Hung','5/3/1999',133,'Phục vụ', 3, 2)
+INSERT INTO [tblnhanVien] ([manhanVien], [tenNhanVien], [birth], [luongCoBan], [chucVu], [absent], [attended]) VALUES ('nv4','Quang','15/7/1999',133,'Phục vụ', 2, 2)
+INSERT INTO [tblnhanVien] ([manhanVien], [tenNhanVien], [birth], [luongCoBan], [chucVu], [absent], [attended]) VALUES ('nv5','Dung','25/2/1999',133,'Vệ sinh', 0, 2)
 INSERT INTO [tbltaiKhoan] ([username], [manhanVien], [password], [type]) VALUES ('nam01', 'nv1','pass','quanly')
 INSERT INTO [tbltaiKhoan] ([username], [manhanVien], [password], [type]) VALUES ('tuan01', 'nv2','pass','thungan')
 INSERT INTO [tbltaiKhoan] ([username], [manhanVien], [password], [type]) VALUES ('hung01', 'nv3','pass','phucvu')
 INSERT INTO [tbltaiKhoan] ([username], [manhanVien], [password], [type]) VALUES ('quang01', 'nv4','pass','phucvu')
 INSERT INTO [tbltaiKhoan] ([username], [manhanVien], [password], [type]) VALUES ('dung01', 'nv5','pass','vesinh')
-INSERT INTO [tblNguyenLieu] ([maNguyenLieu], [tenNguyenLieu], [dongia], [donVi], [trongKho], [HSD]) VALUES ('nl1','Thit',12,'ky',5,'12/12/2019')
-INSERT INTO [tblNguyenLieu] ([maNguyenLieu], [tenNguyenLieu], [dongia], [donVi], [trongKho], [HSD]) VALUES ('nl2','Ca',13,'ky',6,'12/12/2019')
-INSERT INTO [tblNguyenLieu] ([maNguyenLieu], [tenNguyenLieu], [dongia], [donVi], [trongKho], [HSD]) VALUES ('nl3','Trung',14,'qua',13,'12/12/2019')
-INSERT INTO [tblNguyenLieu] ([maNguyenLieu], [tenNguyenLieu], [dongia], [donVi], [trongKho], [HSD]) VALUES ('nl4','Sua',15,'lit',2,'12/12/2019')
-INSERT INTO [tblNguyenLieu] ([maNguyenLieu], [tenNguyenLieu], [dongia], [donVi], [trongKho], [HSD]) VALUES ('nl5','Rau',10,'bo',4,'12/12/2019')
+SELECT [type] FROM [tbltaiKhoan] WHERE [username] = 'nam01' AND [password] = 'pass'
+INSERT INTO [tblNguyenLieu] ([maNguyenLieu], [tenNguyenLieu], [dongia], [donVi], [trongKho], [HSD]) VALUES ('nl1','Thit',12,'ky',5,'17/12/2019')
+INSERT INTO [tblNguyenLieu] ([maNguyenLieu], [tenNguyenLieu], [dongia], [donVi], [trongKho], [HSD]) VALUES ('nl2','Ca',13,'ky',6,'25/12/2019')
+INSERT INTO [tblNguyenLieu] ([maNguyenLieu], [tenNguyenLieu], [dongia], [donVi], [trongKho], [HSD]) VALUES ('nl3','Trung',14,'qua',13,'30/12/2019')
+INSERT INTO [tblNguyenLieu] ([maNguyenLieu], [tenNguyenLieu], [dongia], [donVi], [trongKho], [HSD]) VALUES ('nl4','Sua',15,'lit',2,'1/1/2020')
+INSERT INTO [tblNguyenLieu] ([maNguyenLieu], [tenNguyenLieu], [dongia], [donVi], [trongKho], [HSD]) VALUES ('nl5','Rau',10,'bo',4,'30/12/2019')
 INSERT INTO [tblMonAn] ([maMonAn], [tenMonAn], [dongia]) VALUES ('ma1', 'Banh gato', 100)
 INSERT INTO [tblMonAn] ([maMonAn], [tenMonAn], [dongia]) VALUES ('ma2', 'Ca chien', 80)
 INSERT INTO [tblMonAn] ([maMonAn], [tenMonAn], [dongia]) VALUES ('ma3', 'Trung chien', 50)
@@ -169,6 +172,6 @@ INSERT INTO [tblhoaDon] ([mahoaDon], [soban], [tongTien], [ngayThanhToan], [math
 INSERT INTO [tblhoaDon] ([mahoaDon], [soban], [tongTien], [ngayThanhToan], [mathuNgan]) VALUES ('hd4',2,73,'13/12/2019','nv2')
 INSERT INTO [tblhoaDon] ([mahoaDon], [soban], [tongTien], [ngayThanhToan], [mathuNgan]) VALUES ('hd5',1,103,'13/12/2019','nv2')
 INSERT INTO [tblhoaDon] ([mahoaDon], [soban], [tongTien], [ngayThanhToan], [mathuNgan]) VALUES ('hd6',4,203,'12/12/2019','nv2')
-INSERT INTO [tblQuiDinh] ([getkey], [maxtogetsell], [sellprice], [percentnadd], [luongtosum], [workday]) VALUES (1,1000,100,15,5,5)
+INSERT INTO [tblQuiDinh] ([getkey], [maxtogetsell], [sellprice], [percentnadd], [dayofwork], [luongtru]) VALUES (1,1000,100,15,5,10)
 ----TESTING----
 

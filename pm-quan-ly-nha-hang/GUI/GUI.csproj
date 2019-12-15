@@ -63,11 +63,35 @@
     <Compile Include="BaoCaoDoanhThu\ChitietBaoCaoDoanhThu.Designer.cs">
       <DependentUpon>ChitietBaoCaoDoanhThu.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForm.cs">
+    <Compile Include="DangNhap\AdminForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <Compile Include="DangNhap\AdminForm.Designer.cs">
+      <DependentUpon>AdminForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DangNhap\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DangNhap\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DangNhap\DiemDanh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DangNhap\DiemDanh.Designer.cs">
+      <DependentUpon>DiemDanh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DangNhap\PhucVuvVeSinh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DangNhap\PhucVuvVeSinh.Designer.cs">
+      <DependentUpon>PhucVuvVeSinh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DangNhap\XemLuong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DangNhap\XemLuong.Designer.cs">
+      <DependentUpon>XemLuong.cs</DependentUpon>
     </Compile>
     <Compile Include="MonAn\ChiTietMonAn.cs">
       <SubType>Form</SubType>
@@ -93,12 +117,6 @@
     </Compile>
     <Compile Include="NhanVien\ChiTietTaiKhoan.Designer.cs">
       <DependentUpon>ChiTietTaiKhoan.cs</DependentUpon>
-    </Compile>
-    <Compile Include="NhanVien\DangNhap.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="NhanVien\DangNhap.Designer.cs">
-      <DependentUpon>DangNhap.cs</DependentUpon>
     </Compile>
     <Compile Include="NhanVien\QuanLyNhanVien.cs">
       <SubType>Form</SubType>
@@ -155,14 +173,32 @@
     <Compile Include="ThanhToan\LapHoaDon.Designer.cs">
       <DependentUpon>LapHoaDon.cs</DependentUpon>
     </Compile>
+    <Compile Include="DangNhap\ThuNganForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DangNhap\ThuNganForm.Designer.cs">
+      <DependentUpon>ThuNganForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="BaoCaoDoanhThu\CTBaoCaoDoanhThu.resx">
       <DependentUpon>CTBaoCaoDoanhThu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCaoDoanhThu\ChitietBaoCaoDoanhThu.resx">
       <DependentUpon>ChitietBaoCaoDoanhThu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <EmbeddedResource Include="DangNhap\AdminForm.resx">
+      <DependentUpon>AdminForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DangNhap\DiemDanh.resx">
+      <DependentUpon>DiemDanh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DangNhap\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DangNhap\PhucVuvVeSinh.resx">
+      <DependentUpon>PhucVuvVeSinh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DangNhap\XemLuong.resx">
+      <DependentUpon>XemLuong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MonAn\ChiTietMonAn.resx">
       <DependentUpon>ChiTietMonAn.cs</DependentUpon>
@@ -175,9 +211,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NhanVien\ChiTietTaiKhoan.resx">
       <DependentUpon>ChiTietTaiKhoan.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NhanVien\DangNhap.resx">
-      <DependentUpon>DangNhap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NhanVien\QuanLyNhanVien.resx">
       <DependentUpon>QuanLyNhanVien.cs</DependentUpon>
@@ -214,6 +247,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ThanhToan\LapHoaDon.resx">
       <DependentUpon>LapHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DangNhap\ThuNganForm.resx">
+      <DependentUpon>ThuNganForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

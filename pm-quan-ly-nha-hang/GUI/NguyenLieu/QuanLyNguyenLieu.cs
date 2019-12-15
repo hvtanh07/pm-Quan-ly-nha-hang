@@ -23,7 +23,25 @@ namespace GUI
         {
             nlBUS = new NguyenLieuBUS();
             this.loadData_Vao_GridView();
+            Kiemtrahsd();
             clear();
+        }
+        private void Kiemtrahsd()
+        {            
+            for (int i = 0; i < dsnguyenlieu.Rows.Count; i++)
+            {
+                DateTime hsd = Convert.ToDateTime(dsnguyenlieu[5, i].Value.ToString());
+                if ((hsd - DateTime.Now).TotalDays < 0)
+                {
+                    string name = dsnguyenlieu[1, i].Value.ToString();
+                    System.Windows.MessageBox.Show("Nguyên liệu " + name + " đã hết hạn sử dụng", "Cảnh báo");
+                }
+                else if ((hsd -DateTime.Now).TotalDays < 5)
+                {
+                    string name = dsnguyenlieu[1, i].Value.ToString();
+                    System.Windows.MessageBox.Show("Nguyên liệu " + name + " sắp hết hạn sử dụng", "Cảnh báo");
+                }
+            }            
         }
         //Them
         private void button1_Click(object sender, EventArgs e)

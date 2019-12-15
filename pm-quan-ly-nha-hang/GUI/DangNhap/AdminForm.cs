@@ -4,6 +4,8 @@ using GUI.MonAn;
 using GUI.ThanhToan;
 using GUI.BaoCaoDoanhThu;
 using GUI.QuiDinh;
+using BUS;
+using DTO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,9 +17,13 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class MainForm : Form
+    public partial class AdminForm : Form
     {
-        public MainForm()
+        public AdminForm()
+        {
+            InitializeComponent();
+        }
+        public AdminForm(TaiKhoanDTO tk)
         {
             InitializeComponent();
         }
@@ -76,6 +82,11 @@ namespace GUI
             QuanLyTaiKhoan frm = new QuanLyTaiKhoan();
             frm.MdiParent = this;
             frm.Show();
+        }
+
+        private void AdminForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

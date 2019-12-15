@@ -28,8 +28,8 @@ namespace GUI.QuiDinh
                 textBox1.Text = qd.Maxtogetsell.ToString();
                 textBox2.Text = qd.Sellprice.ToString();
                 textBox3.Text = qd.Percentnadd.ToString();
-                textBox4.Text = qd.Luongtosum.ToString();
-                textBox5.Text = qd.Workday.ToString();
+                textBox4.Text = qd.Dayofwork.ToString();
+                textBox5.Text = qd.Luongtru.ToString();
             }
             catch (Exception ex)
             {
@@ -43,8 +43,8 @@ namespace GUI.QuiDinh
             qd.Maxtogetsell = int.Parse(textBox1.Text);
             qd.Sellprice = int.Parse(textBox2.Text);
             qd.Percentnadd = int.Parse(textBox3.Text);
-            qd.Luongtosum = int.Parse(textBox4.Text);
-            qd.Workday = int.Parse(textBox5.Text);
+            qd.Dayofwork = int.Parse(textBox4.Text);
+            qd.Luongtru = int.Parse(textBox5.Text);
             Boolean kq = qdBUS.Sua(qd);
             if (kq == false)
                 MessageBox.Show("Sửa qui định thất bại. Vui lòng kiểm tra lại dũ liệu");

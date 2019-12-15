@@ -1,6 +1,5 @@
 ﻿using System;
-using GUI.MonAn;
-using GUI.NhanVien;
+using GUI.DangNhap;
 using System.Windows.Forms;
 
 namespace GUI
@@ -15,7 +14,7 @@ namespace GUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            Application.Run(new LoginForm());
         }
     }
 }

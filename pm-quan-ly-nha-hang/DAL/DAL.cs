@@ -1037,7 +1037,7 @@ namespace DAL
         public bool Them(NhanVienDTO NV)
         {
             string query = string.Empty;
-            query += " INSERT INTO tblnhanVien ([manhanVien], [tenNhanVien], [birth], [luongCoBan], [chucVu] )";
+            query += " INSERT INTO tblnhanVien ([manhanVien], [tenNhanVien], [birth], [luongCoBan], [chucVu], [absent], [attended]  )";
             query += " VALUES (@manhanVien, @tenNhanVien, @birth, @luongCoBan, @chucVu)";
             using (SqlConnection con = new SqlConnection(ConnectionString))
             {
@@ -1051,6 +1051,8 @@ namespace DAL
                     cmd.Parameters.AddWithValue("@birth", NV.birth);
                     cmd.Parameters.AddWithValue("@luongCoBan", NV.luongcoban);
                     cmd.Parameters.AddWithValue("@chucVu", NV.chucvu);
+                    cmd.Parameters.AddWithValue("@absent", 0);
+                    cmd.Parameters.AddWithValue("@attended", 0);
                     try
                     {
                         con.Open();
@@ -1071,7 +1073,7 @@ namespace DAL
         public bool Sua(NhanVienDTO NV)
         {
             string query = string.Empty;
-            query += " UPDATE tblnhanVien SET [tenNhanVien] = @tenNhanVien, [birth] = @birth, [luongCoBan] = @luongCoBan, [chucVu] = @chucVu WHERE [manhanVien] = @manhanVien";
+            query += " UPDATE tblnhanVien SET [tenNhanVien] = @tenNhanVien, [birth] = @birth, [luongCoBan] = @luongCoBan, [chucVu] = @chucVu, [absent]= @absent, [attended]= @attended WHERE [manhanVien] = @manhanVien";
 
             using (SqlConnection con = new SqlConnection(ConnectionString))
             {
@@ -1085,6 +1087,8 @@ namespace DAL
                     cmd.Parameters.AddWithValue("@birth", NV.birth);
                     cmd.Parameters.AddWithValue("@luongCoBan", NV.luongcoban);
                     cmd.Parameters.AddWithValue("@chucVu", NV.chucvu);
+                    cmd.Parameters.AddWithValue("@absent", NV.Absent);
+                    cmd.Parameters.AddWithValue("@attended", NV.Attended);
                     try
                     {
                         con.Open();
@@ -1135,7 +1139,7 @@ namespace DAL
         public List<NhanVienDTO> select()
         {
             string query = string.Empty;
-            query += " SELECT [manhanVien], [tenNhanVien] ,[birth], [luongCoBan], [chucVu]";
+            query += " SELECT [manhanVien], [tenNhanVien] ,[birth], [luongCoBan], [chucVu], [absent]";
             query += " FROM [tblnhanVien]";
 
             List<NhanVienDTO> listNhanVien = new List<NhanVienDTO>();
@@ -1162,6 +1166,7 @@ namespace DAL
                                 nv.birth = Convert.ToDateTime(reader["birth"].ToString());
                                 nv.luongcoban = int.Parse(reader["luongCoBan"].ToString());
                                 nv.chucvu = reader["chucVu"].ToString();
+                                nv.Absent = int.Parse(reader["absent"].ToString());
                                 listNhanVien.Add(nv);
                             }
                         }
@@ -1182,13 +1187,14 @@ namespace DAL
         public List<NhanVienDTO> selectByKeyWord(string sKeyword)
         {
             string query = string.Empty;
-            query += " SELECT [manhanVien], [tenNhanVien] ,[birth], [luongCoBan], [machucVu]";
+            query += " SELECT [manhanVien], [tenNhanVien] ,[birth], [luongCoBan], [chucVu], [absent]";
             query += " FROM [tblnhanVien]";
             query += " WHERE ([manhanVien] LIKE CONCAT('%',@sKeyword,'%'))";
             query += " OR ([tenNhanVien] LIKE CONCAT('%',@sKeyword,'%'))";
             query += " OR ([birth] LIKE CONCAT('%',@sKeyword,'%'))";
             query += " OR ([luongCoBan] LIKE CONCAT('%',@sKeyword,'%'))";
             query += " OR ([chucVu] LIKE CONCAT('%',@sKeyword,'%'))";
+            query += " OR ([absent] LIKE CONCAT('%',@sKeyword,'%'))";
 
             List<NhanVienDTO> listNhanVien = new List<NhanVienDTO>();
 
@@ -1215,6 +1221,7 @@ namespace DAL
                                 nv.birth = Convert.ToDateTime(reader["birth"].ToString());
                                 nv.luongcoban = int.Parse(reader["luongCoBan"].ToString());
                                 nv.chucvu = reader["chucVu"].ToString();
+                                nv.Absent = int.Parse(reader["absent"].ToString());
                                 listNhanVien.Add(nv);
                             }
                         }
@@ -1269,6 +1276,53 @@ namespace DAL
                 }
             }
             return dsmama;
+        }
+
+        public NhanVienDTO Laynv(string manv)
+        {
+            NhanVienDTO nv = new NhanVienDTO();
+            string query = string.Empty;
+            query += " SELECT [manhanVien], [tenNhanVien] ,[birth], [luongCoBan], [chucVu], [absent], [attended]";
+            query += " FROM [tblnhanVien]";
+            query += " WHERE [manhanVien]=@manhanVien";
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@manhanVien", manv);
+                    try
+                    {
+                        con.Open();
+                        SqlDataReader reader = null;
+                        reader = cmd.ExecuteReader();
+                        if (reader.HasRows == true)
+                        {
+                            while (reader.Read())
+                            {
+                                nv.manv = reader["manhanVien"].ToString();
+                                nv.tennv = reader["tenNhanVien"].ToString();
+                                nv.birth = Convert.ToDateTime(reader["birth"].ToString());
+                                nv.luongcoban = int.Parse(reader["luongCoBan"].ToString());
+                                nv.chucvu = reader["chucVu"].ToString();
+                                nv.Absent = int.Parse(reader["absent"].ToString());
+                                nv.Attended = int.Parse(reader["attended"].ToString());
+                            }
+                        }
+
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return null;
+                    }
+                }
+            }
+            return nv;
         }
     }
     public class TaiKhoanDAL
@@ -1378,6 +1432,52 @@ namespace DAL
             return true;
         }
 
+        public TaiKhoanDTO Laytk(string username, string pass)
+        {
+            TaiKhoanDTO tk = new TaiKhoanDTO();
+            string query = string.Empty;
+            query += " SELECT [username], [manhanVien], [type]";
+            query += " FROM [tbltaiKhoan]";
+            query += " WHERE [username] = @username";
+            query += " AND [password] = @password";
+
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@username", username);
+                    cmd.Parameters.AddWithValue("@password", pass);
+                    try
+                    {
+                        con.Open();
+                        SqlDataReader reader = null;
+                        reader = cmd.ExecuteReader();
+                        if (reader.HasRows == true)
+                        {
+                            while (reader.Read())
+                            {
+                                tk.Username = reader["username"].ToString();
+                                tk.manv = reader["manhanVien"].ToString();
+                                tk.Type = reader["type"].ToString();
+                            }
+                        }
+
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return tk;
+                    }
+                }
+            }
+            return tk;
+        }
+
         public List<TaiKhoanDTO> select()
         {
             string query = string.Empty;
@@ -1472,7 +1572,6 @@ namespace DAL
         }
       
     }
-
     public class PhieubaocaoDoanhThuDAL
     {
         private string connectionString;
@@ -2552,7 +2651,7 @@ namespace DAL
         public bool Sua(QuiDinhDTO QD)//chỉnh sửa qui định
         {
             string query = string.Empty;
-            query += " UPDATE tblQuiDinh SET [maxtogetsell] = @maxtogetsell, [sellprice] = @sellprice, [percentnadd] = @percentnadd, [luongtosum] = @luongtosum, [workday] = @workday WHERE [getkey]= 1";
+            query += " UPDATE tblQuiDinh SET [maxtogetsell] = @maxtogetsell, [sellprice] = @sellprice, [percentnadd] = @percentnadd, [dayofwork] = @dayofwork, [luongtru]=@luongtru WHERE [getkey]= 1";
             using (SqlConnection con = new SqlConnection(ConnectionString))
             {
 
@@ -2564,8 +2663,8 @@ namespace DAL
                     cmd.Parameters.AddWithValue("@maxtogetsell", QD.Maxtogetsell);
                     cmd.Parameters.AddWithValue("@sellprice", QD.Sellprice);
                     cmd.Parameters.AddWithValue("@percentnadd", QD.Percentnadd);
-                    cmd.Parameters.AddWithValue("@luongtosum", QD.Luongtosum);
-                    cmd.Parameters.AddWithValue("@workday", QD.Workday);
+                    cmd.Parameters.AddWithValue("@dayofwork", QD.Dayofwork);
+                    cmd.Parameters.AddWithValue("@luongtru", QD.Luongtru);
                     try
                     {
                         con.Open();
@@ -2586,7 +2685,7 @@ namespace DAL
         {
             QuiDinhDTO re = new QuiDinhDTO();
             string query = string.Empty;
-            query += " SELECT [maxtogetsell], [sellprice], [percentnadd], [luongtosum], [workday]";
+            query += " SELECT [maxtogetsell], [sellprice], [percentnadd], [dayofwork], [luongtru]";
             query += " FROM [tblQuiDinh]";
             //query += " WHERE [getkey] LIKE 1";
             using (SqlConnection con = new SqlConnection(ConnectionString))
@@ -2607,8 +2706,8 @@ namespace DAL
                             re.Maxtogetsell = int.Parse(reader["maxtogetsell"].ToString());
                             re.Sellprice = int.Parse(reader["sellprice"].ToString());
                             re.Percentnadd = int.Parse(reader["percentnadd"].ToString());
-                            re.Luongtosum = int.Parse(reader["luongtosum"].ToString());
-                            re.Workday = int.Parse(reader["workday"].ToString());
+                            re.Dayofwork = int.Parse(reader["dayofwork"].ToString());
+                            re.Luongtru = int.Parse(reader["luongtru"].ToString());
                         }
 
                         con.Close();
