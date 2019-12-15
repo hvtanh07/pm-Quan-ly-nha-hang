@@ -6,3 +6,11 @@ D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\DAL\obj\Debug\DAL.c
 D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\DAL\obj\Debug\DAL.csproj.CopyComplete
 D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\DAL\obj\Debug\DAL.dll
 D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\DAL\obj\Debug\DAL.pdb
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\DAL\bin\Debug\DAL.dll
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\DAL\bin\Debug\DAL.pdb
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\DAL\bin\Debug\DTO.dll
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\DAL\bin\Debug\DTO.pdb
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\DAL\obj\Debug\DAL.csproj.CopyComplete
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\DAL\obj\Debug\DAL.dll
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\DAL\obj\Debug\DAL.pdb
