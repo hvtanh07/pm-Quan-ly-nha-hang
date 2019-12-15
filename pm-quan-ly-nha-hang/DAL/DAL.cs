@@ -1037,8 +1037,8 @@ namespace DAL
         public bool Them(NhanVienDTO NV)
         {
             string query = string.Empty;
-            query += " INSERT INTO tblnhanVien ([manhanVien], [tenNhanVien], [birth], [luongCoBan], [chucVu], [absent], [attended]  )";
-            query += " VALUES (@manhanVien, @tenNhanVien, @birth, @luongCoBan, @chucVu)";
+            query += " INSERT INTO tblnhanVien ([manhanVien], [tenNhanVien], [birth], [luongCoBan], [chucVu], [absent], [attended])";
+            query += " VALUES (@manhanVien, @tenNhanVien, @birth, @luongCoBan, @chucVu, @absent, @attended)";
             using (SqlConnection con = new SqlConnection(ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand())
