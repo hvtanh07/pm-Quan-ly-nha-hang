@@ -1,0 +1,5 @@
+D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\DTO\bin\Debug\DTO.dll
+D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\DTO\bin\Debug\DTO.pdb
+D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\DTO\obj\Debug\DTO.csprojAssemblyReference.cache
+D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\DTO\obj\Debug\DTO.dll
+D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\DTO\obj\Debug\DTO.pdb
