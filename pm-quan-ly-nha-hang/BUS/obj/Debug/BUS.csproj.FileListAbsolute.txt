@@ -8,3 +8,13 @@ D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\BUS\obj\Debug\BUS.c
 D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\BUS\obj\Debug\BUS.csproj.CopyComplete
 D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\BUS\obj\Debug\BUS.dll
 D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\BUS\obj\Debug\BUS.pdb
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\BUS\bin\Debug\BUS.dll
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\BUS\bin\Debug\BUS.pdb
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\BUS\bin\Debug\DAL.dll
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\BUS\bin\Debug\DTO.dll
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\BUS\bin\Debug\DAL.pdb
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\BUS\bin\Debug\DTO.pdb
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\BUS\obj\Debug\BUS.csprojAssemblyReference.cache
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\BUS\obj\Debug\BUS.csproj.CopyComplete
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\BUS\obj\Debug\BUS.dll
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\BUS\obj\Debug\BUS.pdb

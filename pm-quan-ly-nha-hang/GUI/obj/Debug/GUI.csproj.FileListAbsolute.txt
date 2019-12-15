@@ -35,3 +35,40 @@ D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.D
 D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.DangNhap.PhucVuvVeSinh.resources
 D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.DangNhap.XemLuong.resources
 D:\GIthub clone path\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.QuiDinh.Ban.resources
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\bin\Debug\GUI.exe.config
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\bin\Debug\GUI.exe
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\bin\Debug\GUI.pdb
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\bin\Debug\BUS.dll
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\bin\Debug\DAL.dll
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\bin\Debug\DTO.dll
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\bin\Debug\BUS.pdb
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\bin\Debug\DAL.pdb
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\bin\Debug\DTO.pdb
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.csprojAssemblyReference.cache
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.BaoCaoDoanhThu.CTBaoCaoDoanhThu.resources
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.BaoCaoDoanhThu.ChitietBaoCaoDoanhThu.resources
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.AdminForm.resources
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.DangNhap.DiemDanh.resources
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.DangNhap.LoginForm.resources
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.DangNhap.PhucVuvVeSinh.resources
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.DangNhap.XemLuong.resources
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.MonAn.ChiTietMonAn.resources
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.MonAn.QuanLyMonAn.resources
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.QuanLyNguyenLieu.resources
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.NhanVien.ChiTietTaiKhoan.resources
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.NhanVien.QuanLyNhanVien.resources
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.NhanVien.QuanLyTaiKhoan.resources
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.NhanVien.SuaNhanVien.resources
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.NhanVien.TaoTaiKhoan.resources
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.Properties.Resources.resources
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.SuaNguyenLieu.resources
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.QuiDinh.Ban.resources
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.QuiDinh.QuanLyQuiDinh.resources
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.ThanhToan.ChiTietHoaDon.resources
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.ThanhToan.DatBan.resources
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.ThanhToan.LapHoaDon.resources
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.ThuNganForm.resources
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.csproj.GenerateResource.cache
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.csproj.CopyComplete
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.exe
+C:\Users\Admin\Documents\GitHub\pm-Quan-ly-nha-hang\pm-quan-ly-nha-hang\GUI\obj\Debug\GUI.pdb
