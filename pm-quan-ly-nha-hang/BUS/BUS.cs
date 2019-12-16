@@ -51,7 +51,10 @@ namespace BUS
         {
             return nlDAL.Laygiatien(ma);
         }
-
+        public int Laytonkho(string manl)
+        {
+            return nlDAL.Laytonkho(manl);
+        }
     }
     public class MonAnBUS
     {
@@ -131,6 +134,10 @@ namespace BUS
         public bool TimNLtrongMA(string manl, string mama)
         {
             return dsnlDAL.TimNLtrongMA(manl,mama);
+        }
+        public int Laysoluong(string manl, string mama)
+        {
+            return dsnlDAL.Laysoluong(manl, mama);
         }
     }
     public class DSMonAnBUS

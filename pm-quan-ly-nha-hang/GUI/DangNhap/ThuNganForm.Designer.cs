@@ -37,10 +37,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(11, 11);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Location = new System.Drawing.Point(15, 14);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(187, 37);
+            this.button1.Size = new System.Drawing.Size(249, 46);
             this.button1.TabIndex = 0;
             this.button1.Text = "Đặt bàn";
             this.button1.UseVisualStyleBackColor = true;
@@ -48,10 +48,10 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(11, 53);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Location = new System.Drawing.Point(15, 65);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(187, 37);
+            this.button2.Size = new System.Drawing.Size(249, 46);
             this.button2.TabIndex = 1;
             this.button2.Text = "Lập hóa đơn";
             this.button2.UseVisualStyleBackColor = true;
@@ -59,10 +59,10 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(11, 94);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button3.Location = new System.Drawing.Point(15, 116);
+            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(187, 37);
+            this.button3.Size = new System.Drawing.Size(249, 46);
             this.button3.TabIndex = 2;
             this.button3.Text = "Lập báo cáo tháng";
             this.button3.UseVisualStyleBackColor = true;
@@ -70,10 +70,10 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(11, 136);
-            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button4.Location = new System.Drawing.Point(15, 167);
+            this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(187, 37);
+            this.button4.Size = new System.Drawing.Size(249, 46);
             this.button4.TabIndex = 3;
             this.button4.Text = "Điểm danh";
             this.button4.UseVisualStyleBackColor = true;
@@ -81,10 +81,10 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(11, 177);
-            this.button5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button5.Location = new System.Drawing.Point(15, 218);
+            this.button5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(187, 37);
+            this.button5.Size = new System.Drawing.Size(249, 46);
             this.button5.TabIndex = 4;
             this.button5.Text = "Kiểm tra lương tháng";
             this.button5.UseVisualStyleBackColor = true;
@@ -92,15 +92,15 @@
             // 
             // ThuNganForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(208, 224);
+            this.ClientSize = new System.Drawing.Size(277, 276);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ThuNganForm";
             this.Text = "Thu ngân";
             this.ResumeLayout(false);
