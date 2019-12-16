@@ -301,6 +301,46 @@ namespace DAL
             }
             return dsmanl;
         }
+        public int Laytonkho(string manl)
+        {
+            int kho = 0;
+            string query = string.Empty;
+            query += " SELECT [trongKho]";
+            query += " FROM [tblNguyenLieu]";
+            query += " WHERE [maNguyenLieu] = @maNguyenLieu";
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@maNguyenLieu", manl);
+                    try
+                    {
+                        con.Open();
+                        SqlDataReader reader = null;
+                        reader = cmd.ExecuteReader();
+                        if (reader.HasRows == true)
+                        {
+                            while (reader.Read())
+                            {
+                                kho = int.Parse(reader["trongKho"].ToString());
+                            }
+                        }
+
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return kho;
+                    }
+                }
+            }
+            return kho;
+        }
     }
     public class MonAnDAL
     {
@@ -733,7 +773,52 @@ namespace DAL
             }
             return listnl;
         }
-        
+        public int Laysoluong(string manl, string mama)
+        {
+            int soluong=0;
+            string query = string.Empty;
+            query += " SELECT [soLuong]";
+            query += " FROM [tblDSNguyenLieu]";
+            query += " WHERE [maMonAn] = @maMonAn";
+            query += " AND [maNguyenLieu] = @maNguyenLieu";
+
+            List<DSNguyenLieuDTO> listnl = new List<DSNguyenLieuDTO>();
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@maMonAn", mama);
+                    cmd.Parameters.AddWithValue("@maNguyenLieu", manl);
+                    try
+                    {
+                        con.Open();
+                        SqlDataReader reader = null;
+                        reader = cmd.ExecuteReader();
+                        if (reader.HasRows == true)
+                        {
+                            while (reader.Read())
+                            {
+                                soluong = int.Parse(reader["soLuong"].ToString());
+                            }
+                        }
+
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        return soluong;
+                    }
+                }
+            }
+            return soluong;
+        }
         public bool TimNLtrongMA(string manl, string mama)
         {
             string query = string.Empty;

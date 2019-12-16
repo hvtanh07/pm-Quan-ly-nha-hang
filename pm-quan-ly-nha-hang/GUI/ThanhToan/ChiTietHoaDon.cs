@@ -15,7 +15,9 @@ namespace GUI.ThanhToan
     public partial class ChiTietHoaDon : Form
     {
         private hoaDonDTO hoadon;
+        private NguyenLieuBUS nlBUS;
         private DSMonAnBUS dsmaBUS;
+        private DSNguyenLieuBUS dsnlBUS;
         private MonAnBUS maBUS;
         private hoaDonBUS hdBUS;
         private QuyDinhBUS qdBUS;
@@ -29,9 +31,11 @@ namespace GUI.ThanhToan
         public ChiTietHoaDon(hoaDonDTO hoadon)
         {
             maBUS = new MonAnBUS();
+            nlBUS = new NguyenLieuBUS();
             dsmaBUS = new DSMonAnBUS();
             hdBUS = new hoaDonBUS();
             qdBUS = new QuyDinhBUS();
+            dsnlBUS = new DSNguyenLieuBUS();
             quydinh = qdBUS.Laydulieu();
             this.hoadon = hoadon;            
             InitializeComponent();
@@ -154,7 +158,7 @@ namespace GUI.ThanhToan
 
             if (listNguyenLieu == null)
             {
-                MessageBox.Show("Có lỗi khi lấy nguyên liệu từ cơ sở dữ liệu");
+                MessageBox.Show("Có lỗi khi lấy món ăn từ cơ sở dữ liệu");
                 return;
             }
 
@@ -194,9 +198,22 @@ namespace GUI.ThanhToan
             //2. Kiểm tra data hợp lệ or not
             if (dsmaBUS.TimMAtrongHD(dsnl.mahd, dsnl.mama))
             {
-                System.Windows.MessageBox.Show("Thêm món ăn thất bại. nguyên liệu đã tồn tại.");
+                System.Windows.MessageBox.Show("Thêm món ăn thất bại. món ăn đã tồn tại.");
                 return;
             }
+            //Kiem tra nguyen lieu trong kho
+            List<DSNguyenLieuDTO> listNguyenLieu = dsnlBUS.select(dsnl.mama);//lay danh sach nguyen lieu                                                                            
+            foreach (DSNguyenLieuDTO nlDTO in listNguyenLieu)//xem trong kho >< so luong trong mon an
+            {
+                int kho = nlBUS.Laytonkho(nlDTO.manl);
+                int soluong = dsnlBUS.Laysoluong(nlDTO.manl, dsnl.mama);
+                if (kho < soluong)
+                {
+                    System.Windows.MessageBox.Show("Thêm món ăn thất bại. Lượng nguyên liệu trong kho không đủ");
+                    return;
+                }
+            }
+
             //3. Thêm vào DB
             bool kq = dsmaBUS.Them(dsnl);
             if (kq == false)
